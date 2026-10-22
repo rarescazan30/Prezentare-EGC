@@ -1,5 +1,8 @@
 /* Funcții ajutătoare folosite de toate celelalte fișiere și emblema AC. */
 'use strict';
+/* Fiecare fișier din content/ apelează slide(număr,{…}); textele ajung în SLIDE[număr]. */
+const SLIDE=[];
+const slide=(n,o)=>{SLIDE[n]=o};
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)), lerp=(a,b,k)=>a+(b-a)*k;
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;

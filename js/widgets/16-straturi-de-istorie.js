@@ -1,4 +1,4 @@
-/* Slide 16 · partea interactivă (mPal). Textele vin din SLIDES.straturi (content.js). */
+/* Slide 16 · partea interactivă (mPal). Textele vin din content/16-straturi-de-istorie.js. */
 'use strict';
 function mPal(root){
  const ls=$$('.layer',root);

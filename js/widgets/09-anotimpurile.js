@@ -1,13 +1,13 @@
-/* Slide 9 · partea interactivă (mSeason). Textele vin din SLIDES.anotimpuri (content.js). */
+/* Slide 9 · partea interactivă (mSeason). Textele vin din content/09-anotimpurile.js. */
 'use strict';
 function mSeason(root){
- const C=SLIDES.anotimpuri,c=$('#sea',root),x=c.getContext('2d'),W=c.width,H=c.height;
+ const C=SLIDE[9],c=$('#sea',root),x=c.getContext('2d'),W=c.width,H=c.height;
  const sl=$('#seaT',root),sh=$('#seaH',root),mD=$('#mD',root),mA=$('#mA',root),rb=$('#seaR',root);
  const SE=[
-  {name:C.seasons[0].name,leaf:[[246,182,202],[228,136,166],[255,218,230]],dens:.86,gr:[138,26,22],snow:0,fall:'petal',al:28},
-  {name:C.seasons[1].name,leaf:[[38,88,62],[24,62,44],[58,116,82]],dens:1,gr:[135,32,18],snow:0,fall:null,al:20},
-  {name:C.seasons[2].name,leaf:[[204,64,34],[232,118,38],[148,36,22]],dens:.78,gr:[28,38,20],snow:0,fall:'leaf',al:32},
-  {name:C.seasons[3].name,leaf:[[222,234,246],[188,206,226],[250,253,255]],dens:.14,gr:[208,24,84],snow:1,fall:'snow',al:88}
+  {name:C.anotimpuri[0].nume,leaf:[[246,182,202],[228,136,166],[255,218,230]],dens:.86,gr:[138,26,22],snow:0,fall:'petal',al:28},
+  {name:C.anotimpuri[1].nume,leaf:[[38,88,62],[24,62,44],[58,116,82]],dens:1,gr:[135,32,18],snow:0,fall:null,al:20},
+  {name:C.anotimpuri[2].nume,leaf:[[204,64,34],[232,118,38],[148,36,22]],dens:.78,gr:[28,38,20],snow:0,fall:'leaf',al:32},
+  {name:C.anotimpuri[3].nume,leaf:[[222,234,246],[188,206,226],[250,253,255]],dens:.14,gr:[208,24,84],snow:1,fall:'snow',al:88}
  ];
  let se=1,rt=true;const r=rng(31);
  const mix=(a,b,k)=>a.map((v,i)=>lerp(v,b[i],k)),rgb=a=>`rgb(${a[0]|0},${a[1]|0},${a[2]|0})`;
@@ -57,7 +57,7 @@ function mSeason(root){
  const reeds=[...Array(52)].map((_,i)=>({x:120+i*14+r()*8,h:12+r()*16,ph:r()*6}));
 
  $$('#seaS [data-s]',root).forEach(b=>b.onclick=()=>{se=+b.dataset.s;$$('#seaS .btn',root).forEach(q=>q.classList.toggle('on',q===b));ind()});
- rb.onclick=()=>{rt=!rt;rb.classList.toggle('on',rt);rb.textContent=C.rt+': '+(rt?C.rtOn:C.rtOff)};
+ rb.onclick=()=>{rt=!rt;rb.classList.toggle('on',rt);rb.textContent=C.butonLumina+': '+(rt?C.pornita:C.oprita)};
  const ind=()=>{mD.style.width=SE[se].dens*100+'%';mA.style.width=SE[se].al+'%'};ind();
 
  function drawCastle(cx,cy,L,snow,rtBounce){
@@ -319,7 +319,7 @@ function mSeason(root){
    });
   }
   x.font='600 15px JetBrains Mono,monospace';x.fillStyle='rgba(255,255,255,.9)';
-  x.fillText(`${rt?C.canvasOn:C.canvasOff} · ${S.name.toUpperCase()}`,14,22);
+  x.fillText(`${rt?C.textDesenPornit:C.textDesenOprit} · ${S.name.toUpperCase()}`,14,22);
  }
  return{tick:frame};
 }

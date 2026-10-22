@@ -1,8 +1,8 @@
-/* Slide 11 · partea interactivă (mLynch). Textele vin din SLIDES.lynch (content.js). */
+/* Slide 11 · partea interactivă (mLynch). Textele vin din content/11-orientarea-in-oras.js. */
 'use strict';
 function mLynch(root){
  const c=$('#lyn',root),x=c.getContext('2d'),W=c.width,H=c.height;
- const LY=LYNCH.map((l,i)=>({k:['rep','tra','dis','mar','nod'][i],n:`${i+1}. ${l.name}`,def:l.def,imp:l.inGame}));
+ const LY=SLIDE[11].elemente.map((l,i)=>({k:['rep','tra','dis','mar','nod'][i],n:`${i+1}. ${l.nume}`,def:l.definitie,imp:l.inJoc}));
  const on={rep:1,tra:1,dis:1,mar:1,nod:1};let foc=null;
  const chips=$('#lChips',root);chips.innerHTML=LY.map((l,i)=>`<button class="btn on" data-k="${l.k}" data-i="${i}">${l.n}</button>`).join('');
  const setLynchInfo=i=>{$('#lTag',root).textContent=LY[i].n;$('#lDef',root).textContent=LY[i].def;$('#lImp',root).textContent=LY[i].imp};
@@ -31,7 +31,7 @@ function mLynch(root){
   x.fillStyle='#04070c';x.fillRect(0,0,W,H);
   x.globalAlpha=on.dis?al('dis')*.95:.18;x.imageSmoothingEnabled=true;x.drawImage(dcv,0,0,W,H);x.globalAlpha=1;
   x.strokeStyle='rgba(145,190,225,.08)';x.beginPath();for(let i=0;i<=W;i+=40){x.moveTo(i,0);x.lineTo(i,H)}for(let j=0;j<=H;j+=40){x.moveTo(0,j);x.lineTo(W,j)}x.stroke();
-  if(on.dis){x.font='600 15px JetBrains Mono,monospace';x.fillStyle=`rgba(234,242,248,${.72*al('dis')})`;SLIDES.lynch.districts.forEach((n,i)=>x.fillText(n.toUpperCase(),dc[i].x-36,dc[i].y))}
+  if(on.dis){x.font='600 15px JetBrains Mono,monospace';x.fillStyle=`rgba(234,242,248,${.72*al('dis')})`;SLIDE[11].cartiere.forEach((n,i)=>x.fillText(n.toUpperCase(),dc[i].x-36,dc[i].y))}
   if(on.mar){x.globalAlpha=al('mar');x.strokeStyle='hsl(200 75% 48%)';x.lineWidth=20;x.lineCap='round';x.beginPath();for(let y=-10;y<=H+10;y+=10){const X=468+105*Math.sin(y/82);y<0?x.moveTo(X,y):x.lineTo(X,y)}x.stroke();
    x.strokeStyle='hsl(195 85% 74%)';x.lineWidth=1.8;for(const o of[-11,11]){x.beginPath();for(let y=-10;y<=H+10;y+=10){const X=468+105*Math.sin(y/82)+o;y<0?x.moveTo(X,y):x.lineTo(X,y)}x.stroke()}
    x.strokeStyle='rgba(234,242,248,.55)';x.lineWidth=4.5;x.setLineDash([14,8]);x.beginPath();x.arc(98,238,190,-1.2,1.2);x.stroke();x.setLineDash([]);x.globalAlpha=1}

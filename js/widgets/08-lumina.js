@@ -1,11 +1,11 @@
-/* Slide 8 · partea interactivă (mGI). Textele vin din SLIDES.lumina (content.js). */
+/* Slide 8 · partea interactivă (mGI). Textele vin din content/08-lumina.js. */
 'use strict';
 function mGI(root){
  const c=$('#gi',root),ctx=c.getContext('2d');const W=240,H=125;
  const off=document.createElement('canvas');off.width=W;off.height=H;const ox=off.getContext('2d'),img=ox.createImageData(W,H);
  const sl=$('#giT',root),sh=$('#giH',root),bars=$('#giBars',root);
  let mode=0,dirty=true;const PRE=[.1,.4,.65,.9];
- const C=SLIDES.lumina,INFO=C.modes.map(m=>({tag:m.tag,big:m.big,txt:m.text,bars:m.bars}));
+ const C=SLIDE[8],INFO=C.moduri.map(m=>({tag:m.eticheta,big:m.cifra,txt:m.text,bars:m.bare}));
  function updateGIInfo(){const f=INFO[mode];$('#giTag',root).textContent=f.tag;$('#giBig',root).textContent=f.big;$('#giTxt',root).textContent=f.txt;
   bars.innerHTML=f.bars.map(b=>{const p=clamp((Math.log10(b[1])+.2)/(Math.log10(2000)+.2),.05,1)*100;
    return`<div><div class="row" style="justify-content:space-between"><span class="lab">${b[0]}</span><span class="mono" style="font-size:12px;color:var(--ink)">${b[2]}</span></div><div class="btrack" style="--c:${b[1]>100?'var(--creed)':'var(--accent)'}"><div class="bar" style="width:${p}%"></div></div></div>`}).join('')}
@@ -25,7 +25,7 @@ function mGI(root){
 
  function render(t){
   let s=+sl.value;if(mode===0)s=PRE.reduce((a,b)=>Math.abs(b-s)<Math.abs(a-s)?b:a);
-  const hr=6+s*14;sh.textContent=String(Math.floor(hr)).padStart(2,'0')+':'+String(Math.floor(hr%1*60)).padStart(2,'0')+(mode===0?C.fixed:C.dynamic);
+  const hr=6+s*14;sh.textContent=String(Math.floor(hr)).padStart(2,'0')+':'+String(Math.floor(hr%1*60)).padStart(2,'0')+(mode===0?C.orarFix:C.orarDinamic);
   const sI=Math.pow(Math.sin(Math.PI*s),.75),warm=1-Math.abs(s-.5)*2;
   // Projected sunlight patch on floor
   const patchX=lerp(168,72,s),patchY=104,rx=28*(1+.35*Math.abs(s-.5)),ry=11;
@@ -169,8 +169,8 @@ function mGI(root){
    }
   }
   ctx.font='600 15px JetBrains Mono,monospace';ctx.fillStyle='rgba(255,255,255,.9)';
-  ctx.fillText(C.modes[mode].canvas,16,24);
-  if(mode===1){ctx.fillStyle='#e0243f';ctx.fillText(C.leak,16,72)}
+  ctx.fillText(C.moduri[mode].textDesen,16,24);
+  if(mode===1){ctx.fillStyle='#e0243f';ctx.fillText(C.avertisment,16,72)}
  }
  updateGIInfo();
  return{tick(dt,t){if(dirty||mode===2){render(t);dirty=false}}};

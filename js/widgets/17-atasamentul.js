@@ -1,8 +1,8 @@
-/* Slide 17 · partea interactivă (mFlow). Textele vin din SLIDES.atasament (content.js). */
+/* Slide 17 · partea interactivă (mFlow). Textele vin din content/17-atasamentul.js. */
 'use strict';
 function mFlow(root){
  const ns=$$('.node',root),tx=$('#rTxt',root);let k=0,iv;
- const TXT={W:SLIDES.atasament.westText,M:SLIDES.atasament.middleEastText};
+ const TXT={W:SLIDE[17].textVest,M:SLIDE[17].textEst};
  const set=w=>{tx.textContent=TXT[w];$('#rW',root).classList.toggle('on',w==='W');$('#rM',root).classList.toggle('on',w==='M')};
  $('#rW',root).onclick=()=>set('W');$('#rM',root).onclick=()=>set('M');set('M');
  const lite=i=>ns.forEach((n,j)=>n.classList.toggle('on',j<=i));

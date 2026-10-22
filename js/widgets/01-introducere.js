@@ -1,4 +1,4 @@
-/* Slide 1 · partea interactivă (mTitle). Textele vin din SLIDES.intro (content.js). */
+/* Slide 1 · partea interactivă (mTitle). Textele vin din content/01-introducere.js. */
 'use strict';
 function mTitle(root){
  const c=$('#dnaC',root),x=c.getContext('2d'),W=c.width,H=c.height;
@@ -22,6 +22,6 @@ function mTitle(root){
   x.strokeStyle='rgba(110,205,250,.22)';x.beginPath();x.arc(cx,cy,r+11,-t*.0006,-t*.0006+4.4);x.stroke();
   drawCrestCanvas(x,cx,cy,96,'rgba(224,36,63,.88)','rgba(234,242,248,.65)');
   x.font='600 15px JetBrains Mono,monospace';x.fillStyle='rgba(145,190,225,.8)';
-  x.fillText(SLIDES.intro.canvasLabel,16,22);
+  x.fillText(SLIDE[1].textDesen,16,22);
  }};
 }

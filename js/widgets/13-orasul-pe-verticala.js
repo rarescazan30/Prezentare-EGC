@@ -1,4 +1,4 @@
-/* Slide 13 · partea interactivă (mSection). Textele vin din SLIDES.verticala (content.js). */
+/* Slide 13 · partea interactivă (mSection). Textele vin din content/13-orasul-pe-verticala.js. */
 'use strict';
 function mSection(root){
  const a=$('#secA',root),mk=$('#secM',root),zs=$$('.zrow',root),btn=$('#secS',root);
@@ -14,8 +14,8 @@ function mSection(root){
     const mk2=(f,type,q)=>{const s=ac.createBufferSource();s.buffer=buf;s.loop=true;const fl=ac.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q;const g=ac.createGain();g.gain.value=0;s.connect(fl);fl.connect(g);g.connect(ac.destination);s.start();return{g,fl}};
     wind=mk2(380,'lowpass',.7);st=mk2(900,'bandpass',.8);
     iv=setInterval(()=>{st.fl.frequency.setTargetAtTime(650+Math.random()*700,ac.currentTime,.1)},220)}
-   playing=!playing;if(playing&&ac.state==='suspended')ac.resume();btn.classList.toggle('on',playing);btn.textContent=playing?SLIDES.verticala.soundOff:SLIDES.verticala.soundOn;upd();
-  }catch(e){btn.textContent=SLIDES.verticala.soundNone}
+   playing=!playing;if(playing&&ac.state==='suspended')ac.resume();btn.classList.toggle('on',playing);btn.textContent=playing?SLIDE[13].sunetOpreste:SLIDE[13].sunetAsculta;upd();
+  }catch(e){btn.textContent=SLIDE[13].sunetIndisponibil}
  };
  upd();
  return{off(){playing=false;if(ac){upd();clearInterval(iv);iv=null;ac.close().catch(()=>{});ac=null}}};
