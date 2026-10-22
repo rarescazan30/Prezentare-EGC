@@ -12,16 +12,8 @@ const ticks=$('#ticks');
 SL.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label',`${i+1}. ${s.t}`);b.title=`${i+1}. ${s.t}`;b.onclick=()=>go(i);ticks.appendChild(b);
 });
 
-const NODES_CNT=34;
-const rNet=rng(42);
-const NET_NODES=[...Array(NODES_CNT)].map(()=>{
- const n={x:rNet(),y:rNet(),vx:(rNet()-.5)*.028,vy:(rNet()-.5)*.028,z:.35+rNet()*.65};
- rNet(); // păstrează aceeași așezare a punctelor ca înainte
- return n;
-});
-
 function drawBG(dt,t){
- const W=BW*DPR,H=BH*DPR,h=Math.round(S.hue),s=dt/1000;
+ const W=BW*DPR,H=BH*DPR,h=Math.round(S.hue);
  bx.setTransform(1,0,0,1,0,0);bx.clearRect(0,0,W,H);
  const g=bx.createLinearGradient(0,0,0,H);
  g.addColorStop(0,`hsl(${h} 45% 4%)`);
@@ -35,35 +27,6 @@ function drawBG(dt,t){
  for(let i=-14;i<=14;i++){bx.moveTo(W/2+i*32*DPR,hz);bx.lineTo(W/2+i*W*.085,H)}
  for(let k=0;k<8;k++){const z=((k+(t*.00025)%1)/8),y=hz+Math.pow(z,2.1)*(H-hz);bx.moveTo(0,y);bx.lineTo(W,y)}
  bx.stroke();
-
- // Update interconnected Animus nodes
- NET_NODES.forEach(n=>{
-  n.x+=n.vx*s;n.y+=n.vy*s;
-  if(n.x<.02||n.x>.98)n.vx=-n.vx;
-  if(n.y<.04||n.y>.96)n.vy=-n.vy;
- });
-
- // Draw proximity connections & triangular memory facets
- const maxDist=Math.min(W,H)*.21,maxD2=maxDist*maxDist;
- bx.lineWidth=DPR;
- for(let i=0;i<NODES_CNT;i++){
-  const a=NET_NODES[i],ax=a.x*W,ay=a.y*H;
-  for(let j=i+1;j<NODES_CNT;j++){
-   const b=NET_NODES[j],bx2=b.x*W,by2=b.y*H;
-   const dx=ax-bx2,dy=ay-by2,d2=dx*dx+dy*dy;
-   if(d2<maxD2){
-    const al=(1-Math.sqrt(d2)/maxDist)*.11;
-    bx.strokeStyle=`hsla(${h},75%,65%,${al.toFixed(3)})`;
-    bx.beginPath();bx.moveTo(ax,ay);bx.lineTo(bx2,by2);bx.stroke();
-   }
-  }
- }
-
- // Draw nodes
- NET_NODES.forEach(n=>{
-  bx.fillStyle=`hsla(${h},80%,72%,.65)`;
-  bx.beginPath();bx.arc(n.x*W,n.y*H,1.9*DPR*n.z,0,7);bx.fill();
- });
 
  const vg=bx.createRadialGradient(W/2,H/2,H*.32,W/2,H/2,H*.95);
  vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,.62)');
