@@ -14,34 +14,11 @@ SL.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria
 
 const NODES_CNT=34;
 const rNet=rng(42);
-const NET_NODES=[...Array(NODES_CNT)].map((_,i)=>({
- x:rNet(),
- y:rNet(),
- vx:(rNet()-.5)*.028,
- vy:(rNet()-.5)*.028,
- z:.35+rNet()*.65,
- hub:i%11===0,
- ph:rNet()*6.283
-}));
-const NET_PULSES=[...Array(6)].map((_,i)=>({
- a:i%NODES_CNT,
- b:(i*7+3)%NODES_CNT,
- p:rNet(),
- sp:.55+rNet()*.9
-}));
-
-const FX={
- data:{n:14,vx:[0,0],vy:[32,85],s:[10,13],c:'hsla(H,75%,65%,',a:[.08,.32],sh:'g'},
- dust:{n:16,vx:[8,22],vy:[-3,5],s:[1,2],c:'hsla(H,55%,70%,',a:[.1,.35],sh:'d'},
- petals:{n:14,vx:[8,24],vy:[18,40],s:[2.5,4.8],c:'hsla(H,60%,75%,',a:[.22,.58],sh:'p'},
- spray:{n:16,vx:[20,50],vy:[-5,5],s:[1,2],c:'hsla(H,60%,80%,',a:[.12,.4],sh:'d'},
- leaves:{n:14,vx:[8,26],vy:[20,44],s:[2.5,4.8],c:'hsla(H,65%,62%,',a:[.22,.58],sh:'p'},
- motes:{n:16,vx:[-5,5],vy:[-10,-2],s:[1,2],c:'hsla(H,70%,75%,',a:[.1,.38],sh:'d'}
-};
-const PS=[...Array(60)].map(()=>({x:0,y:0,u:Math.random(),v:Math.random(),w:Math.random(),f:0,i:0}));
-let fxType='data';
-function spawn(p,init){const f=FX[fxType]||FX.data,W=BW,H=BH;p.x=Math.random()*W;p.y=init?Math.random()*H:(f.vy[1]<0?H+10:-10);p.f=init?0:p.f;p.sp=lerp(f.s[0],f.s[1],p.u);p.vx=lerp(f.vx[0],f.vx[1],p.v);p.vy=lerp(f.vy[0],f.vy[1],p.w);p.a=lerp(f.a[0],f.a[1],p.u)}
-PS.forEach((p,i)=>{p.i=i;spawn(p,true)});
+const NET_NODES=[...Array(NODES_CNT)].map(()=>{
+ const n={x:rNet(),y:rNet(),vx:(rNet()-.5)*.028,vy:(rNet()-.5)*.028,z:.35+rNet()*.65};
+ rNet(); // păstrează aceeași așezare a punctelor ca înainte
+ return n;
+});
 
 function drawBG(dt,t){
  const W=BW*DPR,H=BH*DPR,h=Math.round(S.hue),s=dt/1000;
@@ -82,39 +59,10 @@ function drawBG(dt,t){
   }
  }
 
- // Draw synaptic data pulses traveling between nodes
- NET_PULSES.forEach(pl=>{
-  pl.p+=s*pl.sp*.45;
-  if(pl.p>=1){pl.p=0;pl.a=pl.b;pl.b=(pl.a+1+Math.floor(Math.random()*12))%NODES_CNT}
-  const n1=NET_NODES[pl.a],n2=NET_NODES[pl.b];
-  const px=lerp(n1.x,n2.x,pl.p)*W,py=lerp(n1.y,n2.y,pl.p)*H;
-  bx.fillStyle='#e8c15a';
-  bx.beginPath();bx.arc(px,py,2.2*DPR,0,7);bx.fill();
- });
-
- // Draw nodes & hub rings
+ // Draw nodes
  NET_NODES.forEach(n=>{
-  const nx=n.x*W,ny=n.y*H,r=(n.hub?3.4:1.9)*DPR*n.z;
-  bx.fillStyle=n.hub?'#e8c15a':`hsla(${h},80%,72%,.65)`;
-  bx.beginPath();bx.arc(nx,ny,r,0,7);bx.fill();
-  if(n.hub){
-   const pr=r+(3+Math.sin(t*.003+n.ph)*2)*DPR;
-   bx.strokeStyle=`hsla(${h},85%,70%,.28)`;
-   bx.beginPath();bx.arc(nx,ny,pr,0,7);bx.stroke();
-  }
- });
-
- // Ambient atmospheric particles
- const f=FX[fxType]||FX.data,pre=f.c.replace('H',h),lim=REDUCED?10:f.n;
- PS.forEach(p=>{
-  if(p.i>=lim)return;
-  p.f=Math.min(1,p.f+s);p.x+=p.vx*s;p.y+=p.vy*s;
-  if(p.y>BH+14||p.y<-14||p.x>BW+14||p.x<-14)spawn(p,false);
-  const px=p.x*DPR,py=p.y*DPR;
-  bx.fillStyle=pre+(p.a*p.f).toFixed(3)+')';
-  if(f.sh==='g'){bx.font=`${p.sp*DPR}px JetBrains Mono,monospace`;bx.fillText(p.u>.5?'1':'0',px,py)}
-  else if(f.sh==='p'){bx.save();bx.translate(px,py);bx.rotate(t*.001*p.v+p.u*6);bx.beginPath();bx.ellipse(0,0,p.sp*DPR,p.sp*.55*DPR,0,0,7);bx.fill();bx.restore()}
-  else{bx.beginPath();bx.arc(px,py,p.sp*DPR*.5,0,7);bx.fill()}
+  bx.fillStyle=`hsla(${h},80%,72%,.65)`;
+  bx.beginPath();bx.arc(n.x*W,n.y*H,1.9*DPR*n.z,0,7);bx.fill();
  });
 
  const vg=bx.createRadialGradient(W/2,H/2,H*.32,W/2,H/2,H*.95);
@@ -124,7 +72,6 @@ function drawBG(dt,t){
 
 /* ============ TRANZIȚIE · „SINCRONIZARE ANIMUS" (voal luminos + emblemă) ============ */
 const WP={on:false,t0:0,dur:1400,target:0,swapped:false,hue:202,dir:1};
-const MOTES=[...Array(28)].map((_,i)=>{const q=rng(900+i);return{y:q(),o:q(),s:.7+q()*1.6,g:q()>.45,ph:q()*6.28}});
 const sm3=(a,b,x)=>{const t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)};
 function drawWipe(p){
  const w=fxc.width,h=fxc.height,cx=w/2,cy=h/2,D=WP.dir;
@@ -159,17 +106,6 @@ function drawWipe(p){
  };
  const x1=e1-F*.5,x2=e2+F*.5;
  beam(x1,1);beam(x2,b>.02?1:0);
- /* particule fine de lumină */
- MOTES.forEach(m=>{
-  [[x1,1],[x2,b>.02?.8:0]].forEach(([bx0,k])=>{
-   if(k<=0)return;
-   const x=bx0-F*.5*(m.o-.1)+Math.sin(p*7+m.ph)*6*DPR,y=m.y*h+Math.cos(p*5+m.ph)*10*DPR;
-   if(x<0||x>w)return;
-   const al=(.25+.75*(1-m.o))*k*.85;
-   fxx.fillStyle=m.g?`rgba(255,220,140,${al})`:`rgba(${AC},${al})`;
-   fxx.beginPath();fxx.arc(x,y,m.s*DPR,0,7);fxx.fill();
-  });
- });
  fxx.restore();
  /* emblemă + titlu în centru */
  const c=sm3(.3,.5,p)*(1-sm3(.56,.8,p));
@@ -194,8 +130,7 @@ function drawWipe(p){
  }
 }
 
-function setTargets(n){const s=SL[n];S.hueT=s.hue;S.yrT=s.year;
- if(s.fx!==fxType){fxType=s.fx;PS.forEach(p=>{p.f=0;spawn(p,true)})}}
+function setTargets(n){const s=SL[n];S.hueT=s.hue;S.yrT=s.year;}
 function go(n){n=clamp(n,0,N-1);if(n===S.i&&!S.busy)return;if(S.busy){S.pend=n;return}
  if(n===S.i)return;
  if(S.i<0||REDUCED){setTargets(n);if(REDUCED){S.hue=S.hueT;S.yr=S.yrT}swap(n);return}

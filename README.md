@@ -106,7 +106,6 @@ Each of these has a note at the top of its file saying where else it shows up.
 ```js
 add({...meta(5),        // bara + an, from content/05-…
   hue:204,              // accent color hue (the whole UI shifts to it)
-  fx:'data',            // background particles: data | dust | petals | spray | leaves | motes
   html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)} …`)(SLIDE[5]), // layout, filled with the texts
   mount:mBars           // optional: the interactive part, from js/widgets/05-…
 });
