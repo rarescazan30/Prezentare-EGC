@@ -1,6 +1,6 @@
 /* =====================================================================
    CONȚINUTUL PREZENTĂRII
-   Aici se schimbă informațiile. Restul codului (index.html) doar le afișează.
+   Aici se schimbă informațiile. Restul fișierelor (index.html, styles.css, js/) doar le afișează.
 
    Reguli ca să nu strici pagina:
    - textul stă între apostrofuri '...'; pentru apostrof în text folosește ’ (nu ')
@@ -200,7 +200,6 @@ const BIBLIO=[
    cards    cardurile: tag = eticheta mică, big = cifra mare (opțional),
             text = textul cardului, red:true = card evidențiat cu roșu
    În texte poți folosi <b>…</b> pentru îngroșat și <em>…</em> pentru italic.
-   Slide-urile care nu apar aici (5, 7–13, 16–19) au încă textul în index.html.
 */
 const SLIDES={
  intro:{label:'01 · Introducere',year:2007,

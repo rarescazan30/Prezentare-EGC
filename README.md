@@ -2,7 +2,7 @@
 
 An interactive web presentation (in Romanian) about how the Assassin's Creed series evolved spatially, technically and historically from 2007 to 2025. It's 21 slides with animated backgrounds, interactive canvases (crowd simulation, lighting demo, seasons, Lynch map and more) and a bibliography.
 
-Everything lives in **one self-contained file**: `index.html`. It holds the HTML, CSS and JavaScript. There is no build step and nothing to install.
+Plain HTML, CSS and JavaScript files: no build step, nothing to install. **To change the text, you only need `content.js`.**
 
 ---
 
@@ -42,10 +42,20 @@ The current slide number is kept in the URL, so reloading the page (e.g. after e
 
 ## Structure
 
-| File | What's in it |
-|---|---|
-| `index.html` | The page: CSS, markup, slides and all the code |
-| `content.js` | The data, kept separate so it can be edited without touching code (see below) |
+```
+index.html          ← the page skeleton; loads everything below, in order
+styles.css          ← all the CSS (color tokens are on :root at the top)
+content.js          ← ALL the text and data. Edit this one to change information
+js/
+  core.js           ← small helpers used everywhere, and the AC crest
+  widgets/          ← one file per interactive slide (named like its SLIDES entry)
+    intro.js  harti.js  atlas.js  lumina.js  anotimpuri.js  multime.js  lynch.js
+    fatada.js  verticala.js  straturi.js  atasament.js  minciuni.js  discovery.js  concluzii.js
+  slides.js         ← builds the 21 slides from content.js (layout only)
+  app.js            ← animated background, slide transition, navigation, URL #slide
+```
+
+The files are loaded with plain `<script>` tags, so double-clicking `index.html` still works without a server. **The order of the tags in `index.html` matters:** `content.js` first, `slides.js` and `app.js` last. All files share one global scope, so two files must not declare the same top-level name.
 
 ### `content.js` — the data
 
@@ -53,54 +63,31 @@ The current slide number is kept in the URL, so reloading the page (e.g. after e
 |---|---|---|
 | `GAMES` | One entry per game: title, year, location, land/total km², engine, a short description, and the map bars (`maps`) | The bar chart on slide 5 **and** the "Harta francizei" table in the bibliography (slide 20). Change a number once here and both update |
 | `SOURCES` | Online sources: `[number, address, description]` | "Alte surse online" in the bibliography |
-| `BIBLIO` | The bibliography groups, in display order, with title, unit word and rows | The accordion on slide 20 |
-| `SLIDES` | The text of **all 21 slides**, one entry per slide (`intro`, `etapa1`, … `final`): label, ghost year, kicker, title, lead, cards, and the texts that only appear after a click or are drawn on a canvas | The slides. The layout stays in index.html |
 | `LYNCH` | Kevin Lynch's five elements: name, definition, short and long explanation | Slide 11 **and** the Lynch group in the bibliography, so the definition is written once |
+| `BIBLIO` | The bibliography groups, in display order, with title, unit word and rows | The accordion on slide 20 |
+| `SLIDES` | The text of **all 21 slides**, one entry per slide (`intro`, `etapa1`, … `final`): label, ghost year, kicker, title, lead, cards, and the texts that only appear after a click or are drawn on a canvas | The slides |
 
-Each list has a comment on top explaining its fields. `content.js` is loaded with a plain `<script>` tag, so double-clicking `index.html` still works without a server.
+Each list has a comment on top explaining its fields (in Romanian).
 
-### `index.html`
-
-| Lines (approx.) | Part | What's there |
-|---|---|---|
-| 1–9 | `<head>` | Page title, viewport, Google Fonts |
-| 10–379 | `<style>` | All CSS. Color tokens are on `:root` (lines 11–33), then the HUD/nav, slide layout, cards, the per-widget styles, and a "finisaj vizual" polish block at the end (line 362+) |
-| 381–405 | `<body>` markup | The background canvas `#bg`, the faded crest, the big "ghost" year, the top bar (`.hud`), the empty `<main id="stage">` that slides get injected into, the bottom nav, and the transition canvas `#fx` |
-| 407 | `<script src="content.js">` | Loads the data |
-| 408–1680 | `<script>` | All of the logic (see below) |
-
-### Inside the script
-
-| Lines (approx.) | Section | Purpose |
-|---|---|---|
-| 411–434 | Helpers | `$`/`$$` selectors, math helpers, a seeded RNG, Romanian number formatting (`ro`, `fk`), `rs()` / `HEAD()` HTML snippets, and the AC crest path + `drawCrestCanvas()` |
-| 437 | `BARS` | Builds the slide 5 bars from `GAMES` |
-| 448–452 | Slide templates | `meta`, `CARD`, `CARDS3`: turn `SLIDES` entries into slide markup |
-| 454–664 | **Slides 1–21** | Each slide is one `add({...})` call (see below) |
-| 666–1409 | Mount functions | One function per interactive slide: `mTitle`, `mBars`, `mAtlas`, `mGI`, `mSeason`, `mCrowd`, `mLynch`, `mFacade`, `mSection`, `mPal`, `mFlow`, `mLies`, `mDT`, `mEnd` |
-| 1411–1531 | Engine + background | Builds the slides into `#stage`, the top-bar ticks, and the animated network/particle background (`drawBG`, `FX` presets) |
-| 1533–1603 | Transition | The "Animus sync" wipe between slides (`drawWipe`) |
-| 1605–1680 | Navigation | `go()`, `swap()`, URL `#slide`, keyboard, touch, click handlers, and the main `requestAnimationFrame` loop |
-
-### How one slide is defined
+### How one slide is defined (in `js/slides.js`)
 
 ```js
-add({
-  t:'05 · Cât au crescut hărțile', // label in the footer, tooltips and transition
-  year:2018,        // big faded "ghost" year in the corner
-  hue:204,          // accent color hue (the whole UI shifts to it)
-  fx:'data',        // background particles: data | dust | petals | spray | leaves | motes
-  scene:'grid',     // currently stored but not used for drawing
-  html:`<div class="in">...</div>`, // the slide's markup, as a template string
-  mount:mBars       // optional: function that wires up the interactivity
+add({...meta('harti'),  // label + ghost year, from SLIDES.harti
+  hue:204,              // accent color hue (the whole UI shifts to it)
+  fx:'data',            // background particles: data | dust | petals | spray | leaves | motes
+  scene:'grid',         // currently stored but not used for drawing
+  html:(c=>`<div class="in">${HEAD(c.kicker,c.title)} …`)(SLIDES.harti), // layout, filled with the texts
+  mount:mBars           // optional: the interactive part, from js/widgets/harti.js
 });
 ```
+
+The simple slides use shared templates: `CARDS3` (title, lead, three cards) and `CARD` (one card).
 
 `mount(root)` runs every time the slide is shown. It can return `{tick(dt,t)}`, which is called every frame, and/or `{off()}`, which is called when you leave the slide (for stopping timers or audio).
 
 ### Slide map: where to edit the text
 
-All visible text is in `content.js`. `index.html` only has layout, drawings and code.
+All visible text is in `content.js`. The other files only have layout, drawings and code.
 
 | # | Slide | Entry in `content.js` |
 |---|---|---|
@@ -126,7 +113,7 @@ All visible text is in `content.js`. `index.html` only has layout, drawings and 
 | 20 | Concluzii + bibliografie | `SLIDES.concluzii`; the bibliography: `BIBLIO`, `GAMES`, `LYNCH`, `SOURCES` |
 | 21 | Mulțumesc | `SLIDES.final` |
 
-Not moved, on purpose: the page title and top-bar text (`<head>` and `.hud`, lines 6 and 391), and the `aria-label` descriptions for screen readers. Those sit in the markup.
+Not moved, on purpose: the page title and top-bar text (in `index.html`), and the `aria-label` descriptions for screen readers (in `js/slides.js`).
 
 **Rules for editing `content.js`:** text goes between single quotes `'...'`. For an apostrophe inside the text, use the typographic `’` (the file already does everywhere) or write `\'`. Don't delete the commas between entries. You may use `<b>…</b>` and `<em>…</em>` in texts. After an edit, reload the page (it stays on the same slide) and check the browser console (`Cmd+Option+J`) for errors.
 
@@ -134,7 +121,7 @@ Not moved, on purpose: the page title and top-bar text (`<head>` and `.hud`, lin
 
 ## What we could change about this
 
-None of this is implemented yet. These are proposals, ordered roughly by how much they would help a team edit the content.
+These are the proposals, ordered roughly by how much they help a team edit the content. Steps 1–3 are done.
 
 ### 1. Quick wins — ✅ done
 
@@ -142,50 +129,12 @@ None of this is implemented yet. These are proposals, ordered roughly by how muc
 - ~~Add a `.gitignore` with `.DS_Store`~~ and stop tracking the existing `.DS_Store`.
 - ~~Remember the current slide in the URL~~ (`index.html#12`), so reloading stays on the slide you're editing.
 
-### 2. Separate the content from the code (the main improvement) — 🟡 in progress
+### 2. Separate the content from the code — ✅ done
 
-> **Done so far:** all text and data are in `content.js`: every slide (`SLIDES`), the games (`GAMES`), the Lynch elements (`LYNCH`), the bibliography (`BIBLIO`, `SOURCES`). **Still to do:** split the CSS and the code in `index.html` into their own files.
-
-Today, the text, the layout HTML, the styling and the animation code are all mixed in one ~1,860-line file. To change one sentence, a colleague has to find it among canvas drawing code and avoid breaking a template string.
-
-The proposal is to split it into:
-
-```
-index.html        ← just the page skeleton
-styles.css        ← the current <style> block
-content.js        ← ALL the text and data, nothing else
-slides.js         ← turns content into slide HTML (templates)
-widgets/          ← one file per interactive slide (crowd.js, lighting.js, lynch.js, …)
-app.js            ← navigation, background, transitions
-```
-
-In `content.js`, each slide would become plain data instead of hand-written HTML:
-
-```js
-{
-  id: 'etapa-1',
-  label: '02 · Etapa 1',
-  year: 2009, hue: 198, fx: 'dust',
-  layout: 'three-cards',
-  kicker: 'Etapa 1 · 2007–2012',
-  title: 'Orașe mici și dense, făcute pentru parkour',
-  lead: 'Primele jocuri aveau orașe mici, construite în jurul unui singur gest…',
-  cards: [
-    { tag: 'Dimensiune', big: '0,13 – 1,41 km²', text: 'Damascul din primul joc avea doar 0,13 km²…' },
-    { tag: 'Pe acoperișuri', big: 'Fără sol', text: '…' },
-    { tag: 'În sălbăticie', big: '1,41 km²', text: '…' }
-  ]
-}
-```
-
-That means:
-- People who only change information edit **one file**, with no HTML, CSS or canvas code in it.
-- Most slides (2, 3, 4, 6, 14, 15, 20 and others) share the same few layouts ("three cards", "two columns", "flip cards"), so a layout is written once and reused.
-- The text that is currently hidden inside the interactive code (the `INFO`, `LY`, `D`, `TXT`, `P` objects and the canvas labels from the table above) moves into the same file.
-
-**Important detail:** load `content.js` with a normal `<script src="content.js">` tag rather than `fetch('content.json')`. Browsers block `fetch` on pages opened with a double-click (`file://`), so a JSON file would force everyone to run a local server. A `.js` file that sets `window.CONTENT = {...}` keeps "just double-click it" working.
-
-A lighter variant, if a full split feels like too much: keep one HTML file, but move all text into one clearly marked `CONTENT` object at the top of the script and leave the rest below a "don't edit below this line" comment.
+- All text and data are in `content.js` (see [Structure](#structure)).
+- The CSS is in `styles.css`, and the code is split into `js/core.js`, one file per interactive slide in `js/widgets/`, `js/slides.js` and `js/app.js`. `index.html` is just the page skeleton.
+- The simple slides share templates (`CARD`, `CARDS3`), so a card's markup is written once.
+- `content.js` is a `.js` file loaded with a `<script>` tag, not JSON loaded with `fetch`, because browsers block `fetch` on pages opened by double-click (`file://`).
 
 ### 3. One source of truth for numbers — 🟡 mostly done
 
@@ -196,19 +145,19 @@ A lighter variant, if a full split feels like too much: keep one HTML file, but 
 
 ### 4. Make it safe for several people to work at once
 
-- With content split **one file per slide** (`content/05-harti.js`, …), two colleagues editing different slides never get a git merge conflict. With the current single file, any two edits risk one.
+- Code is now one file per interactive slide, so two people changing different slides' behavior won't conflict. All text is still in one `content.js`. Git handles edits to *different lines* of the same file fine, so conflicts only happen when two people change the same slide at once. If that becomes a problem, `content.js` could be split per slide too.
 - Work on a short-lived branch per change and open a pull request, so someone can review the text before it reaches `main`.
-- Add a short "how to edit a slide" section to this README once the new structure exists.
+- ✅ The "Slide map" and "Rules for editing" above cover how to edit a slide.
 
 ### 5. Clean up leftover and dead code
 
-It's not urgent, but this makes the file shorter and less confusing for new readers:
-- **Unused CSS:** a teleprompter panel (`.prompt`, `.pbody`, `.ptool`), a slide index overlay (`#idx`), tables and tabs (`.tw`, `table`, `.tabs`, `input.s`). None of these have matching elements in the page.
+It's not urgent, but this makes the files shorter and less confusing for new readers:
+- **Unused CSS** in `styles.css`: a teleprompter panel (`.prompt`, `.pbody`, `.ptool`), a slide index overlay (`#idx`), tables and tabs (`.tw`, `table`, `.tabs`, `input.s`). None of these have matching elements in the page.
 - **`.crest-badge`** is rendered on many cards but hidden with `display:none!important`.
 - **`EAGLE_SVG`, `COMPASS_SVG` and `EYE_SVG`** are identical copies of `CREST_SVG`.
 - The `scene` field on every slide is stored but never used.
-- The `cols` headers in `DB` are never shown, since only `rows` is used.
-- Small oddities: the stray `x_arc:` label (line 1710), and a no-op `ctx.moveTo(c.height*2, …)` (line 1020).
+- The `cols` headers in `BIBLIO` and the `detail` texts in `LYNCH` are never shown (they're kept as notes).
+- Small oddities: the stray `x_arc:` label in `js/app.js`, and a no-op `ctx.moveTo(c.height*2, …)` in `js/widgets/lumina.js`.
 
 ### 6. Nice-to-haves
 
@@ -219,4 +168,4 @@ It's not urgent, but this makes the file shorter and less confusing for new read
 
 ### Suggested order
 
-1 → 2 (with 3 done at the same time) → 4 → 5 → 6. Steps 1 and 2 give most of the benefit. After them, changing a sentence means editing one plain-text line in `content.js` and reloading the page on that same slide.
+1 → 2 → 3 are done. Changing a sentence now means editing one line in `content.js` and reloading the page, which stays on the same slide. Next: 5 (cleanup), then 6 if wanted.
