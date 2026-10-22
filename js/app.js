@@ -39,7 +39,7 @@ const FX={
  motes:{n:16,vx:[-5,5],vy:[-10,-2],s:[1,2],c:'hsla(H,70%,75%,',a:[.1,.38],sh:'d'}
 };
 const PS=[...Array(60)].map(()=>({x:0,y:0,u:Math.random(),v:Math.random(),w:Math.random(),f:0,i:0}));
-let fxType='data',scNow='grid',scOld='grid',scMix=1;
+let fxType='data';
 function spawn(p,init){const f=FX[fxType]||FX.data,W=BW,H=BH;p.x=Math.random()*W;p.y=init?Math.random()*H:(f.vy[1]<0?H+10:-10);p.f=init?0:p.f;p.sp=lerp(f.s[0],f.s[1],p.u);p.vx=lerp(f.vx[0],f.vx[1],p.v);p.vy=lerp(f.vy[0],f.vy[1],p.w);p.a=lerp(f.a[0],f.a[1],p.u)}
 PS.forEach((p,i)=>{p.i=i;spawn(p,true)});
 
@@ -114,7 +114,7 @@ function drawBG(dt,t){
   bx.fillStyle=pre+(p.a*p.f).toFixed(3)+')';
   if(f.sh==='g'){bx.font=`${p.sp*DPR}px JetBrains Mono,monospace`;bx.fillText(p.u>.5?'1':'0',px,py)}
   else if(f.sh==='p'){bx.save();bx.translate(px,py);bx.rotate(t*.001*p.v+p.u*6);bx.beginPath();bx.ellipse(0,0,p.sp*DPR,p.sp*.55*DPR,0,0,7);bx.fill();bx.restore()}
-  else{bx.beginPath();bx.arc(px,py,p.sp*DPR*.5,0,7);x_arc:bx.fill()}
+  else{bx.beginPath();bx.arc(px,py,p.sp*DPR*.5,0,7);bx.fill()}
  });
 
  const vg=bx.createRadialGradient(W/2,H/2,H*.32,W/2,H/2,H*.95);
@@ -194,7 +194,7 @@ function drawWipe(p){
  }
 }
 
-function setTargets(n){const s=SL[n];S.hueT=s.hue;S.yrT=s.year;scOld=scNow;scNow=s.scene;scMix=0;
+function setTargets(n){const s=SL[n];S.hueT=s.hue;S.yrT=s.year;
  if(s.fx!==fxType){fxType=s.fx;PS.forEach(p=>{p.f=0;spawn(p,true)})}}
 function go(n){n=clamp(n,0,N-1);if(n===S.i&&!S.busy)return;if(S.busy){S.pend=n;return}
  if(n===S.i)return;

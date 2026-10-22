@@ -29,6 +29,3 @@ function drawCrestCanvas(ctx,cx,cy,size,fill,stroke){
 }
 
 const CREST_SVG=`<svg viewBox="0 0 100 100" aria-hidden="true"><path d="${AC_LOGO_D}"/></svg>`;
-const EAGLE_SVG=`<svg viewBox="0 0 100 100" aria-hidden="true"><path d="${AC_LOGO_D}"/></svg>`;
-const COMPASS_SVG=`<svg viewBox="0 0 100 100" aria-hidden="true"><path d="${AC_LOGO_D}"/></svg>`;
-const EYE_SVG=`<svg viewBox="0 0 100 100" aria-hidden="true"><path d="${AC_LOGO_D}"/></svg>`;

@@ -115,7 +115,7 @@ function mGI(root){
   ctx.moveTo(0,0);ctx.lineTo(BX0*KX,BY0*KY);
   ctx.moveTo(c.width,0);ctx.lineTo(BX1*KX,BY0*KY);
   ctx.moveTo(0,c.height);ctx.lineTo(BX0*KX,BY1*KY);
-  ctx.moveTo(c.height*2,c.height);ctx.moveTo(c.width,c.height);ctx.lineTo(BX1*KX,BY1*KY);
+  ctx.moveTo(c.width,c.height);ctx.lineTo(BX1*KX,BY1*KY);
   ctx.stroke();
 
   // Cutout Gothic Window Stone Frame, Mullions & Tracery

@@ -107,7 +107,6 @@ Each of these has a note at the top of its file saying where else it shows up.
 add({...meta(5),        // bara + an, from content/05-…
   hue:204,              // accent color hue (the whole UI shifts to it)
   fx:'data',            // background particles: data | dust | petals | spray | leaves | motes
-  scene:'grid',         // currently stored but not used for drawing
   html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)} …`)(SLIDE[5]), // layout, filled with the texts
   mount:mBars           // optional: the interactive part, from js/widgets/05-…
 });
@@ -125,7 +124,7 @@ Not moved, on purpose: the page title and top-bar text (in `index.html`), and th
 
 ## What we could change about this
 
-These are the proposals, ordered roughly by how much they help a team edit the content. Steps 1–3 are done.
+These are the proposals, ordered roughly by how much they help a team edit the content. Steps 1–5 are done.
 
 ### 1. Quick wins — ✅ done
 
@@ -153,15 +152,11 @@ These are the proposals, ordered roughly by how much they help a team edit the c
 - Work on a short-lived branch per change and open a pull request, so someone can review the text before it reaches `main`.
 - ✅ The "Slide map" and "Rules for editing" above cover how to edit a slide.
 
-### 5. Clean up leftover and dead code
+### 5. Clean up leftover and dead code — ✅ done
 
-It's not urgent, but this makes the files shorter and less confusing for new readers:
-- **Unused CSS** in `styles.css`: a teleprompter panel (`.prompt`, `.pbody`, `.ptool`), a slide index overlay (`#idx`), tables and tabs (`.tw`, `table`, `.tabs`, `input.s`). None of these have matching elements in the page.
-- **`.crest-badge`** is rendered on many cards but hidden with `display:none!important`.
-- **`EAGLE_SVG`, `COMPASS_SVG` and `EYE_SVG`** are identical copies of `CREST_SVG`.
-- The `scene` field on every slide is stored but never used.
-- The `coloane` headers in `bibliografie` and the `detaliu` texts in `elemente` are never shown (they're kept as notes).
-- Small oddities: the stray `x_arc:` label in `js/app.js`, and a no-op `ctx.moveTo(c.height*2, …)` in `js/widgets/lumina.js`.
+- Removed 47 unused CSS rules (an old teleprompter panel, a slide index overlay, table/tab/chip/ring styles) and trimmed dead selectors from 4 more. `styles.css` went from 369 to 294 lines.
+- Removed the card badges that were always hidden, the three duplicate crest icons, the unused `scene` field, the stray `x_arc:` label and a line that did nothing in the lighting slide.
+- Kept on purpose: the `coloane` headers in `bibliografie` and the `detaliu` texts in `elemente`. They aren't shown on screen, but they're content from the original paper and useful as notes.
 
 ### 6. Nice-to-haves
 
@@ -172,4 +167,4 @@ It's not urgent, but this makes the files shorter and less confusing for new rea
 
 ### Suggested order
 
-1 → 2 → 3 are done. Changing a sentence now means editing one line in that slide's file in `content/` and reloading the page, which stays on the same slide. Next: 5 (cleanup), then 6 if wanted.
+Steps 1–5 are done. Changing a sentence now means editing one line in that slide's file in `content/` and reloading the page, which stays on the same slide. Next: step 6, if wanted.
