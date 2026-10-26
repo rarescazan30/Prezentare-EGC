@@ -1,4 +1,4 @@
-/* Slide 10 · partea interactivă (mCrowd). Textele vin din content/10-multimea-din-paris.js. */
+/* Slide 13 · partea interactivă (mCrowd). Textele vin din content/13-multimea-din-paris.js. */
 'use strict';
 function mCrowd(root){
  const c=$('#crw',root),x=c.getContext('2d'),W=c.width,H=c.height,MAX=12000,K=120;
@@ -36,7 +36,7 @@ function mCrowd(root){
   const ep=(t*.0008)%1;x.strokeStyle=`rgba(232,193,90,${(1-ep)*.6})`;x.lineWidth=2;x.beginPath();x.arc(pl.x,pl.y,ep*Math.sqrt(ds[39]),0,7);x.stroke();
   drawCrestCanvas(x,pl.x,pl.y,28,'#e0243f','#eaf2f8');
   if(t-last>200){last=t;let s2=0;recs.forEach(q=>s2+=q[1]);cR.textContent=s2;cL.textContent=fmtN(Math.max(0,N-K));cA.textContent=Math.min(40,N);cM.textContent=Math.min(K,N);
-   cP.textContent=SLIDE[10].procent.replace('{p}',(40/N*100).toLocaleString('ro-RO',{maximumFractionDigits:2}))}
+   cP.textContent=SLIDE[13].procent.replace('{p}',(40/N*100).toLocaleString('ro-RO',{maximumFractionDigits:2}))}
  }
  sl.oninput();
  return{tick};

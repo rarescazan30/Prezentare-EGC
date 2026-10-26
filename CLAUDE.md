@@ -4,7 +4,7 @@ Context for Claude when working in this repo. For humans, `README.md` has the fu
 
 ## What this is
 
-A 21-slide interactive web presentation **in Romanian** about spatial evolution and immersion in the Assassin's Creed series (a university project for EGC). It's plain HTML/CSS/JS with **no build step, no dependencies, no package.json**. It must keep working when someone **double-clicks `index.html`** (`file://`).
+A 16-slide interactive web presentation **in Romanian** for the EGC course (Elemente de Grafică pe Calculator, ACS CTI): how the environments of the Assassin's Creed series evolved from 2007 to 2025, and how game developers build those cities. It's split into 3 parts, one per speaker. `PLAN-PREZENTARE.md` is the talk plan (who presents what, what to say, images to add, facts to verify). Keep the slides and the plan in sync. It's plain HTML/CSS/JS with **no build step, no dependencies, no package.json**. It must keep working when someone **double-clicks `index.html`** (`file://`).
 
 The people editing it are students, mostly changing the *text and information* on slides. Treat a request like "change the title on slide 8" as an edit in `content/08-lumina.js`, not in the code.
 
@@ -13,14 +13,15 @@ The people editing it are students, mostly changing the *text and information* o
 ```
 index.html        page skeleton + <script> tags (ORDER MATTERS)
 styles.css        all CSS; color tokens on :root
-content/NN-*.js   ALL visible text and data, one file per slide (01–21)
+content/NN-*.js   ALL visible text and data, one file per slide (01–16)
+img/              screenshots from the games, named as in each card's poza.fisier
 js/core.js        helpers ($, $$, clamp, lerp, rng, rs, HEAD, …), the AC crest, SLIDE[] + slide()
 js/widgets/NN-*.js  interactive part of slide NN (same file name as its content file)
-js/slides.js      builds the 21 slides: layout templates filled from SLIDE[n]
+js/slides.js      builds the 16 slides: layout templates filled from SLIDE[n]
 js/app.js         animated background, slide transition, navigation, #N in the URL
 ```
 
-Load order in `index.html`: `js/core.js` → `content/01…21` → `js/widgets/*` → `js/slides.js` → `js/app.js`.
+Load order in `index.html`: `js/core.js` → `content/01…16` → `js/widgets/*` → `js/slides.js` → `js/app.js`.
 
 **Everything shares one global scope.** These are classic `<script>` files, with no modules and no wrapper function. Two files must never declare the same top-level `const`/`let`/`function` name, and top-level names must not shadow non-configurable window properties (`top`, `location`, `name` and so on). Each file starts with `'use strict';`.
 
@@ -37,7 +38,7 @@ slide(NN,{
  supratitlu:'…',      // small line above the title
  titlu:'…',
  subtitlu:'…',
- carduri:[{eticheta:'…', cifra:'…', text:'…', rosu:true}],
+ carduri:[{poza:{descriere:'…', fisier:'img/NN-….jpg'}, eticheta:'…', cifra:'…', text:'…', rosu:true}],
  …slide-specific fields, in on-screen order…
 });
 ```
@@ -46,12 +47,11 @@ slide(NN,{
 - **Field names are Romanian** (`titlu`, `subtitlu`, `carduri`, `eticheta`, `cifra`, `buton`, `nota`, `textDesen` = text drawn on a canvas, …). Keep that convention for new fields.
 - **Fields are ordered as they appear on screen** (top to bottom, left to right), and the sketch at the top of the file must match. If you add, move or rename a field, update the sketch too.
 - Text may contain `<b>…</b>` and `<em>…</em>`. It is inserted as HTML.
-- **Shared data lives in the slide where it appears first:**
-  - `SLIDE[5].jocuri`: the 14 games. Also read by the slide 5 chart (`BARS` in `js/slides.js`) and the "Harta francizei" bibliography group (`js/widgets/20-concluzii.js`).
-  - `SLIDE[11].elemente`: the 5 Lynch elements. Also read by the bibliography on slide 20.
-  - `SLIDE[20].bibliografie` and `SLIDE[20].surse`: a group with `din:'jocuri'|'lynch'|'surse'` is filled automatically from those lists.
-- Some fields are kept as notes and never shown on screen (`coloane` in bibliography groups, `detaliu` in Lynch elements). Don't delete them as "dead".
-- `cheie` in `content/12-fatada.js` links each text to a part of the SVG (`data-k`). Don't change those values.
+- Each slide shows **1–3 main ideas** (the cards), matching what the speaker says in `PLAN-PREZENTARE.md`. `supratitlu` says which part of the talk the slide belongs to ("Partea 2 · …").
+- `an` (the faded year) is the year of the game the slide is about.
+- **Photos:** a card's optional `poza:{descriere, fisier}` renders a dashed „Poză de adăugat” box until `img/<fisier>` exists. Then the image covers it, with no code change (`POZA` in `js/slides.js`, styles `.poza` in `styles.css`). When adding a photo slot, also add it to the image list in `PLAN-PREZENTARE.md`.
+- `SLIDE[5].harti` (map sizes) feeds the chart via `BARS` in `js/slides.js`.
+- `SLIDE[15].bibliografie` is a list of groups `{titlu, unitate, randuri:[[title, link]]}` rendered by `js/widgets/15-concluzii.js`.
 
 ## Writing text (Romanian)
 
@@ -59,7 +59,9 @@ slide(NN,{
 - Strings use single quotes. For an apostrophe inside text, use the typographic `’`, never a straight `'` (the repo has none).
 - Romanian quotes are „…”. Use `–` for ranges ("2007–2012") and a decimal comma ("0,13 km²").
 - Keep the tone: short, plain sentences for a student audience.
-- km² figures are written by hand in some card texts (slides 1–4 and 6). When you change a number in `SLIDE[5].jocuri`, check those cards too.
+- Clear, concrete and human: titles say plainly what the slide is about (no cryptic or academic titles), and cards hold concrete facts. Avoid filler and inflated jargon. The reviews in `REVIZUIRE.md` and `sugestiile_mele.md` explain what to avoid.
+- Don't state numbers or quotes without a source. If unsure, add the item to „De verificat” in `PLAN-PREZENTARE.md` instead of putting it on a slide.
+- The slide 1 counter („0,13 → 130”) repeats map sizes from `SLIDE[5].harti`. Keep them consistent.
 
 ## Common tasks
 
@@ -73,8 +75,8 @@ slide(NN,{
 1. the file names `content/NN-*.js` and `js/widgets/NN-*.js`, plus their `<script>` tags in `index.html`
 2. `slide(NN,…)` and the `bara:'NN · …'` label in the content file
 3. `meta(NN)` and `SLIDE[NN]` in that slide's block in `js/slides.js`. The `add({...})` calls must stay in slide order, since that order *is* the presentation order.
-4. `SLIDE[NN]` inside the widget, and the cross-references: `SLIDE[5]` (in `js/slides.js` and `20-concluzii.js`), `SLIDE[11]` and `SLIDE[20]`
-5. the "Slide map" in `README.md`
+4. `SLIDE[NN]` inside the widget, plus `SLIDE[5]` in `BARS` (`js/slides.js`)
+5. the "Slide map" in `README.md` and the slide list in `PLAN-PREZENTARE.md`
 
 Search for `SLIDE\[` and `meta(` to find them all.
 
@@ -106,7 +108,8 @@ After any change:
   ```bash
   for f in content/*.js js/*.js js/widgets/*.js; do node -e "new Function(require('fs').readFileSync('$f','utf8'))" || echo "BROKEN: $f"; done
   ```
-- For refactors, compare against `main`: render each slide (`index.html#1` … `#21`) in both versions and diff the `section.slide.on` markup. The live counter on slide 10 and the timed chain on slide 17 differ between runs. That's normal.
+- For refactors, compare against `main`: render each slide (`index.html#1` … `#16`) in both versions and diff the `section.slide.on` markup. The live counter on slide 13 and the random district on slide 6 differ between runs. That's normal.
+- Check that every slide fits without scrolling at 1280×720, 1366×768 and 1920×1080 (`section.slide.on` `scrollHeight <= clientHeight`). Short screens get the compact rules in the `@media(max-height:800px)` block of `styles.css`.
 - In a hidden or background browser tab, `requestAnimationFrame` and CSS animations pause, so slide transitions look stuck and fade-ins look blank. That isn't a bug. Check in a visible tab before concluding something is broken.
 
 ## Git

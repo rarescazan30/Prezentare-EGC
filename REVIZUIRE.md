@@ -2,6 +2,8 @@
 
 **Tema:** Evoluția environment-ului în franciza de jocuri Assassin’s Creed
 
+> **Stare (octombrie 2026):** prezentarea a fost restructurată pe baza acestei revizuiri și a `sugestiile_mele.md`. Greșelile de mai jos au fost corectate, iar slide-urile neclare au fost rescrise sau scoase. Ce s-a schimbat e în tabelul „Ce am scos și de ce” din `PLAN-PREZENTARE.md`, iar ce mai trebuie verificat e la „De verificat”. Numerele de slide de mai jos sunt cele **vechi** (21 de slide-uri).
+
 Am trecut prin toate cele 21 de slide-uri: textul, cifrele, sursele și desenele animate. Mai jos sunt problemele găsite, întâi cele generale, apoi slide cu slide. La fiecare slide scrie și fișierul în care se face modificarea.
 
 Ce înseamnă etichetele:

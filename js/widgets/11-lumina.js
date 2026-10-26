@@ -1,14 +1,12 @@
-/* Slide 8 · partea interactivă (mGI). Textele vin din content/08-lumina.js. */
+/* Slide 11 · partea interactivă (mGI). Textele vin din content/11-lumina.js. */
 'use strict';
 function mGI(root){
  const c=$('#gi',root),ctx=c.getContext('2d');const W=240,H=125;
  const off=document.createElement('canvas');off.width=W;off.height=H;const ox=off.getContext('2d'),img=ox.createImageData(W,H);
- const sl=$('#giT',root),sh=$('#giH',root),bars=$('#giBars',root);
+ const sl=$('#giT',root),sh=$('#giH',root);
  let mode=0,dirty=true;const PRE=[.1,.4,.65,.9];
- const C=SLIDE[8],INFO=C.moduri.map(m=>({tag:m.eticheta,big:m.cifra,txt:m.text,bars:m.bare}));
- function updateGIInfo(){const f=INFO[mode];$('#giTag',root).textContent=f.tag;$('#giBig',root).textContent=f.big;$('#giTxt',root).textContent=f.txt;
-  bars.innerHTML=f.bars.map(b=>{const p=clamp((Math.log10(b[1])+.2)/(Math.log10(2000)+.2),.05,1)*100;
-   return`<div><div class="row" style="justify-content:space-between"><span class="lab">${b[0]}</span><span class="mono" style="font-size:12px;color:var(--ink)">${b[2]}</span></div><div class="btrack" style="--c:${b[1]>100?'var(--creed)':'var(--accent)'}"><div class="bar" style="width:${p}%"></div></div></div>`}).join('')}
+ const C=SLIDE[11],INFO=C.moduri.map(m=>({tag:m.eticheta,big:m.cifra,txt:m.text}));
+ function updateGIInfo(){const f=INFO[mode];$('#giTag',root).textContent=f.tag;$('#giBig',root).textContent=f.big;$('#giTxt',root).textContent=f.txt}
  $$('[data-m]',root).forEach(b=>b.onclick=()=>{mode=+b.dataset.m;$$('[data-m]',root).forEach(q=>q.classList.toggle('on',q===b));updateGIInfo();dirty=true});
  sl.oninput=()=>dirty=true;
 
