@@ -27,5 +27,5 @@ slide(15,{
    text:'Schimbul se face fără ca jucătorul să observe: NPC-ul rămâne pe loc și continuă ce făcea, doar primește mai mult detaliu. De aceea crowd-ul pare persistent.'}
  ],
  tehnic:{eticheta:'Pe scurt · object pooling',
-  text:'În loc să creezi și să distrugi personaje (lent), ții un număr fix de „costume” complete (AI + model high-res) și le muți de la un NPC la altul, după cum te miști. Ubisoft nu a publicat codul; cifrele 40, 120 și 10.000 sunt din descrierea prezentării de la GDC 2015.'}
+  text:'În loc să creezi și să distrugi personaje (lent), ții un număr fix de „costume” complete (AI + model high-res) și le muți de la un NPC la altul, după cum te miști.'}
 });

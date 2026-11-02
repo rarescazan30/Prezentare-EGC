@@ -36,7 +36,7 @@ function mCrowd(root){
   const ep=(t*.0008)%1;x.strokeStyle=`rgba(232,193,90,${(1-ep)*.6})`;x.lineWidth=2;x.beginPath();x.arc(pl.x,pl.y,ep*Math.sqrt(ds[39]),0,7);x.stroke();
   drawCrestCanvas(x,pl.x,pl.y,28,'#e0243f','#eaf2f8');
   if(t-last>200){last=t;let s2=0;recs.forEach(q=>s2+=q[1]);cR.textContent=s2;cL.textContent=fmtN(Math.max(0,N-K));cA.textContent=Math.min(40,N);cM.textContent=Math.min(K,N);
-   cP.textContent=SLIDE[14].procent.replace('{p}',(40/N*100).toLocaleString('ro-RO',{maximumFractionDigits:2}))}
+   cP.textContent=SLIDE[14].procent ? SLIDE[14].procent.replace('{p}',(40/N*100).toLocaleString('ro-RO',{maximumFractionDigits:2})) : ''}
  }
  sl.oninput();
  return{tick};

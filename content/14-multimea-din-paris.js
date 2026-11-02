@@ -31,7 +31,6 @@ slide(14,{
  detaliate:'modele high-res (albastru)',
  figuranti:'Restul: NPC-uri low-res',
  schimburi:'swap-uri pe secundă',
- procent:'Când te miști, un NPC low-res de departe devine high-res lângă tine. Doar {p}% au AI complet în același timp.',   // {p} = procentul calculat
  carduri:[
   {eticheta:'De ce nu 10.000 de AI-uri complete',
    text:'Un AI complet își caută drumul și reacționează la tot ce e în jur. Înmulțit cu mii de NPC-uri, procesorul n-ar face față.'},

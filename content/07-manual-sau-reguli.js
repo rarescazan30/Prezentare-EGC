@@ -13,7 +13,7 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
-   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
+   │ ┌ tehnic: eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(7,{
  bara:'07 · De mână sau procedural',
@@ -32,6 +32,5 @@ slide(7,{
    text:'Copacii, iarba și pietrele sunt puse automat după pantă, apă și altitudine. Apoi artiștii corectează de mână ce nu arată bine.'}
  ],
  tehnic:{eticheta:'Detaliu tehnic · terrain din heightmap',
-  cod:'// heightmap → mesh\nfor (z = 0; z < N; z++)\n  for (x = 0; x < N; x++)\n    v[z][x] = vec3(x * pas, h[z][x] * Hmax, z * pas);\n\n// normala unui vertex, din vecinii lui\nn = normalize(cross(v[z+1][x] - v[z][x], v[z][x+1] - v[z][x]));',
-  text:'Fiecare pixel din heightmap devine un vertex, iar câte 4 vertecși vecini formează 2 triunghiuri. Normalele se calculează cu produs vectorial, iar relieful natural vine din mai multe octave de Perlin noise (fBm).'}
+  text:'Fiecare pixel din heightmap devine un vertex, iar câte 4 vertecși vecini formează 2 triunghiuri.<br>Normalele se calculează cu produs vectorial, iar relieful natural vine din mai multe octave de Perlin noise (fBm).'}
 });

@@ -25,6 +25,6 @@ slide(10,{
   {eticheta:'Distanțe calculate', text:'Ferestrele, balcoanele și acoperișurile sunt puse la distanțe pe care personajul le poate sări sau atinge.'},
   {eticheta:'Arhitectură ajustată', text:'Clădirile seamănă cu cele reale, dar au mai multe locuri de prindere decât în realitate, ca urcarea să curgă.'}
  ],
- tehnic:{eticheta:'Pe scurt · cum „vede” jocul o margine',
-  text:'Jocul nu vede clădirea ca noi. La fiecare pas, „pipăie” ce e în fața personajului: dacă e un perete, verifică dacă deasupra lui e un loc plat de care se poate prinde. E ca și cum ai întinde mâna pe întuneric și ai căuta marginea unei mese.'}
+ tehnic:{eticheta:'Detaliu tehnic · raycasting și ledge detection',
+  text:'Motorul folosește raycast-uri și collision checks continue în direcția de mișcare: detectează peretele vertical, trimite un raycast în jos pentru ledge detection și face snap automat pe handhold-ul găsit.'}
 });

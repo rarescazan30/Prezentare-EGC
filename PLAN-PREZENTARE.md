@@ -16,7 +16,7 @@ Fiecare parte răspunde la o singură întrebare:
 | 2 | Vorbitor 2 | **Cum se construiește un oraș?** Piese, reguli, teste, orientare, cățărare. | 6–10 |
 | 3 | Vorbitor 3 | **Cum devine orașul viu?** Lumină, anotimpuri, oameni și „minciunile” necesare. | 11–18 |
 
-Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitorul. Pe multe slide-uri există și un chenar auriu cu o explicație pe scurt. Cod mai e doar pe slide-urile 6 (instancing) și 7 (heightmap); e o *tehnică standard*, nu codul Ubisoft: spuneți asta explicit. Textul complet e în fișierele din `content/`, iar locurile pentru poze sunt marcate pe slide cu „Poză de adăugat”.
+Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitorul. Pe multe slide-uri există și un chenar auriu cu o explicație pe scurt. Cod mai e doar pe slide-ul 6 (instancing); e o *tehnică standard*, nu codul Ubisoft: spuneți asta explicit. Textul complet e în fișierele din `content/`, iar locurile pentru poze sunt marcate pe slide cu „Poză de adăugat”.
 
 ---
 
@@ -69,7 +69,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **De mână:** Notre-Dame din Unity, aproape 2 ani de muncă pentru o singură catedrală.
 - **Procedural terrain:** terenul pornește de la un **heightmap** (o imagine în care fiecare pixel e o înălțime), din care se face un mesh de triunghiuri.
 - **Procedural placement:** copacii și pietrele se pun automat după pantă, apă și altitudine, apoi artiștii corectează de mână.
-- 🔧 **Detaliu tehnic:** cod pentru heightmap → grilă de vertecși și normala prin `cross` . Relieful natural vine din octave de Perlin noise (fBm).
+- 🔧 **Detaliu tehnic:** fiecare pixel devine un vertex, iar câte 4 formează două triunghiuri. Relieful natural vine din octave de Perlin noise (fBm). Fără cod pe slide.
 - 🖼 Poze: Notre-Dame (Unity), un peisaj din Egipt (Origins).
 
 ### Slide 8 · Cine verifică o hartă atât de mare? Automated testing, noaptea
@@ -91,7 +91,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **Ledges și handholds:** pervazurile, cornișele și grinzile sunt marcate ca locuri de care personajul se poate prinde.
 - **Distanțe calculate:** ferestrele, balcoanele și acoperișurile sunt puse la distanțe pe care personajul le poate sări.
 - **Arhitectură ajustată:** clădirile seamănă cu cele reale, dar au mai multe prize, ca urcarea să curgă.
-- 🔧 **Pe scurt (fără termeni tehnici):** jocul „pipăie” ce e în fața personajului: un perete, și deasupra un loc plat de care se poate prinde. Ca atunci când întinzi mâna pe întuneric și cauți marginea unei mese.
+- 🔧 **Detaliu tehnic (raycasting & ledge detection):** motorul folosește raycast-uri și collision checks continue în direcția de mișcare: detectează peretele vertical, trimite un raycast în jos pentru ledge detection și face snap automat pe handhold.
 - 🖼 Desenul: o fațadă cu un traseu de cățărare marcat (fără butoane, doar de arătat).
 - *Trecerea spre Partea 3:* „Acum avem orașul construit. Ce îl face să pară viu?”
 
@@ -108,7 +108,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - 🎮 Animația: camera gotică. Mutăm „Soarele” și schimbăm cele trei moduri.
 
 ### Slide 12 · Ce e baked lighting și de ce ocupă atât de mult
-- „Baked” = „copt dinainte”: lumina indirectă e calculată o singură dată, înainte de lansare, și salvată pe disc. În joc doar se citește.
+- Lumina indirectă e calculată o singură dată, înainte de lansare, și salvată pe disc. În joc doar se citește.
 - **Cum se face:** (1) scena fixă: clădiri, teren, luminile care nu se mișcă; (2) **bake:** un light baker trimite milioane de raze și urmărește cum sar de pe suprafețe (ore sau zile); (3) **lightmap:** rezultatul e o textură; fiecare texel spune cât de luminată e o bucată mică de suprafață.
 - **Ce câștigi și ce pierzi:** avantaj: aproape gratuit în joc. Limită: totul e „înghețat”; ce se mișcă are nevoie de alt sistem (light probes). Problema: memoria. Fiecare moment al zilei și fiecare anotimp au nevoie de propriile lightmaps, pentru toată harta; pentru Shadows, Ubisoft a estimat ~2 TB și 2 ani de baking.
 

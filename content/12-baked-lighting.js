@@ -18,7 +18,7 @@ slide(12,{
  an:2025,
  supratitlu:'Partea 3 · Cum devine orașul viu',
  titlu:'Ce e baked lighting și de ce ocupă atât de mult',
- subtitlu:'„Baked” înseamnă „copt dinainte”: lumina indirectă e calculată o singură dată, înainte de lansare, și salvată pe disc. În timpul jocului nu se mai calculează nimic, doar se citește.',
+ subtitlu:'Lumina indirectă e calculată o singură dată, înainte de lansare, și salvată pe disc. În timpul jocului nu se mai calculează nimic, doar se citește.',
  etichetaCum:'Cum se face',
  carduri:[
   {eticheta:'Pasul 1 · Scena fixă',
