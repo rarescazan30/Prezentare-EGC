@@ -32,7 +32,7 @@ slide(4,{
    eticheta:'Shadows · 2025', cifra:'Japonia',
    text:'Aceeași hartă se schimbă de la un anotimp la altul (detalii în partea a 3-a).'}
  ],
- tehnic:{eticheta:'Detaliu tehnic · streaming pe grilă (cum se face de obicei)',
+ tehnic:{eticheta:'Detaliu tehnic · world streaming (cum se face de obicei)',
   cod:'// harta e împărțită într-o grilă de celule\nfor (celula : celuleInJur(jucator, raza))\n    incarca(celula, distanta(celula) < 300 ? DETALIAT : SIMPLU);\nfor (celula : celuleIncarcate)\n    if (prea_departe(celula)) elibereaza(celula);',
-  text:'O țară de 80–130 km² nu încape toată în memorie. Harta e împărțită în celule: lângă jucător se încarcă varianta detaliată, mai departe doar variante simplificate (LOD), iar celulele rămase în urmă se eliberează. Așa funcționează, în general, lumile deschise mari.'}
+  text:'O țară de 80–130 km² nu încape toată în memorie. Harta e împărțită într-un grid de celule (chunks): lângă jucător se face streaming la varianta detaliată, mai departe doar LOD-uri simplificate, iar celulele rămase în urmă se descarcă din memorie. Așa funcționează, în general, jocurile open world mari.'}
 });

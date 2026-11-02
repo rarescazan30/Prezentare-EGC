@@ -1,4 +1,4 @@
-/* SLIDE 16 · Mulțumim
+/* SLIDE 18 · Mulțumim
    bara = textul din bara de jos · an = anul mare, șters, din colț (anul jocului)
    Textul stă între '…'; pentru apostrof folosește ’. Poți folosi <b>…</b> și <em>…</em>.
    poza: {descriere, fisier} → pune imaginea în img/ cu numele din fisier și apare singură.
@@ -10,8 +10,8 @@
    │                 [buton]
    │                 nota
    └ */
-slide(16,{
- bara:'16 · Mulțumim',
+slide(18,{
+ bara:'18 · Mulțumim',
  an:2025,
  supratitlu:'Sfârșitul sincronizării · Animus OS',
  titlu:'Vă mulțumim pentru atenție',

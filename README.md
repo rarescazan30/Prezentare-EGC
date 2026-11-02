@@ -1,6 +1,6 @@
 # Cum își construiește Assassin’s Creed orașele
 
-An interactive web presentation (in Romanian) for the EGC course: how the environments of the Assassin's Creed series evolved from 2007 to 2025, and how game developers build those cities. It's 16 slides in 3 parts (one per speaker), with a few interactive demos (map sizes, a district built from instanced pieces, nightly map tests, lighting, crowds) and slots for screenshots from the games.
+An interactive web presentation (in Romanian) for the EGC course: how the environments of the Assassin's Creed series evolved from 2007 to 2025, and how game developers build those cities. It's 18 slides in 3 parts (one per speaker), with a few interactive demos (map sizes, a district built with instancing, nightly tests, lighting, a baked-lighting memory calculator, crowds) and slots for screenshots from the games.
 
 - **`PLAN-PREZENTARE.md`**: the plan (in Romanian): who presents what, what to say on each slide, the screenshots to add, what to verify.
 - **`REVIZUIRE.md`** and **`sugestiile_mele.md`**: the reviews that led to the current version.
@@ -47,12 +47,12 @@ The current slide number is kept in the URL, so reloading the page (e.g. after e
 ```
 index.html          ← the page skeleton; loads everything below, in order
 styles.css          ← all the CSS (color tokens are on :root at the top)
-content/            ← ALL the text and data, one file per slide (01–16)
+content/            ← ALL the text and data, one file per slide (01–18)
 img/                ← screenshots from the games (see "Adding screenshots")
 js/
   core.js           ← small helpers used everywhere, the AC crest, and slide(n,{…})
   widgets/          ← the interactive part of a slide, same name as its content file
-  slides.js         ← builds the 16 slides from content/ (layout only)
+  slides.js         ← builds the 18 slides from content/ (layout only)
   app.js            ← background, slide transition, navigation, URL #slide
 ```
 
@@ -69,17 +69,19 @@ The files are loaded with plain `<script>` tags, so double-clicking `index.html`
 | 3 | 1 · Vorbitor 1 | Marea deschisă și orașe la scară reală (2013–2015) | `03-mare-si-orase-reale.js` | — |
 | 4 | 1 · Vorbitor 1 | Țări întregi și o întoarcere la oraș (2017–2025) | `04-tari-intregi.js` | — |
 | 5 | 1 · Vorbitor 1 | Cât de mult au crescut hărțile | `05-cat-au-crescut-hartile.js` | bar chart (linear scale) |
-| 6 | 2 · Vorbitor 2 | Un oraș se construiește din piese | `06-piese-si-instante.js` | district built from 3 instanced pieces |
-| 7 | 2 · Vorbitor 2 | De mână sau după reguli | `07-manual-sau-reguli.js` | — |
-| 8 | 2 · Vorbitor 2 | Teste de noapte | `08-teste-de-noapte.js` | simulated nightly map test |
+| 6 | 2 · Vorbitor 2 | Modular kit și instancing | `06-piese-si-instante.js` | district built from 3 instanced pieces |
+| 7 | 2 · Vorbitor 2 | De mână sau procedural | `07-manual-sau-reguli.js` | — |
+| 8 | 2 · Vorbitor 2 | Nightly tests | `08-teste-de-noapte.js` | simulated nightly test |
 | 9 | 2 · Vorbitor 2 | Cum te orientezi fără hartă | `09-cum-te-orientezi.js` | — |
 | 10 | 2 · Vorbitor 2 | Pe ce te poți cățăra și de ce | `10-pe-ce-te-cateri.js` | static facade drawing |
-| 11 | 3 · Vorbitor 3 | Cum se luminează o lume mare | `11-lumina.js` | lighting room, 3 modes |
-| 12 | 3 · Vorbitor 3 | Zi, noapte, vreme, anotimpuri | `12-zi-noapte-anotimpuri.js` | — |
-| 13 | 3 · Vorbitor 3 | Mii de oameni, câteva zeci „gândesc” | `13-multimea-din-paris.js` | crowd / level-of-detail simulation |
-| 14 | 3 · Vorbitor 3 | Orașul din joc nu e cel real | `14-orasul-din-joc-nu-e-cel-real.js` | flip cards |
-| 15 | Final | Ce am învățat + bibliografie | `15-concluzii.js` | bibliography accordion |
-| 16 | Final | Mulțumim | `16-multumim.js` | — |
+| 11 | 3 · Vorbitor 3 | Lighting: baked, light probes, ray tracing | `11-lumina.js` | lighting room, 3 modes |
+| 12 | 3 · Vorbitor 3 | De ce baked lighting ocupă atât de mult | `12-baked-lighting.js` | lightmap memory calculator |
+| 13 | 3 · Vorbitor 3 | Day/night cycle, vreme, anotimpuri | `13-zi-noapte-anotimpuri.js` | — |
+| 14 | 3 · Vorbitor 3 | Crowd: sute de NPC-uri, 40 cu AI complet | `14-multimea-din-paris.js` | crowd / LOD simulation (500–2.000 NPCs) |
+| 15 | 3 · Vorbitor 3 | AI recycling în Unity | `15-ai-recycling.js` | — |
+| 16 | 3 · Vorbitor 3 | Orașul din joc nu e cel real | `16-orasul-din-joc-nu-e-cel-real.js` | flip cards |
+| 17 | Final | 3 idei de reținut + bibliografie | `17-concluzii.js` | bibliography accordion |
+| 18 | Final | Mulțumim | `18-multumim.js` | — |
 
 ### A content file
 
@@ -145,7 +147,7 @@ Not moved, on purpose: the page title and top-bar text (in `index.html`), and th
 
 ## What we could change about this
 
-These are the proposals, ordered roughly by how much they help a team edit the content. Steps 1–5 are done, and the content itself was restructured into 16 slides for 3 speakers (see `PLAN-PREZENTARE.md`).
+These are the proposals, ordered roughly by how much they help a team edit the content. Steps 1–5 are done, and the content itself was restructured into 18 slides for 3 speakers (see `PLAN-PREZENTARE.md`).
 
 ### 1. Quick wins — ✅ done
 

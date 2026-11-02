@@ -1,4 +1,4 @@
-/* SLIDE 14 · Orașul din joc nu e o copie a orașului real
+/* SLIDE 16 · Orașul din joc nu e o copie a orașului real
    bara = textul din bara de jos · an = anul mare, șters, din colț (anul jocului)
    Textul stă între '…'; pentru apostrof folosește ’. Poți folosi <b>…</b> și <em>…</em>.
    poza: {descriere, fisier} → pune imaginea în img/ cu numele din fisier și apare singură.
@@ -14,8 +14,8 @@
    │ │ indiciu            │
    │ └────────────────────┘
    └ */
-slide(14,{
- bara:'14 · Orașul din joc vs. cel real',
+slide(16,{
+ bara:'16 · Orașul din joc vs. cel real',
  an:2014,
  supratitlu:'Partea 3 · Istorie și joc',
  titlu:'Orașul din joc nu e o copie a orașului real',

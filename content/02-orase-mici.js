@@ -33,5 +33,5 @@ slide(2,{
    text:'Pe lângă Boston și New York apare frontiera: o pădure întinsă, în care te cațeri pe copaci și stânci.'}
  ],
  tehnic:{eticheta:'Detaliu tehnic · memoria consolei',
-  text:'Xbox 360 și PS3 aveau doar 512 MB de memorie pentru tot jocul: geometrie, texturi, sunet și personaje. De aceea orașele erau mici și separate, cu un ecran de încărcare între ele. Motorul se numea Scimitar în 2007 și a fost redenumit Anvil la AC II.'}
+  text:'Xbox 360 și PS3 aveau doar 512 MB de memorie pentru tot jocul: geometrie, texturi, sunet și personaje. De aceea orașele erau mici și separate, cu un loading screen între ele. Engine-ul se numea Scimitar în 2007 și a fost redenumit Anvil la AC II.'}
 });

@@ -1,4 +1,4 @@
-/* Construiește cele 16 slide-uri din textele din content/ (un fișier pe slide).
+/* Construiește cele 18 slide-uri din textele din content/ (un fișier pe slide).
    Aici e doar așezarea în pagină; textul se schimbă în content/. */
 'use strict';
 /* Barele graficului de pe slide-ul 5 (content/05-…) */
@@ -126,43 +126,62 @@ add({...meta(11),hue:200,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
   </div></div></div>`)(SLIDE[11]),mount:mGI});
 
 /* SLIDE 12 */
-add({...meta(12),hue:212,html:CARDS3(SLIDE[12])});
+add({...meta(12),hue:204,html:(c=>{const o=c.optiuni,G=(g,lab,list,def,f)=>`<div class="calc-r"><span class="lab">${lab}</span><div class="seg" data-g="${g}">${list.map((x,i)=>`<button class="btn${i===def?' on':''}" data-i="${i}">${f(x)}</button>`).join('')}</div></div>`;
+ return `<div class="in">${HEAD(c.supratitlu,c.titlu)}
+ <p class="lead rise" style="--i:1">${c.subtitlu}</p>
+ <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div>
+ <div class="g2">
+  <div ${rs(5)} style="min-width:0"><div class="card calc"><div class="tag">${c.etichetaCalc}</div>
+   <div class="calc-g">${G('h',c.harta,o.harti,2,x=>x.nume)}
+   ${G('r',c.rezolutie,o.rezolutii,2,x=>x.nume)}
+   ${G('o',c.ore,o.ore,2,x=>x)}
+   ${G('a',c.anotimpuri,o.anotimpuri,1,x=>x)}</div>
+   <div class="calc-out"><span class="lab">${c.rezultat}</span><span class="big" id="bkV">—</span><span class="note" id="bkC"></span></div>
+   <p class="note">${c.presupuneri}</p></div></div>
+  ${TEHNIC(c.tehnic,6)}
+ </div></div>`})(SLIDE[12]),mount:mBake});
 
 /* SLIDE 13 */
-add({...meta(13),hue:195,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
+add({...meta(13),hue:212,html:CARDS3(SLIDE[13])});
+
+/* SLIDE 14 */
+add({...meta(14),hue:195,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
  <div class="g3">
   <div ${rs(2)}><div class="card"><div class="tag">${c.etichetaVii}</div><div class="big" id="cA">40</div><div class="lab">${c.vii}</div></div></div>
   <div ${rs(3)}><div class="card"><div class="tag">${c.etichetaDetaliate}</div><div class="big" id="cM">120</div><div class="lab">${c.detaliate}</div></div></div>
-  <div ${rs(4)}><div class="card"><div class="row" style="justify-content:space-between"><div><div class="big" id="cL" style="color:var(--mute)">11.880</div><div class="lab">${c.figuranti}</div></div><div><div class="big" id="cR" style="color:var(--creed)">0</div><div class="lab">${c.schimburi}</div></div></div></div></div>
+  <div ${rs(4)}><div class="card"><div class="row" style="justify-content:space-between"><div><div class="big" id="cL" style="color:var(--mute)">1.880</div><div class="lab">${c.figuranti}</div></div><div><div class="big" id="cR" style="color:var(--creed)">0</div><div class="lab">${c.schimburi}</div></div></div></div></div>
  </div>
  <div class="g2">
   <div ${rs(5)} style="min-width:0"><canvas class="sim" id="crw" width="960" height="440" style="cursor:crosshair" aria-label="Simulare: mulțime într-o piață din Paris"></canvas>
-   <div class="row" style="margin-top:8px"><label class="lab" style="flex:1 1 220px;display:flex;gap:10px;align-items:center">${c.etichetaCursor} <input type="range" id="crwN" min="2000" max="12000" step="500" value="12000"><span class="mono" id="crwNv">12.000</span></label><span class="note">${c.indiciu}</span></div>
+   <div class="row" style="margin-top:8px"><label class="lab" style="flex:1 1 220px;display:flex;gap:10px;align-items:center">${c.etichetaCursor} <input type="range" id="crwN" min="500" max="2000" step="100" value="2000"><span class="mono" id="crwNv">2.000</span></label><span class="note">${c.indiciu}</span></div>
    <p class="small" id="cP" style="margin-top:6px"></p></div>
   ${TEHNIC(c.tehnic,6)}
- </div></div>`)(SLIDE[13]),mount:mCrowd});
+ </div></div>`)(SLIDE[14]),mount:mCrowd});
 
-/* SLIDE 14 */
-add({...meta(14),hue:202,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
- <div class="g3" id="lies">${c.carduri.map((k,i)=>`<div ${rs(i+2)}><button class="flip" aria-label="${k.titlu}"><div class="fi"><div class="fa"><div class="tag">${k.eticheta}</div><h3>${k.titlu}</h3><p>${k.fata}</p><span class="note" style="margin-top:auto;color:var(--accent)">${c.indiciu}</span></div><div class="fb"><div class="tag">${c.etichetaSpate}</div><p>${k.spate}</p></div></div></button></div>`).join('')}</div></div>`)(SLIDE[14]),mount:mLies});
+/* SLIDE 15 */
+add({...meta(15),hue:198,html:CARDS3(SLIDE[15])});
+
+/* SLIDE 16 */
+add({...meta(16),hue:202,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
+ <div class="g3" id="lies">${c.carduri.map((k,i)=>`<div ${rs(i+2)}><button class="flip" aria-label="${k.titlu}"><div class="fi"><div class="fa"><div class="tag">${k.eticheta}</div><h3>${k.titlu}</h3><p>${k.fata}</p><span class="note" style="margin-top:auto;color:var(--accent)">${c.indiciu}</span></div><div class="fb"><div class="tag">${c.etichetaSpate}</div><p>${k.spate}</p></div></div></button></div>`).join('')}</div></div>`)(SLIDE[16]),mount:mLies});
 
 /* ===================== Final ===================== */
 
-/* SLIDE 15 */
-add({...meta(15),hue:202,html:(c=>`<div class="in tight2">${HEAD(c.supratitlu,c.titlu)}
+/* SLIDE 17 */
+add({...meta(17),hue:202,html:(c=>`<div class="in tight2">${HEAD(c.supratitlu,c.titlu)}
  <div class="g3 rise" style="--i:1">${c.carduri.map(CARD).join('')}</div>
  ${TEHNIC(c.tehnic,2)}
  <div ${rs(3)}><div class="lab" style="margin-bottom:12px">${c.indiciuBibliografie}</div><div class="acc" id="acc"></div></div>
-</div>`)(SLIDE[15]),mount:mEnd});
+</div>`)(SLIDE[17]),mount:mEnd});
 
-/* SLIDE 16 */
-add({...meta(16),hue:202,html:(c=>`<div class="in" style="align-items:center;text-align:center;gap:clamp(20px,3.4vh,38px)">
+/* SLIDE 18 */
+add({...meta(18),hue:202,html:(c=>`<div class="in" style="align-items:center;text-align:center;gap:clamp(20px,3.4vh,38px)">
  <div class="rise bigcrest" style="--i:0">${CREST_SVG}</div>
  <div class="kicker rise" style="--i:1;justify-content:center">${c.supratitlu}</div>
  <h1 class="k thx">${c.titlu}</h1>
  <p class="lead rise" style="--i:3;max-width:56ch;margin:0 auto">${c.subtitlu}</p>
  <div class="row rise" style="--i:4;justify-content:center"><button class="btn pri" data-act="restart">${c.buton}</button></div>
  <div class="note rise" style="--i:5">${c.nota}</div>
-</div>`)(SLIDE[16]),mount:()=>({})});
+</div>`)(SLIDE[18]),mount:()=>({})});
 
 const N=SL.length;

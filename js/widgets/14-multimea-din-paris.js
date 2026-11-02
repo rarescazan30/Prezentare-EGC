@@ -1,12 +1,12 @@
-/* Slide 13 · partea interactivă (mCrowd). Textele vin din content/13-multimea-din-paris.js. */
+/* Slide 14 · partea interactivă (mCrowd). Textele vin din content/14-multimea-din-paris.js. */
 'use strict';
 function mCrowd(root){
- const c=$('#crw',root),x=c.getContext('2d'),W=c.width,H=c.height,MAX=12000,K=120;
+ const c=$('#crw',root),x=c.getContext('2d'),W=c.width,H=c.height,MAX=2000,K=120;
  const px=new Float32Array(MAX),py=new Float32Array(MAX),vx=new Float32Array(MAX),vy=new Float32Array(MAX);
  const cx=W/2,cy=H/2,RX=W*.42,RY=H*.42,r=rng(5);
  for(let i=0;i<MAX;i++){const a=r()*6.283,d=Math.sqrt(r());px[i]=cx+Math.cos(a)*d*RX;py[i]=cy+Math.sin(a)*d*RY;const q=r()*6.283,s=6+r()*16;vx[i]=Math.cos(q)*s;vy[i]=Math.sin(q)*s}
  const ids=new Int32Array(K),ds=new Float32Array(K),was=new Uint8Array(MAX);
- let N=12000,pl={x:cx-200,y:cy+100},tg={x:pl.x,y:pl.y},idle=0,fr=0,recs=[],last=0,pe=false;
+ let N=2000,pl={x:cx-200,y:cy+100},tg={x:pl.x,y:pl.y},idle=0,fr=0,recs=[],last=0,pe=false;
  const sl=$('#crwN',root),slv=$('#crwNv',root),cA=$('#cA',root),cM=$('#cM',root),cL=$('#cL',root),cR=$('#cR',root),cP=$('#cP',root);
  const fmtN=n=>n.toLocaleString('ro-RO');
  sl.oninput=()=>{N=+sl.value;slv.textContent=fmtN(N);for(let i=0;i<MAX;i++)was[i]=0};
@@ -28,7 +28,7 @@ function mCrowd(root){
   x.fillStyle='hsl(202 25% 11%)';x.beginPath();x.ellipse(cx,cy,RX+14,RY+14,0,0,7);x.fill();
   x.strokeStyle='rgba(145,190,225,.06)';x.lineWidth=1;x.beginPath();for(let a=1;a<5;a++){x.ellipse(cx,cy,RX*a/5,RY*a/5,0,0,7)}x.stroke();
   x.fillStyle='#132030';x.fillRect(cx-30,cy-18,60,36);x.strokeStyle='rgba(145,190,225,.45)';x.strokeRect(cx-30,cy-18,60,36);
-  x.fillStyle='rgba(145,175,200,.45)';for(let i=0;i<N;i++)x.fillRect(px[i],py[i],1.8,1.8);
+  x.fillStyle='rgba(145,175,200,.45)';for(let i=0;i<N;i++)x.fillRect(px[i]-1.3,py[i]-1.3,2.6,2.6);
   x.strokeStyle='rgba(232,193,90,.24)';x.lineWidth=1;x.beginPath();for(let k=0;k<40;k++){x.moveTo(pl.x,pl.y);x.lineTo(px[ids[k]],py[ids[k]])}x.stroke();
   for(let k=40;k<K;k++){const i=ids[k];x.fillStyle='hsl(200 65% 58%)';x.fillRect(px[i]-2,py[i]-3,4.5,7)}
   x.lineWidth=2;for(let k=0;k<40;k++){const i=ids[k];x.strokeStyle='#e8c15a';x.beginPath();x.arc(px[i],py[i],6.5,0,7);x.stroke();x.fillStyle='#eaf2f8';x.fillRect(px[i]-2,py[i]-3,4.5,7)}
@@ -36,7 +36,7 @@ function mCrowd(root){
   const ep=(t*.0008)%1;x.strokeStyle=`rgba(232,193,90,${(1-ep)*.6})`;x.lineWidth=2;x.beginPath();x.arc(pl.x,pl.y,ep*Math.sqrt(ds[39]),0,7);x.stroke();
   drawCrestCanvas(x,pl.x,pl.y,28,'#e0243f','#eaf2f8');
   if(t-last>200){last=t;let s2=0;recs.forEach(q=>s2+=q[1]);cR.textContent=s2;cL.textContent=fmtN(Math.max(0,N-K));cA.textContent=Math.min(40,N);cM.textContent=Math.min(K,N);
-   cP.textContent=SLIDE[13].procent.replace('{p}',(40/N*100).toLocaleString('ro-RO',{maximumFractionDigits:2}))}
+   cP.textContent=SLIDE[14].procent.replace('{p}',(40/N*100).toLocaleString('ro-RO',{maximumFractionDigits:2}))}
  }
  sl.oninput();
  return{tick};

@@ -4,7 +4,7 @@ Context for Claude when working in this repo. For humans, `README.md` has the fu
 
 ## What this is
 
-A 16-slide interactive web presentation **in Romanian** for the EGC course (Elemente de Grafică pe Calculator, ACS CTI): how the environments of the Assassin's Creed series evolved from 2007 to 2025, and how game developers build those cities. It's split into 3 parts, one per speaker. `PLAN-PREZENTARE.md` is the talk plan (who presents what, what to say, images to add, facts to verify). Keep the slides and the plan in sync. It's plain HTML/CSS/JS with **no build step, no dependencies, no package.json**. It must keep working when someone **double-clicks `index.html`** (`file://`).
+An 18-slide interactive web presentation **in Romanian** for the EGC course (Elemente de Grafică pe Calculator, ACS CTI): how the environments of the Assassin's Creed series evolved from 2007 to 2025, and how game developers build those cities. It's split into 3 parts, one per speaker. `PLAN-PREZENTARE.md` is the talk plan (who presents what, what to say, images to add, facts to verify). Keep the slides and the plan in sync. It's plain HTML/CSS/JS with **no build step, no dependencies, no package.json**. It must keep working when someone **double-clicks `index.html`** (`file://`).
 
 The people editing it are students, mostly changing the *text and information* on slides. Treat a request like "change the title on slide 8" as an edit in `content/08-lumina.js`, not in the code.
 
@@ -13,15 +13,15 @@ The people editing it are students, mostly changing the *text and information* o
 ```
 index.html        page skeleton + <script> tags (ORDER MATTERS)
 styles.css        all CSS; color tokens on :root
-content/NN-*.js   ALL visible text and data, one file per slide (01–16)
+content/NN-*.js   ALL visible text and data, one file per slide (01–18)
 img/              screenshots from the games, named as in each card's poza.fisier
 js/core.js        helpers ($, $$, clamp, lerp, rng, rs, HEAD, …), the AC crest, SLIDE[] + slide()
 js/widgets/NN-*.js  interactive part of slide NN (same file name as its content file)
-js/slides.js      builds the 16 slides: layout templates filled from SLIDE[n]
+js/slides.js      builds the 18 slides: layout templates filled from SLIDE[n]
 js/app.js         animated background, slide transition, navigation, #N in the URL
 ```
 
-Load order in `index.html`: `js/core.js` → `content/01…16` → `js/widgets/*` → `js/slides.js` → `js/app.js`.
+Load order in `index.html`: `js/core.js` → `content/01…18` → `js/widgets/*` → `js/slides.js` → `js/app.js`.
 
 **Everything shares one global scope.** These are classic `<script>` files, with no modules and no wrapper function. Two files must never declare the same top-level `const`/`let`/`function` name, and top-level names must not shadow non-configurable window properties (`top`, `location`, `name` and so on). Each file starts with `'use strict';`.
 
@@ -51,7 +51,8 @@ slide(NN,{
 - `an` (the faded year) is the year of the game the slide is about.
 - **Photos:** a card's optional `poza:{descriere, fisier}` renders a dashed „Poză de adăugat” box until `img/<fisier>` exists. Then the image covers it, with no code change (`POZA` in `js/slides.js`, styles `.poza` in `styles.css`). When adding a photo slot, also add it to the image list in `PLAN-PREZENTARE.md`.
 - `SLIDE[5].harti` (map sizes) feeds the chart via `BARS` in `js/slides.js`.
-- `SLIDE[15].bibliografie` is a list of groups `{titlu, unitate, randuri:[[title, link]]}` rendered by `js/widgets/15-concluzii.js`.
+- `SLIDE[17].bibliografie` is a list of groups `{titlu, unitate, randuri:[[bold text, small text]]}` rendered by `js/widgets/17-concluzii.js`. It is the bibliography from `main` (Harta francizei, Cele cinci elemente Lynch, …), shown the same way as there.
+- `SLIDE[12].optiuni` holds the choices of the baked-lighting calculator (`js/widgets/12-baked-lighting.js`). The calculation is illustrative; only „2 TB și 2 ani” is Ubisoft's figure.
 
 ## Writing text (Romanian)
 
@@ -59,6 +60,7 @@ slide(NN,{
 - Strings use single quotes. For an apostrophe inside text, use the typographic `’`, never a straight `'` (the repo has none).
 - Romanian quotes are „…”. Use `–` for ranges ("2007–2012") and a decimal comma ("0,13 km²").
 - Keep the tone: short, plain sentences for a student audience.
+- **Technical / game-dev terms stay in English**, as the industry uses them: baked lighting, lightmap, light probes, ray tracing (RTGI), global illumination, LOD, draw call, instancing, modular kit, heightmap, mesh, vertex, raycast, ledge, viewpoint, nightly build, automated testing, world streaming, loading screen, crowd, NPC, AI recycling, pooling, frustum culling, shader… Don't translate them into Romanian; the sentence around them stays Romanian („un heightmap”, „draw call-uri”).
 - Clear, concrete and human: titles say plainly what the slide is about (no cryptic or academic titles), and cards hold concrete facts. Avoid filler and inflated jargon. The reviews in `REVIZUIRE.md` and `sugestiile_mele.md` explain what to avoid.
 - Don't state numbers or quotes without a source. If unsure, add the item to „De verificat” in `PLAN-PREZENTARE.md` instead of putting it on a slide.
 - The slide 1 counter („0,13 → 130”) repeats map sizes from `SLIDE[5].harti`. Keep them consistent.
@@ -108,7 +110,7 @@ After any change:
   ```bash
   for f in content/*.js js/*.js js/widgets/*.js; do node -e "new Function(require('fs').readFileSync('$f','utf8'))" || echo "BROKEN: $f"; done
   ```
-- For refactors, compare against `main`: render each slide (`index.html#1` … `#16`) in both versions and diff the `section.slide.on` markup. The live counter on slide 13 and the random district on slide 6 differ between runs. That's normal.
+- For refactors, compare against `main`: render each slide (`index.html#1` … `#18`) in both versions and diff the `section.slide.on` markup. The live counter on slide 14 and the random district on slide 6 differ between runs. That's normal.
 - Check that every slide fits without scrolling at 1280×720, 1366×768, 1440×900, 1920×1080 and 2560×1440 (`section.slide.on` `scrollHeight <= clientHeight`), and that no `pre.cod` scrolls sideways. Content scales with the screen (the „scalare” block in `styles.css`); laptops get the compact rules in `@media(max-height:960px)`, very short screens the `@media(max-height:740px)` block.
 - In a hidden or background browser tab, `requestAnimationFrame` and CSS animations pause, so slide transitions look stuck and fade-ins look blank. That isn't a bug. Check in a visible tab before concluding something is broken.
 

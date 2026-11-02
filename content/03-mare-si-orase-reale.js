@@ -24,14 +24,14 @@ slide(3,{
  carduri:[
   {poza:{descriere:'Corabia între insule (Black Flag)', fisier:'img/03-caraibe-black-flag.jpg'},
    eticheta:'Black Flag · 2013', cifra:'Caraibe',
-   text:'O hartă făcută mai ales din apă: navighezi cu corabia între insule, fără ecran de încărcare între mare și uscat.'},
+   text:'O hartă făcută mai ales din apă: navighezi cu corabia între insule, fără loading screen între mare și uscat.'},
   {poza:{descriere:'Paris cu mulțime (Unity)', fisier:'img/03-paris-unity.jpg'},
    eticheta:'Unity · 2014', cifra:'Paris',
    text:'Monumente la dimensiunea lor reală, mulțimi mari și multe clădiri în care poți intra.'},
-  {poza:{descriere:'Londra și cârligul cu frânghie (Syndicate)', fisier:'img/03-londra-syndicate.jpg'},
+  {poza:{descriere:'Londra și rope launcher-ul (Syndicate)', fisier:'img/03-londra-syndicate.jpg'},
    eticheta:'Syndicate · 2015', cifra:'Londra',
-   text:'Străzile largi și Tamisa sunt prea mult de sărit, așa că apare cârligul cu frânghie. Lumea schimbă felul în care te miști.'}
+   text:'Străzile largi și Tamisa sunt prea mult de sărit, așa că apare rope launcher-ul. Lumea schimbă felul în care te miști.'}
  ],
  tehnic:{eticheta:'Detaliu tehnic · noua generație de console',
-  text:'PS4 și Xbox One (2013) au 8 GB de memorie, de 16 ori mai mult. Unity (motorul AnvilNext 2.0) folosește asta pentru mulțimi mari și pentru materiale fizic corecte (PBR): aceeași suprafață reacționează corect la orice lumină, fără să fie „pictată” de mână pentru fiecare situație.'}
+  text:'PS4 și Xbox One (2013) au 8 GB de memorie, de 16 ori mai mult. Unity (engine-ul AnvilNext 2.0) folosește asta pentru crowd-uri mari și pentru PBR (physically based rendering): materialele reacționează corect la orice lumină, fără să fie „pictate” de mână pentru fiecare situație.'}
 });

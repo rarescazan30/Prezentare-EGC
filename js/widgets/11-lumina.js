@@ -80,19 +80,16 @@ function mGI(root){
    let r=alb[0]*(amb+d*1.35*tint[0]/255),g=alb[1]*(amb+d*1.35*tint[1]/255),b=alb[2]*(amb+d*1.35*tint[2]/255);
 
    // Indirect GI Color Bleeding from crimson (left) & emerald (right) walls + floor bounce
-   if(mode!==1){
-    const bleedL=sI*.55*Math.exp(-Math.max(0,x-25)/(W*.26));
-    const bleedR=sI*.55*Math.exp(-Math.max(0,(W-25)-x)/(W*.26));
-    const bounceFloor=sI*.32*Math.exp(-Math.abs(y-BY1)/(H*.28));
+   // Indirect light (bounce): coloured light from the crimson (left) and green (right) walls + floor.
+   // Mode 1 (light probes): same idea, but softer and weaker, because it is interpolated between probes.
+   {
+    const kb=mode===1?.6:1;
+    const bleedL=kb*sI*.55*Math.exp(-Math.max(0,x-25)/(W*.26));
+    const bleedR=kb*sI*.55*Math.exp(-Math.max(0,(W-25)-x)/(W*.26));
+    const bounceFloor=kb*sI*.32*Math.exp(-Math.abs(y-BY1)/(H*.28));
     r+=(145*bleedL+45*bounceFloor)*ao;
     g+=(115*bleedR+38*bounceFloor)*ao;
     b+=(55*bleedR+25*bounceFloor)*ao;
-   }else{
-    // Mode 1 (Sparse Probes): light leakage in top-left ceiling corner & muted bounce
-    if(x<BX0+18&&y<BY0+16){
-     const leak=Math.exp(-Math.hypot(x-BX0,y-BY0)/14)*sI;
-     r+=210*leak;g+=195*leak;b+=160*leak;
-    }
    }
    if(mode===2){
     const nz=(Math.sin(x*12.9+y*78.2+t*.004)*43758.5)%1*3.5;
@@ -168,7 +165,6 @@ function mGI(root){
   }
   ctx.font='600 15px JetBrains Mono,monospace';ctx.fillStyle='rgba(255,255,255,.9)';
   ctx.fillText(C.moduri[mode].textDesen,16,24);
-  if(mode===1){ctx.fillStyle='#e0243f';ctx.fillText(C.avertisment,16,72)}
  }
  updateGIInfo();
  return{tick(dt,t){if(dirty||mode===2){render(t);dirty=false}}};

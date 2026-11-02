@@ -327,3 +327,15 @@ canvas.sim,.facade{box-shadow:0 24px 60px -36px #000,0 0 0 1px hsl(var(--hue) 60
 .pz{font:600 12px var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .pd{font-size:14.5px;color:var(--body);line-height:1.35}
 .pf{font:500 12px var(--f-m);color:var(--dim)}
+
+/* ===== calculatorul de pe slide-ul 12 (baked lighting) ===== */
+.calc{gap:10px}
+.calc .btn{padding:6px 10px}
+.calc .seg{gap:5px}
+.calc-g{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.calc-r{display:grid;gap:5px;align-content:start}
+.calc-out{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding-top:8px;border-top:1px solid var(--line)}
+@media(max-width:960px){.calc-g{grid-template-columns:1fr}}
+
+/* bibliografia pe două coloane pe ecrane late (grupurile de pe main sunt multe) */
+@media(min-width:961px){.acc{grid-template-columns:1fr 1fr;align-items:start}}
