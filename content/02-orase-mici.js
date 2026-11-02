@@ -19,7 +19,7 @@ slide(2,{
  bara:'02 · Orașe mici',
  an:2007,
  supratitlu:'Partea 1 · 2007–2012',
- titlu:'La început: orașe mici, făcute pentru sărituri',
+ titlu:'La început: orașe de 0,13–1,41 km², făcute pentru sărituri',
  subtitlu:'Primele jocuri aveau câteva orașe mici și dese. Totul era gândit în jurul parkour-ului.',
  carduri:[
   {poza:{descriere:'Damasc din AC1, văzut de sus', fisier:'img/02-damasc-ac1.jpg'},

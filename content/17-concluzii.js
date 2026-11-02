@@ -1,12 +1,11 @@
-/* SLIDE 17 · 3 idei de reținut
+/* SLIDE 17 · 3 concepte folositoare în game development
    bara = textul din bara de jos · an = anul mare, șters, din colț (anul jocului)
    Textul stă între '…'; pentru apostrof folosește ’. Poți folosi <b>…</b> și <em>…</em>.
    Termenii tehnici din industrie rămân în engleză (baked lighting, light probes, LOD, draw call…).
    ┌
    │ supratitlu
    │ TITLU
-   │ ┌ carduri[0] ┐ ┌ carduri[1] ┐ ┌ carduri[2] ┐   ← cele 3 idei (eticheta + text)
-   │ ┌ tehnic: eticheta + text ┐   ← conceptele de la EGC
+   │ ┌ carduri[0] ┐ ┌ carduri[1] ┐ ┌ carduri[2] ┐   ← cele 3 concepte (eticheta + text)
    │ indiciuBibliografie
    │ ▸ bibliografie[0].titlu        N unitate      ← se deschide la click
    │ ▸ …
@@ -14,17 +13,15 @@
 
    Bibliografia e cea de pe branch-ul main, afișată la fel: fiecare rând e [text îngroșat, text mic]. */
 slide(17,{
- bara:'17 · 3 idei de reținut',
+ bara:'17 · 3 concepte',
  an:2025,
  supratitlu:'Concluzii',
- titlu:'3 idei de reținut',
+ titlu:'3 concepte folositoare în game development',
  carduri:[
-  {eticheta:'1 · Scara', text:'Hărțile au crescut de peste 100 de ori, de la orașe mici la țări întregi. Asta a cerut world streaming și LOD.'},
-  {eticheta:'2 · Construcția', text:'Un oraș mare nu se mai face de mână: modular kits, instancing, generare procedurală și automated testing.'},
-  {eticheta:'3 · Lumina și viața', text:'De la baked lighting la ray tracing, și de la NPC-uri simple la AI recycling: lumea pare vie fără să blocheze CPU-ul și GPU-ul.'}
+  {eticheta:'1 · LOD (Level of Detail)', text:'Ce e departe sau în afara camerei primește mai puțin detaliu. Se aplică la modele, la teren și chiar la AI, ca în crowd-ul din Unity.'},
+  {eticheta:'2 · Instancing și generare procedurală', text:'Lumea se construiește din piese refolosite și din reguli, nu obiect cu obiect. Așa ajungi de la un oraș de 0,13 km² la o țară de 130 km².'},
+  {eticheta:'3 · Baked vs. real-time', text:'Ce nu se schimbă se poate calcula dinainte (baked lighting): rapid în joc, dar scump în memorie. Ce se schimbă (ora din zi, anotimpurile) cere calcul în timp real, ca ray tracing-ul.'}
  ],
- tehnic:{eticheta:'Concepte de la EGC din prezentare',
-  text:'Model matrix M = T · R · S și instancing · mesh din heightmap și normale prin cross product · ray–plane intersection · view matrix (lookAt) · modelul Phong și global illumination · lightmaps, light probes, ray tracing · shadere · LOD și frustum culling · object pooling.'},
  indiciuBibliografie:'Bibliografie · apasă pe un grup pentru a-l deschide',
  bibliografie:[
   {titlu:'Harta francizei', unitate:'jocuri', randuri:[

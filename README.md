@@ -1,6 +1,6 @@
 # Cum își construiește Assassin’s Creed orașele
 
-An interactive web presentation (in Romanian) for the EGC course: how the environments of the Assassin's Creed series evolved from 2007 to 2025, and how game developers build those cities. It's 18 slides in 3 parts (one per speaker), with a few interactive demos (map sizes, a district built with instancing, nightly tests, lighting, a baked-lighting memory calculator, crowds) and slots for screenshots from the games.
+An interactive web presentation (in Romanian) for the EGC course: how the environments of the Assassin's Creed series evolved from 2007 to 2025, and how game developers build those cities. It's 18 slides in 3 parts (one per speaker), with a few interactive demos (map sizes, a district built with instancing, nightly tests, lighting, the animated seasons landscape, crowds) and slots for screenshots from the games.
 
 - **`PLAN-PREZENTARE.md`**: the plan (in Romanian): who presents what, what to say on each slide, the screenshots to add, what to verify.
 - **`REVIZUIRE.md`** and **`sugestiile_mele.md`**: the reviews that led to the current version.
@@ -75,12 +75,12 @@ The files are loaded with plain `<script>` tags, so double-clicking `index.html`
 | 9 | 2 · Vorbitor 2 | Cum te orientezi fără hartă | `09-cum-te-orientezi.js` | — |
 | 10 | 2 · Vorbitor 2 | Pe ce te poți cățăra și de ce | `10-pe-ce-te-cateri.js` | static facade drawing |
 | 11 | 3 · Vorbitor 3 | Lighting: baked, light probes, ray tracing | `11-lumina.js` | lighting room, 3 modes |
-| 12 | 3 · Vorbitor 3 | De ce baked lighting ocupă atât de mult | `12-baked-lighting.js` | lightmap memory calculator |
-| 13 | 3 · Vorbitor 3 | Day/night cycle, vreme, anotimpuri | `13-zi-noapte-anotimpuri.js` | — |
+| 12 | 3 · Vorbitor 3 | Ce e baked lighting și de ce ocupă atât de mult | `12-baked-lighting.js` | — |
+| 13 | 3 · Vorbitor 3 | Patru anotimpuri și lumină realistă (from `main`) | `13-anotimpuri.js` | animated Japanese landscape, 4 seasons |
 | 14 | 3 · Vorbitor 3 | Crowd: sute de NPC-uri, 40 cu AI complet | `14-multimea-din-paris.js` | crowd / LOD simulation (500–2.000 NPCs) |
 | 15 | 3 · Vorbitor 3 | AI recycling în Unity | `15-ai-recycling.js` | — |
 | 16 | 3 · Vorbitor 3 | Orașul din joc nu e cel real | `16-orasul-din-joc-nu-e-cel-real.js` | flip cards |
-| 17 | Final | 3 idei de reținut + bibliografie | `17-concluzii.js` | bibliography accordion |
+| 17 | Final | 3 concepte folositoare în game development + bibliografie | `17-concluzii.js` | bibliography accordion |
 | 18 | Final | Mulțumim | `18-multumim.js` | — |
 
 ### A content file

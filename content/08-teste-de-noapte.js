@@ -32,7 +32,6 @@ slide(8,{
   {eticheta:'Noaptea', text:'Boți (programe automate) parcurg harta și încearcă fiecare scară, ledge și zipline.'},
   {eticheta:'Dimineața', text:'Echipa primește o hartă cu locurile unde ceva nu merge și le repară.'}
  ],
- tehnic:{eticheta:'Detaliu tehnic · un automated test (pseudocod)',
-  cod:'// cum ar arăta testul pentru scări\nfor (scara : toateScarile) {\n  bot.teleporteaza(scara.jos);\n  bot.urca(scara);\n  if (!bot.aAjuns(scara.sus, 10 /* secunde */))\n    raport.adauga(scara.pozitie, "scară blocată");\n}',
+ tehnic:{eticheta:'Pe scurt · cum funcționează automated testing',
   text:'Testele pornesc automat după ce se adună munca din ziua respectivă (nightly build). Fiecare problemă e salvată cu poziția ei și apare dimineața pe hartă ca un punct roșu. Ubisoft a prezentat un sistem de acest fel pentru Origins, la GDC 2018.'}
 });

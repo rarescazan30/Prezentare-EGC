@@ -26,7 +26,6 @@ slide(15,{
   {eticheta:'3 · Swap invizibil', cifra:'low-res ↔ high-res',
    text:'Schimbul se face fără ca jucătorul să observe: NPC-ul rămâne pe loc și continuă ce făcea, doar primește mai mult detaliu. De aceea crowd-ul pare persistent.'}
  ],
- tehnic:{eticheta:'Detaliu tehnic · object pooling (exemplu de principiu)',
-  cod:'// pool fix: 40 de AI-uri reale, 120 de modele high-res\nfor (npc : crowd) {\n  bool aproape = distance(npc, jucator) < R;\n  if (aproape && !npc.highRes && pool.areLiber())\n    npc.ia(pool.scoate());        // swap low-res → high-res\n  else if (!aproape && npc.highRes)\n    pool.pune(npc.elibereaza());  // swap înapoi\n}',
-  text:'Ideea de bază e object pooling: în loc să creezi și să distrugi personaje (scump: alocări de memorie, încărcare de modele), ții un număr fix și le refolosești. Ubisoft nu a publicat implementarea, așa că acest cod e doar un exemplu. Cifrele 40, 120 și 10.000 sunt din descrierea oficială a prezentării de la GDC 2015.'}
+ tehnic:{eticheta:'Pe scurt · object pooling',
+  text:'În loc să creezi și să distrugi personaje (lent), ții un număr fix de „costume” complete (AI + model high-res) și le muți de la un NPC la altul, după cum te miști. Ubisoft nu a publicat codul; cifrele 40, 120 și 10.000 sunt din descrierea prezentării de la GDC 2015.'}
 });

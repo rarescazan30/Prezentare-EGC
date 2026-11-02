@@ -237,29 +237,30 @@ h1.k.thx{font-size:clamp(34px,5.6vw,84px);max-width:none;line-height:1.02}
 .in.tight .axis{margin-top:0}
 /* ===== scalare: conținutul folosește lățimea ecranului, iar textul crește cu ecranul ===== */
 #stage{left:max(16px,2.2vw);right:max(16px,2.2vw)}
-.in{max-width:min(96vw,1880px)}
-.lead{max-width:none;font-size:clamp(17px,1.22vw,25px)}
-h2.k{font-size:clamp(26px,2.75vw,58px)}
+.in{max-width:min(96vw,1880px);gap:clamp(14px,2.3vh,32px)}
+.brow{padding:1px 0}
+.lead{max-width:none;font-size:clamp(18.5px,1.35vw,28px)}
+h2.k{font-size:clamp(28px,3vw,64px)}
 h1.k{font-size:clamp(28px,3vw,60px)}
-.kicker{font-size:clamp(13px,.78vw,16px)}
-.tag{font-size:clamp(12.5px,.76vw,15.5px)}
-.small{font-size:clamp(15.5px,1.04vw,21px)}
-.note{font-size:clamp(13.5px,.8vw,16.5px)}
-.lab{font-size:clamp(12.5px,.72vw,15px)}
-.btn{font-size:clamp(12.5px,.72vw,15px)}
-.big{font-size:clamp(26px,2.25vw,48px)}
-.bdet{font-size:clamp(15.5px,1.04vw,21px)}
-.brow{font-size:clamp(15px,.95vw,19px);grid-template-columns:minmax(120px,14vw) minmax(0,1fr) clamp(86px,6vw,120px)}
+.kicker{font-size:clamp(14px,.9vw,18px)}
+.tag{font-size:clamp(14px,.9vw,18px)}
+.small{font-size:clamp(17px,1.15vw,24px)}
+.note{font-size:clamp(15px,.95vw,19px)}
+.lab{font-size:clamp(13.5px,.85vw,17px)}
+.btn{font-size:clamp(13.5px,.85vw,17px)}
+.big{font-size:clamp(28px,2.5vw,54px)}
+.bdet{font-size:clamp(17px,1.2vw,24px)}
+.brow{font-size:clamp(16px,1.08vw,21px);grid-template-columns:minmax(120px,14vw) minmax(0,1fr) clamp(86px,6vw,120px)}
 .axis{grid-template-columns:minmax(120px,14vw) minmax(0,1fr) clamp(86px,6vw,120px)}
-.brow .v{font-size:clamp(14px,.85vw,17px)}
+.brow .v{font-size:clamp(15px,.98vw,19px)}
 .btrack{height:clamp(12px,.9vh,18px)}
-canvas.sim{max-height:min(48vh,640px)}
-.facade{max-height:min(46vh,620px)}
-.flip h3{font-size:clamp(16.5px,1.05vw,21px)}
-.flip p{font-size:clamp(15.5px,1.02vw,20px)}
+canvas.sim{max-height:min(40vh,600px)}
+.facade{max-height:min(38vh,560px)}
+.flip h3{font-size:clamp(18px,1.25vw,25px)}
+.flip p{font-size:clamp(17px,1.2vw,24px)}
 .flip .fi{min-height:clamp(175px,22vh,300px)}
-.ah b{font-size:clamp(17px,1.05vw,21px)}
-.it2{font-size:clamp(15.5px,.95vw,19px)}
+.ah b{font-size:clamp(17.5px,1.15vw,23px)}
+.it2{font-size:clamp(16px,1.05vw,21px)}
 .it2 span{font-size:clamp(14.5px,.85vw,17px)}
 .g3{gap:clamp(20px,2vw,44px)}
 .g2{gap:clamp(22px,2.4vw,52px)}
@@ -273,7 +274,7 @@ canvas.sim{max-height:min(48vh,640px)}
 @media(max-width:960px){.duo{grid-template-columns:1fr}}
 .tehnic .tag{color:var(--eagle);margin-bottom:6px}
 .tehnic .small{margin:0}
-pre.cod{margin:0;padding:clamp(10px,1vw,16px) clamp(12px,1.1vw,18px);border-radius:4px;background:rgba(2,5,10,.85);border:1px solid var(--line);font:500 clamp(12.5px,.8vw,16px)/1.55 var(--f-m);color:var(--ink);white-space:pre;overflow-x:auto;scrollbar-width:thin}
+pre.cod{margin:0;padding:clamp(10px,1vw,16px) clamp(12px,1.1vw,18px);border-radius:4px;background:rgba(2,5,10,.85);border:1px solid var(--line);font:500 clamp(13.5px,.9vw,18px)/1.55 var(--f-m);color:var(--ink);white-space:pre;overflow-x:auto;scrollbar-width:thin}
 pre.cod .c{color:var(--dim)}
 pre.cod .k{color:var(--accent)}
 
@@ -283,25 +284,25 @@ pre.cod .k{color:var(--accent)}
  .tehnic{padding:10px 14px}
  pre.cod{font-size:12.5px;padding:8px 12px}
  .card .poza{height:clamp(76px,13vh,150px)}
- canvas.sim,.facade{max-height:33vh}
+ canvas.sim,.facade{max-height:28vh}
  .in{gap:12px}
- h2.k{font-size:clamp(24px,2.3vw,34px)}
- .lead{font-size:16px}
- .small{font-size:15px}
- .tehnic .small{font-size:14.5px;line-height:1.45}
- pre.cod{font-size:12px;line-height:1.45}
+ h2.k{font-size:clamp(26px,2.5vw,38px)}
+ .lead{font-size:18px}
+ .small{font-size:17px}
+ .tehnic .small{font-size:16.5px;line-height:1.45}
+ pre.cod{font-size:13px;line-height:1.45}
  .big{font-size:28px}
  .g3,.g2{gap:16px}
  .in.tight .card .big{font-size:26px}
  .in.tight .brow,.in.tight .brow *{line-height:1.1}
- .in.tight .lead{font-size:16px}
+ .in.tight .lead{font-size:18px}
  .in.tight2{gap:14px}
  .in.tight2 .ah{padding:8px 20px}
  .in.tight2 .acc{gap:5px}
  .in.tight2 .card{padding-top:10px}
- .in.tight2 .small{font-size:16px}
+ .in.tight2 .small{font-size:17px}
 }
-@media(max-height:740px){canvas.sim,.facade{max-height:29vh}.card{padding:12px 14px 10px}}
+@media(max-height:740px){canvas.sim,.facade{max-height:26vh}.card{padding:12px 14px 10px}.small{font-size:16px}.tehnic .small{font-size:15.5px}.in{gap:8px}.card .poza{height:11vh}h2.k{font-size:24px}.g3,.g2{gap:12px}.in.tight .card .small,.in.tight .tehnic .small{font-size:15px;line-height:1.4}}
 @media(prefers-reduced-motion:reduce){.rise,h2.k,h1.k{animation:none}}
 
 /* ===== finisaj vizual ===== */
@@ -321,21 +322,28 @@ canvas.sim,.facade{box-shadow:0 24px 60px -36px #000,0 0 0 1px hsl(var(--hue) 60
 .bigcrest svg{filter:drop-shadow(0 0 26px rgba(224,36,63,.5)) drop-shadow(0 0 2px rgba(232,193,90,.5))}
 
 /* ===== poze din jocuri: chenar „Poză de adăugat” până apare imaginea din img/ ===== */
-.poza{position:relative;margin:0 0 4px;height:clamp(96px,19vh,300px);border:1px dashed var(--line-strong);border-radius:6px;background:rgba(8,15,24,.6);overflow:hidden}
+.poza{position:relative;margin:0 0 4px;height:clamp(90px,15vh,260px);border:1px dashed var(--line-strong);border-radius:6px;background:rgba(8,15,24,.6);overflow:hidden}
 .poza img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .pz-gol{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:4px;padding:10px;text-align:center}
 .pz{font:600 12px var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .pd{font-size:14.5px;color:var(--body);line-height:1.35}
 .pf{font:500 12px var(--f-m);color:var(--dim)}
 
-/* ===== calculatorul de pe slide-ul 12 (baked lighting) ===== */
-.calc{gap:10px}
-.calc .btn{padding:6px 10px}
-.calc .seg{gap:5px}
-.calc-g{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
-.calc-r{display:grid;gap:5px;align-content:start}
-.calc-out{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding-top:8px;border-top:1px solid var(--line)}
-@media(max-width:960px){.calc-g{grid-template-columns:1fr}}
 
 /* bibliografia pe două coloane pe ecrane late (grupurile de pe main sunt multe) */
 @media(min-width:961px){.acc{grid-template-columns:1fr 1fr;align-items:start}}
+
+/* ===== cardurile care se întorc (slide 16): fără 3D, ca textul de pe spate să se vadă mereu, în orice browser ===== */
+.flip .fi{transform-style:flat}
+.flip.f .fi{transform:none}
+.flip .fa,.flip .fb{backface-visibility:visible;-webkit-backface-visibility:visible;transition:opacity 0s .2s}
+.flip .fb{transform:none;opacity:0}
+.flip.f .fa{opacity:0}
+.flip.f .fb{opacity:1}
+.flip.anim .fi{animation:flipx .4s ease}
+@keyframes flipx{50%{transform:scaleX(0)}}
+
+/* statisticile mulțimii (slide 14), pe un singur rând sub animație */
+.stats4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.stats4 .big{font-size:clamp(24px,1.9vw,40px)}
+@media(max-width:960px){.stats4{grid-template-columns:1fr 1fr}}

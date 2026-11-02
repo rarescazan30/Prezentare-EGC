@@ -13,13 +13,13 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
-   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
+   │ ┌ tehnic: eticheta + text ┐   ← explicație pe scurt
    └ */
 slide(4,{
  bara:'04 · Țări întregi',
  an:2017,
  supratitlu:'Partea 1 · 2017–2025',
- titlu:'Acum: țări întregi și o întoarcere la oraș',
+ titlu:'Acum: hărți de 2,3–130 km², țări întregi și o întoarcere la oraș',
  subtitlu:'Hărțile au devenit regiuni întregi, cu natură, animale și vreme. Apoi seria s-a întors și la un oraș mic și dens.',
  carduri:[
   {poza:{descriere:'Peisaj larg din Egipt (Origins)', fisier:'img/04-egipt-origins.jpg'},
@@ -32,7 +32,6 @@ slide(4,{
    eticheta:'Shadows · 2025', cifra:'Japonia',
    text:'Aceeași hartă se schimbă de la un anotimp la altul (detalii în partea a 3-a).'}
  ],
- tehnic:{eticheta:'Detaliu tehnic · world streaming (cum se face de obicei)',
-  cod:'// harta e împărțită într-o grilă de celule\nfor (celula : celuleInJur(jucator, raza))\n    incarca(celula, distanta(celula) < 300 ? DETALIAT : SIMPLU);\nfor (celula : celuleIncarcate)\n    if (prea_departe(celula)) elibereaza(celula);',
+ tehnic:{eticheta:'Pe scurt · world streaming',
   text:'O țară de 80–130 km² nu încape toată în memorie. Harta e împărțită într-un grid de celule (chunks): lângă jucător se face streaming la varianta detaliată, mai departe doar LOD-uri simplificate, iar celulele rămase în urmă se descarcă din memorie. Așa funcționează, în general, jocurile open world mari.'}
 });

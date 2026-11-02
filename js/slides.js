@@ -75,14 +75,12 @@ add({...meta(7),hue:200,html:CARDS3(SLIDE[7])});
 /* SLIDE 8 */
 add({...meta(8),hue:188,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <p class="lead rise" style="--i:1">${c.subtitlu}</p>
- <div class="g3">
-  <div ${rs(2)}><div class="card"><div class="row" style="gap:28px"><div class="stat"><span class="big" id="atn">0</span><span class="lab">${c.verificate}</span></div><div class="stat"><span class="big" id="ate" style="color:var(--creed)">0</span><span class="lab">${c.probleme}</span></div></div><p class="note" id="atr" style="margin-top:6px">${c.textInitial}</p></div></div>
-  ${c.carduri.map((k,i)=>`<div ${rs(i+3)}>${CARD(k)}</div>`).join('')}
- </div>
  <div class="g2">
-  <div ${rs(5)} style="min-width:0"><div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="tag">${c.etichetaTest}</div><button class="btn pri" id="aRun">${c.butonPornire}</button></div>
-   <canvas class="sim" id="atl" width="760" height="400" aria-label="Simulare: o hartă parcursă de un test automat"></canvas></div>
-  ${TEHNIC(c.tehnic,6)}
+  <div ${rs(2)} style="min-width:0"><div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="tag">${c.etichetaTest}</div><button class="btn pri" id="aRun">${c.butonPornire}</button></div>
+   <canvas class="sim" id="atl" width="760" height="400" aria-label="Simulare: o hartă parcursă de un test automat"></canvas>
+   <div class="card" style="margin-top:10px"><div class="row" style="gap:28px"><div class="stat"><span class="big" id="atn">0</span><span class="lab">${c.verificate}</span></div><div class="stat"><span class="big" id="ate" style="color:var(--creed)">0</span><span class="lab">${c.probleme}</span></div></div><p class="note" id="atr" style="margin-top:6px">${c.textInitial}</p></div></div>
+  <div style="display:grid;gap:12px;min-width:0;align-content:start">${c.carduri.map((k,i)=>`<div ${rs(i+3)}>${CARD(k)}</div>`).join('')}
+   ${TEHNIC(c.tehnic,5)}</div>
  </div></div>`)(SLIDE[8]),mount:mAtlas});
 
 /* SLIDE 9 */
@@ -126,36 +124,37 @@ add({...meta(11),hue:200,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
   </div></div></div>`)(SLIDE[11]),mount:mGI});
 
 /* SLIDE 12 */
-add({...meta(12),hue:204,html:(c=>{const o=c.optiuni,G=(g,lab,list,def,f)=>`<div class="calc-r"><span class="lab">${lab}</span><div class="seg" data-g="${g}">${list.map((x,i)=>`<button class="btn${i===def?' on':''}" data-i="${i}">${f(x)}</button>`).join('')}</div></div>`;
- return `<div class="in">${HEAD(c.supratitlu,c.titlu)}
+add({...meta(12),hue:204,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <p class="lead rise" style="--i:1">${c.subtitlu}</p>
+ <div ${rs(2,'lab')}>${c.etichetaCum}</div>
  <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div>
- <div class="g2">
-  <div ${rs(5)} style="min-width:0"><div class="card calc"><div class="tag">${c.etichetaCalc}</div>
-   <div class="calc-g">${G('h',c.harta,o.harti,2,x=>x.nume)}
-   ${G('r',c.rezolutie,o.rezolutii,2,x=>x.nume)}
-   ${G('o',c.ore,o.ore,2,x=>x)}
-   ${G('a',c.anotimpuri,o.anotimpuri,1,x=>x)}</div>
-   <div class="calc-out"><span class="lab">${c.rezultat}</span><span class="big" id="bkV">—</span><span class="note" id="bkC"></span></div>
-   <p class="note">${c.presupuneri}</p></div></div>
-  ${TEHNIC(c.tehnic,6)}
- </div></div>`})(SLIDE[12]),mount:mBake});
+ <div ${rs(5,'lab')}>${c.etichetaCeCastigi}</div>
+ <div class="g3">${c.carduri2.map((k,i)=>`<div ${rs(i+5)}>${CARD(k)}</div>`).join('')}</div>
+</div>`)(SLIDE[12])});
 
 /* SLIDE 13 */
-add({...meta(13),hue:212,html:CARDS3(SLIDE[13])});
+add({...meta(13),hue:212,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.titlu)+`<p class="lead rise" style="--i:1">${c.subtitlu}</p>`}
+ <div class="row rise" style="--i:1"><div class="seg" id="seaS">${c.anotimpuri.map((q,i)=>`<button class="btn${i===1?' on':''}" data-s="${i}">${q.iconita} ${q.nume}</button>`).join('')}</div><button class="btn on" id="seaR">${c.butonLumina}: ${c.pornita}</button></div>
+ <div ${rs(2)}><canvas class="sim" id="sea" width="960" height="420" aria-label="Peisaj japonez cu pini Akamatsu, castel Tenshu și poartă Torii"></canvas></div>
+ <div class="g3 rise" style="--i:3"><label class="lab">${c.ora} <input type="range" id="seaT" min="5.5" max="20.5" step=".05" value="14.5"> <span class="mono" id="seaH">14:30</span></label>
+  <div><div class="lab">${c.densitate}</div><div class="btrack" style="margin-top:6px"><div class="bar" id="mD" style="width:100%;background:var(--accent)"></div></div></div>
+  <div><div class="lab">${c.reflexie}</div><div class="btrack" style="margin-top:6px"><div class="bar" id="mA" style="width:20%;background:var(--accent)"></div></div></div></div>
+</div>`)(SLIDE[13]),mount:mSeason});
 
 /* SLIDE 14 */
 add({...meta(14),hue:195,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
- <div class="g3">
-  <div ${rs(2)}><div class="card"><div class="tag">${c.etichetaVii}</div><div class="big" id="cA">40</div><div class="lab">${c.vii}</div></div></div>
-  <div ${rs(3)}><div class="card"><div class="tag">${c.etichetaDetaliate}</div><div class="big" id="cM">120</div><div class="lab">${c.detaliate}</div></div></div>
-  <div ${rs(4)}><div class="card"><div class="row" style="justify-content:space-between"><div><div class="big" id="cL" style="color:var(--mute)">1.880</div><div class="lab">${c.figuranti}</div></div><div><div class="big" id="cR" style="color:var(--creed)">0</div><div class="lab">${c.schimburi}</div></div></div></div></div>
- </div>
  <div class="g2">
-  <div ${rs(5)} style="min-width:0"><canvas class="sim" id="crw" width="960" height="440" style="cursor:crosshair" aria-label="Simulare: mulțime într-o piață din Paris"></canvas>
+  <div ${rs(2)} style="min-width:0"><canvas class="sim" id="crw" width="960" height="440" style="cursor:crosshair" aria-label="Simulare: mulțime într-o piață din Paris"></canvas>
    <div class="row" style="margin-top:8px"><label class="lab" style="flex:1 1 220px;display:flex;gap:10px;align-items:center">${c.etichetaCursor} <input type="range" id="crwN" min="500" max="2000" step="100" value="2000"><span class="mono" id="crwNv">2.000</span></label><span class="note">${c.indiciu}</span></div>
+   <div class="stats4">
+    <div class="stat"><span class="tag">${c.etichetaVii}</span><span class="big" id="cA">40</span><span class="lab">${c.vii}</span></div>
+    <div class="stat"><span class="tag">${c.etichetaDetaliate}</span><span class="big" id="cM">120</span><span class="lab">${c.detaliate}</span></div>
+    <div class="stat"><span class="tag">&nbsp;</span><span class="big" id="cL" style="color:var(--mute)">1.880</span><span class="lab">${c.figuranti}</span></div>
+    <div class="stat"><span class="tag">&nbsp;</span><span class="big" id="cR" style="color:var(--creed)">0</span><span class="lab">${c.schimburi}</span></div>
+   </div>
    <p class="small" id="cP" style="margin-top:6px"></p></div>
-  ${TEHNIC(c.tehnic,6)}
+  <div style="display:grid;gap:12px;min-width:0;align-content:start">${c.carduri.map((k,i)=>`<div ${rs(i+3)}>${CARD(k)}</div>`).join('')}
+   ${TEHNIC(c.tehnic,6)}</div>
  </div></div>`)(SLIDE[14]),mount:mCrowd});
 
 /* SLIDE 15 */

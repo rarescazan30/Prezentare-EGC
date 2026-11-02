@@ -13,14 +13,14 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
-   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
+   │ ┌ tehnic: eticheta + text ┐   ← explicație pe scurt
    └ */
 slide(9,{
  bara:'09 · Orientarea',
  an:2009,
  supratitlu:'Partea 2 · Level design',
  titlu:'Cum te orientezi într-un oraș fără să te uiți pe hartă',
- subtitlu:'Urbanistul Kevin Lynch (1960) a observat că oamenii țin minte un oraș după câteva lucruri simple. Jocurile folosesc aceeași idee.',
+ subtitlu:'Urbanistul Kevin Lynch a observat că oamenii țin minte un oraș după câteva lucruri simple. Jocurile folosesc aceeași idee.',
  carduri:[
   {poza:{descriere:'Florența văzută de pe un viewpoint', fisier:'img/09-reper-florenta.jpg'},
    eticheta:'Landmarks (repere)',
@@ -32,7 +32,6 @@ slide(9,{
    eticheta:'Edges (margini)',
    text:'Ziduri, râuri și faleze despart zonele și îți arată unde se termină un cartier.'}
  ],
- tehnic:{eticheta:'Detaliu tehnic · camera și landmark-urile',
-  cod:'// panorama de pe un viewpoint\nfloat u = t * vitezaUnghiulara;\nvec3  ochi = centru + vec3(r * cos(u), inaltime, r * sin(u));\nmat4  V = lookAt(ochi, centru, vec3(0, 1, 0));',
-  text:'Pe un viewpoint, camera face un cerc în jurul personajului: un view matrix (lookAt) cu poziția ochiului pe un cerc. Ca landmark-urile să se vadă de la kilometri distanță, engine-urile țin de obicei un LOD simplificat al lor, desenat până la orizont (draw distance mare), chiar când restul orașului e încărcat doar parțial.'}
+ tehnic:{eticheta:'Pe scurt · viewpoints și landmarks',
+  text:'Pe un viewpoint, camera face un cerc în jurul personajului și îți arată orașul de sus. Ca landmark-urile să se vadă de la kilometri distanță, jocul păstrează o versiune simplificată a lor (un LOD) desenată până la orizont, chiar când restul orașului e încărcat doar parțial.'}
 });

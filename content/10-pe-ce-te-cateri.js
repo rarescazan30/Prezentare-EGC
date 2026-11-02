@@ -25,7 +25,6 @@ slide(10,{
   {eticheta:'Distanțe calculate', text:'Ferestrele, balcoanele și acoperișurile sunt puse la distanțe pe care personajul le poate sări sau atinge.'},
   {eticheta:'Arhitectură ajustată', text:'Clădirile seamănă cu cele reale, dar au mai multe locuri de prindere decât în realitate, ca urcarea să curgă.'}
  ],
- tehnic:{eticheta:'Detaliu tehnic · raycasts',
-  cod:'// caută un ledge în fața personajului\nhit1 = raycast(piept, inainte, 0.6);         // raycast orizontal\nif (hit1) {\n  hit2 = raycast(hit1.punct + sus * 0.3, jos); // raycast în jos\n  if (hit2 && hit2.normala.y > 0.7)\n    ledge = hit2.punct;                       // aproape orizontală\n}',
-  text:'Pentru motor, clădirea e o mulțime de triunghiuri. Un raycast în față găsește peretele, iar unul de sus în jos verifică dacă deasupra e o suprafață orizontală, adică are normala aproape verticală. Matematic e ray–plane intersection de la curs: t = (d − N·O) / (N·D).'}
+ tehnic:{eticheta:'Pe scurt · cum „vede” jocul o margine',
+  text:'Jocul nu vede clădirea ca noi. La fiecare pas, „pipăie” ce e în fața personajului: dacă e un perete, verifică dacă deasupra lui e un loc plat de care se poate prinde. E ca și cum ai întinde mâna pe întuneric și ai căuta marginea unei mese.'}
 });

@@ -27,10 +27,10 @@ slide(6,{
  textSelectie:'Clădirea aleasă: piesa {piesa} · translație ({x}, {y}) · rotație {r}° · scalare {s}',
  carduri:[
   {eticheta:'1 · Modular kit', text:'Ziduri, ferestre, uși, acoperișuri, balcoane. Fiecare piesă e modelată o singură dată.'},
-  {eticheta:'2 · Instancing', text:'Aceeași piesă e desenată de sute de ori. Diferă doar matricea de transformare <b>M = T · R · S</b> (translație, rotație, scalare), ca la EGC.'},
+  {eticheta:'2 · Instancing', text:'Aceeași piesă e desenată de sute de ori. Diferă doar matricea de transformare <b>M = T · R · S</b> (translație, rotație, scalare).'},
   {eticheta:'3 · Variație', text:'Culori, texturi și uzură diferite, ca să nu observi că o clădire se repetă.'}
  ],
  tehnic:{eticheta:'Detaliu tehnic · instancing în OpenGL',
   cod:'glm::mat4 M = glm::translate(I, poz)                 // T\n            * glm::rotate(I, unghi, glm::vec3(0,1,0)) // R\n            * glm::scale(I, glm::vec3(s));            // S\n\n// 1.000 de clădiri, un singur draw call\nglDrawElementsInstanced(GL_TRIANGLES, nrIndici,\n                        GL_UNSIGNED_INT, 0, 1000);',
-  text:'Mesh-ul piesei stă o singură dată în VRAM (memoria GPU-ului). Pentru fiecare copie se trimite doar matricea ei 4×4, adică 16 numere. Fără instancing, 1.000 de clădiri ar însemna 1.000 de draw calls, iar fiecare draw call costă timp pe CPU.'}
+  text:'Mesh-ul stă o singură dată în VRAM; pentru fiecare copie se trimite doar matricea 4×4 (16 numere). Fără instancing, 1.000 de clădiri = 1.000 de draw calls, fiecare cu un cost pe CPU.'}
 });

@@ -16,7 +16,7 @@ slide(11,{
  an:2025,
  supratitlu:'Partea 3 · Cum devine orașul viu',
  titlu:'Cum se luminează o lume atât de mare',
- subtitlu:'La EGC am calculat direct lighting (modelul Phong). Jocurile adaugă și indirect lighting: lumina reflectată de pereți și de sol, adică global illumination (GI). Doar că GI-ul e foarte scump.',
+ subtitlu:'Lumina care vine direct de la soare e ușor de calculat (direct lighting, modelul Phong). Greu e lumina reflectată de pereți și de sol (indirect lighting). Împreună formează global illumination (GI).',
  soare:'Soarele',
  orarFix:' (baked: moment fix)',
  orarDinamic:' (orice oră)',
@@ -28,7 +28,6 @@ slide(11,{
   {buton:'3. Ray tracing', textDesen:'3. RAY TRACING (RTGI) · SHADOWS', eticheta:'Shadows · 2025', cifra:'2 TB și 2 ani',
    text:'Cu patru anotimpuri, baking-ul ar fi cerut aproximativ 2 TB de date și doi ani de calcul. Așa că GI-ul se calculează în timp real, cu ray tracing (RTGI).'}
  ],
- tehnic:{eticheta:'Detaliu tehnic · ce lipsește din Phong',
-  cod:'vec3 I = ka                        // ambient (constant)\n       + kd * max(dot(N,L), 0.0)   // diffuse\n       + ks * pow(max(dot(R,V), 0.0), n); // specular',
-  text:'Termenul ambient ka e o constantă care „mimează” indirect lighting-ul. Global illumination îl înlocuiește cu lumina reală venită de pe pereți și de pe sol: întâi baked în lightmaps, apoi în light probes, iar în Shadows calculată cu ray tracing.'}
+ tehnic:{eticheta:'Pe scurt · de ce e greu indirect lighting-ul',
+  text:'Ca să afli câtă lumină reflectată ajunge într-un punct, trebuie să „întrebi” toate suprafețele din jur cât de luminate sunt, iar ele depind la rândul lor de altele. Jocurile au rezolvat asta în trei feluri: au calculat-o dinainte (baked), au salvat-o doar în câteva puncte (light probes) sau o calculează pe loc (ray tracing).'}
 });
