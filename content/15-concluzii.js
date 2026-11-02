@@ -9,6 +9,7 @@
    │ indiciuBibliografie
    │ ▸ bibliografie[0].titlu        N unitate      ← se deschide la click
    │ ▸ bibliografie[1].titlu        N unitate
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └
 
    Fiecare rând din bibliografie: [titlu, adresă fără https://]. Verificați că linkurile funcționează. */
@@ -22,6 +23,8 @@ slide(15,{
   {eticheta:'Partea 2', text:'Un oraș mare se face din piese refolosite, reguli automate și teste făcute de programe.'},
   {eticheta:'Partea 3', text:'Lumina, vremea și mulțimile fac orașul viu, iar trucuri ca nivelul de detaliu îl fac să meargă fluid.'}
  ],
+ tehnic:{eticheta:'Concepte de la EGC din prezentare',
+  text:'Matricea de modelare M = T · R · S și instanțierea · mesh din hartă de înălțimi și normale prin produs vectorial · intersecția rază–plan · matricea de vizualizare (lookAt) · modelul Phong și iluminarea globală · shadere · nivel de detaliu (LOD) și frustum culling.'},
  indiciuBibliografie:'Bibliografie · apasă pe un grup pentru a-l deschide',
  bibliografie:[
   {titlu:'Prezentări și articole din industrie', unitate:'surse', randuri:[
@@ -35,7 +38,8 @@ slide(15,{
    ['Jonathan Dumont (2015) — The World Design of Assassin’s Creed Syndicate','gamedeveloper.com/design/the-world-design-of-assassin-s-creed-syndicate-full-transcript'],
    ['Destructoid (2014) — Caroline Miousse și cei doi ani petrecuți pe Notre-Dame','destructoid.com/one-dev-spent-two-years-making-the-notre-dame-in-assassins-creed-unity'],
    ['SIGGRAPH Blog (2019) — Cum a refăcut Ubisoft Notre-Dame pentru Unity','blog.siggraph.org/2019/05/how-ubisoft-re-created-notre-dame-for-assassins-creed-unity.html'],
-   ['method.gg — Dimensiunea hărții din AC Shadows','method.gg/assassins-creed-shadows/assassins-creed-shadows-map-size-and-locations']
+   ['method.gg — Dimensiunea hărții din AC Shadows','method.gg/assassins-creed-shadows/assassins-creed-shadows-map-size-and-locations'],
+   ['Wikipedia — Ubisoft Anvil: istoria motorului (Scimitar → Anvil → AnvilNext → Ubisoft Anvil)','en.wikipedia.org/wiki/Ubisoft_Anvil']
   ]},
   {titlu:'Cercetare', unitate:'surse', randuri:[
    ['Kevin Lynch (1960) — The Image of the City','MIT Press'],

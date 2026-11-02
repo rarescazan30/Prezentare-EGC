@@ -6,11 +6,12 @@
    │ supratitlu
    │ TITLU
    │ subtitlu
-   │ ┌ cartier văzut de sus ──────┐   ┌ carduri[0] ┐
-   │ │ textDesen (sus)            │   ├ carduri[1] ┤   (eticheta + text)
-   │ │ legenda (jos)              │   └ carduri[2] ┘
-   │ └────────────────────────────┘
-   │ [butonGenereaza]  indiciu
+   │ ┌ carduri[0] ┐ ┌ carduri[1] ┐ ┌ carduri[2] ┐   (eticheta + text)
+   │ ┌ cartier văzut de sus ──────┐   ┌ tehnic ─────────────────────┐
+   │ │ textDesen (sus)            │   │ cod                         │
+   │ │ legenda (jos)              │   │ eticheta                    │
+   │ └────────────────────────────┘   │ text                        │
+   │ [butonGenereaza]  indiciu        └─────────────────────────────┘
    │ textSelectie (translația, rotația și scalarea clădirii alese)
    └ */
 slide(6,{
@@ -28,5 +29,8 @@ slide(6,{
   {eticheta:'1 · Kit de piese', text:'Ziduri, ferestre, uși, acoperișuri, balcoane. Fiecare piesă e modelată o singură dată.'},
   {eticheta:'2 · Instanțiere', text:'Aceeași piesă e desenată de sute de ori. Diferă doar matricea de transformare <b>M = T · R · S</b> (translație, rotație, scalare), ca la EGC.'},
   {eticheta:'3 · Variație', text:'Culori, texturi și uzură diferite, ca să nu observi că o clădire se repetă.'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · instanțiere în OpenGL',
+  cod:'glm::mat4 M = glm::translate(I, poz)                 // T\n            * glm::rotate(I, unghi, glm::vec3(0,1,0)) // R\n            * glm::scale(I, glm::vec3(s));            // S\n\n// 1.000 de clădiri, un singur apel de desenare\nglDrawElementsInstanced(GL_TRIANGLES, nrIndici,\n                        GL_UNSIGNED_INT, 0, 1000);',
+  text:'Mesh-ul piesei stă o singură dată în memoria plăcii video. Pentru fiecare copie se trimite doar matricea ei 4×4, adică 16 numere. Fără instanțiere, 1.000 de clădiri ar însemna 1.000 de apeluri de desenare, iar fiecare apel costă timp pe procesor.'}
 });

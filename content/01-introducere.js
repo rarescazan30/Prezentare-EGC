@@ -22,9 +22,9 @@ slide(1,{
  contorText:'Damasc (2007) → uscatul Greciei Antice (2018)',
  textDesen:'ANIMUS · 0,13 KM² (2007) → 130 KM² (2018)',
  carduri:[
-  {eticheta:'Partea 1 · Vorbitor 1', text:'Ce s-a schimbat: de la câteva orașe mici la țări întregi.'},
-  {eticheta:'Partea 2 · Vorbitor 2', text:'Cum se construiește un oraș: piese, reguli și teste.'},
-  {eticheta:'Partea 3 · Vorbitor 3', text:'Cum devine orașul viu: lumină, anotimpuri și oameni.'}
+  {eticheta:'Partea 1 · Vorbitor 1', text:'Ce s-a schimbat: de la câteva orașe mici la țări întregi, și ce înseamnă asta pentru memorie și teren.'},
+  {eticheta:'Partea 2 · Vorbitor 2', text:'Cum se construiește un oraș: piese instanțiate, teren generat, teste automate, raze pentru cățărare.'},
+  {eticheta:'Partea 3 · Vorbitor 3', text:'Cum devine orașul viu: de la modelul Phong la iluminarea globală, shadere pentru anotimpuri, LOD pentru mulțimi.'}
  ],
  buton:'Începe prezentarea →'
 });

@@ -13,6 +13,7 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(9,{
  bara:'09 · Orientarea',
@@ -30,5 +31,8 @@ slide(9,{
   {poza:{descriere:'Tamisa ca margine între zone (Syndicate)', fisier:'img/09-tamisa-londra.jpg'},
    eticheta:'Margini',
    text:'Ziduri, râuri și faleze despart zonele și îți arată unde se termină un cartier.'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · camera și reperele',
+  cod:'// panorama de pe un punct de sincronizare\nfloat u = t * vitezaUnghiulara;\nvec3  ochi = centru + vec3(r * cos(u), inaltime, r * sin(u));\nmat4  V = lookAt(ochi, centru, vec3(0, 1, 0));',
+  text:'Pe un reper, camera face un cerc în jurul personajului: o matrice de vizualizare (lookAt) cu poziția ochiului pe un cerc. Ca reperele să se vadă de la kilometri distanță, motoarele țin de obicei o versiune simplificată a lor (LOD) desenată până la orizont, chiar când restul orașului e încărcat doar parțial.'}
 });

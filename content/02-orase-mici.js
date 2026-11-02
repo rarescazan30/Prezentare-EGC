@@ -13,6 +13,7 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(2,{
  bara:'02 · Orașe mici',
@@ -30,5 +31,7 @@ slide(2,{
   {poza:{descriere:'Frontiera din AC3: pădure și stânci', fisier:'img/02-frontiera-ac3.jpg'},
    eticheta:'Assassin’s Creed III · 2012', cifra:'Oraș + natură',
    text:'Pe lângă Boston și New York apare frontiera: o pădure întinsă, în care te cațeri pe copaci și stânci.'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · memoria consolei',
+  text:'Xbox 360 și PS3 aveau doar 512 MB de memorie pentru tot jocul: geometrie, texturi, sunet și personaje. De aceea orașele erau mici și separate, cu un ecran de încărcare între ele. Motorul se numea Scimitar în 2007 și a fost redenumit Anvil la AC II.'}
 });

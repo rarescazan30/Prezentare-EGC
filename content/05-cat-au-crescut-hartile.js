@@ -10,6 +10,7 @@
    │ │ joc · loc   ▇▇▇▇▇▇▇▇            km2 km²
    │ └ (scară liniară)
    │ concluzie
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(5,{
  bara:'05 · Cât au crescut hărțile',
@@ -37,5 +38,7 @@ slide(5,{
   {joc:'Mirage', loc:'Bagdad', an:2023, km2:2.3, epoca:2},
   {joc:'Shadows', loc:'Japonia', an:2025, km2:80, epoca:2}
  ],
- concluzie:'Din 2017, o singură hartă e de zeci de ori mai mare decât toate orașele din primele jocuri la un loc.'
+ concluzie:'Din 2017, o singură hartă e de zeci de ori mai mare decât toate orașele din primele jocuri la un loc.',
+ tehnic:{eticheta:'Ce înseamnă un km² pentru motor',
+  text:'Suprafața nu spune tot. Un km² de oraș dens are mult mai multe obiecte, triunghiuri și personaje decât un km² de deșert sau de mare. De aceea un oraș mic și dens, ca Bagdadul din Mirage, poate fi la fel de greu de desenat ca o regiune întinsă.'}
 });

@@ -13,6 +13,7 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(12,{
  bara:'12 · Zi, noapte, anotimpuri',
@@ -29,5 +30,8 @@ slide(12,{
   {poza:{descriere:'Același loc vara și iarna (Shadows)', fisier:'img/12-anotimpuri-shadows.jpg'},
    eticheta:'Shadows · 2025', cifra:'Patru anotimpuri',
    text:'Aceeași hartă are primăvară, vară, toamnă și iarnă: frunze, zăpadă, lacuri înghețate și altă lumină.'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · un shader de zăpadă (tehnică clasică)',
+  cod:'// zăpadă pe suprafețele orientate în sus\nfloat z = smoothstep(0.6, 0.9, dot(N, vec3(0, 1, 0)));\nculoare  = mix(culoare, albZapada, z * nivelIarna);',
+  text:'Cu cât normala unei suprafețe e mai apropiată de verticală, cu atât primește mai multă zăpadă: acoperișurile și solul se albesc, pereții nu. Iar când lumea se schimbă de la un anotimp la altul, lumina nu mai poate fi calculată o singură dată dinainte. De aici trecerea la lumina calculată pe loc (slide-ul 11).'}
 });

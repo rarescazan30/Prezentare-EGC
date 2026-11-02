@@ -6,10 +6,13 @@
    │ supratitlu
    │ TITLU
    │ subtitlu
-   │ ┌ etichetaTest     [butonPornire] ┐  ┌ 0 verificate   0 probleme ┐
-   │ │ textDesen (sus)                 │  │ textInitial → rezultat     │
-   │ │ hartă animată                   │  └────────────────────────────┘
-   │ └─────────────────────────────────┘  ┌ carduri[0], carduri[1]     ┐
+   │ ┌ 0 verificate  0 probleme ┐ ┌ carduri[0] ┐ ┌ carduri[1] ┐
+   │ │ textInitial → rezultat   │
+   │ etichetaTest   [butonPornire]    ┌ tehnic ─────────────────────┐
+   │ ┌ hartă animată ─────────────┐   │ cod                         │
+   │ │ textDesen (sus)            │   │ eticheta                    │
+   │ └────────────────────────────┘   │ text                        │
+   │                                  └─────────────────────────────┘
    └ */
 slide(8,{
  bara:'08 · Teste de noapte',
@@ -28,5 +31,8 @@ slide(8,{
  carduri:[
   {eticheta:'Noaptea', text:'Programe automate parcurg harta și încearcă fiecare scară, margine și tiroliană.'},
   {eticheta:'Dimineața', text:'Echipa primește o hartă cu locurile unde ceva nu merge și le repară.'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · un test automat (pseudocod)',
+  cod:'// cum ar arăta testul pentru scări\nfor (scara : toateScarile) {\n  bot.teleporteaza(scara.jos);\n  bot.urca(scara);\n  if (!bot.aAjuns(scara.sus, 10 /* secunde */))\n    raport.adauga(scara.pozitie, "scară blocată");\n}',
+  text:'Testele pornesc automat după ce se adună munca din ziua respectivă (build-ul de noapte). Fiecare problemă e salvată cu poziția ei și apare dimineața pe hartă ca un punct roșu. Ubisoft a prezentat un sistem de acest fel pentru Origins, la GDC 2018.'}
 });

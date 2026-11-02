@@ -115,7 +115,7 @@ slide(2,{
 
 Field names are in Romanian and shared across slides: `bara` (text in the bottom bar), `an` (the big faded year: the year of the game the slide is about), `supratitlu` (which part of the talk), `titlu`, `subtitlu`, `carduri` (`poza`, `eticheta`, `cifra`, `text`, `rosu`), `buton`, `nota`. Interactive slides have extra fields named after what they show (`butonReda`, `textDesen`, `moduri`, …), and the sketch says where each one goes.
 
-Each slide shows **1–3 main ideas** (the cards): what the speaker talks about.
+Each slide shows **1–3 main ideas** (the cards): what the speaker talks about. Most slides also have a **technical detail** (`tehnic:{eticheta, cod, text}`): a gold-edged panel with a short formula or code fragment in the style of the EGC labs, plus an explanation. `cod` is optional and is plain text with `\n` for new lines; `//` comments are shown dimmed.
 
 ### Adding screenshots
 
@@ -131,7 +131,9 @@ add({...meta(5),        // bara + an, from content/05-…
 });
 ```
 
-The shared templates are `CARDS3` (title, subtitle, three cards), `CARD` (one card, with an optional photo), `POZA` (a photo or its placeholder) and `STACK` (cards stacked in a column).
+The shared templates are `CARDS3` (title, subtitle, three cards, optional technical panel), `CARD` (one card, with an optional photo), `POZA` (a photo or its placeholder), `TEHNIC` (the technical panel) and `STACK` (cards stacked in a column).
+
+**Layout and screen sizes:** content uses up to 96% of the screen width and text grows with the screen (the „scalare” block in `styles.css`), so it fills a projector instead of sitting in the middle. Screens up to 960 px tall (laptops) get the compact rules in `@media(max-height:960px)`, and very short ones (≤ 740 px) shrink the drawings a bit more. Every slide fits without scrolling from 1280×720 to 2560×1440.
 
 `mount(root)` runs every time the slide is shown. It can return `{tick(dt,t)}`, which is called every frame, and/or `{off()}`, which is called when you leave the slide (for stopping timers or audio).
 

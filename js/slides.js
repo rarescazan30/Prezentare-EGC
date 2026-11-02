@@ -14,7 +14,12 @@ const POZA=p=>`<figure class="poza"><div class="pz-gol"><div class="pz">Poză de
 const CARD=k=>`<div class="card${k.rosu?' crimson-edge':''}">${k.poza?POZA(k.poza):''}<div class="tag"${k.rosu?' style="color:var(--creed)"':''}>${k.eticheta}</div>${k.cifra?`<div class="big"${k.rosu?' style="color:var(--creed)"':''}>${k.cifra}</div>`:''}<p class="small">${k.text}</p></div>`;
 const CARDS3=c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <p class="lead rise" style="--i:1">${c.subtitlu}</p>
- <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div></div>`;
+ <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div>
+ ${TEHNIC(c.tehnic,5)}</div>`;
+/* Detaliu tehnic: cod sau formulă (opțional) + explicație. Codul e scris ca text simplu; comentariile // apar mai șterse. */
+const ESC=t=>String(t).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+const COD=t=>ESC(t).split('\n').map(l=>l.replace(/(\/\/.*)$/,'<span class="c">$1</span>')).join('\n');
+const TEHNIC=(t,i)=>t?`<div ${rs(i,'tehnic'+(t.cod?'':' fara-cod'))}>${t.cod?`<pre class="cod">${COD(t.cod)}</pre>`:''}<div><div class="tag">${t.eticheta}</div><p class="small">${t.text}</p></div></div>`:'';
 /* Carduri unul sub altul, pentru coloana din dreapta */
 const STACK=(cards,i0)=>`<div style="display:grid;gap:12px;min-width:0">${cards.map((k,i)=>`<div ${rs(i0+i)}>${CARD(k)}</div>`).join('')}</div>`;
 
@@ -49,18 +54,19 @@ add({...meta(5),hue:204,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.ti
  <div class="row rise" style="--i:1"><button class="btn pri" id="bPlay">${c.butonReda}</button><span class="note">${c.nota}</span></div>
  <div class="card rise" style="--i:2"><div id="bars">${BARS.map((b,i)=>`<div class="brow" data-i="${i}" style="--c:${['hsl(202 55% 52%)','hsl(192 75% 58%)','hsl(210 85% 68%)'][b.e]}"><div class="n"><b>${b.n.split(' · ')[0]}</b> · ${b.n.split(' · ')[1]}</div><div class="btrack"><div class="bar"></div></div><div class="v">${fk(b.v)} km²</div></div>`).join('')}</div>
   <div class="axis"><span></span><div class="ax" id="ax"></div><span></span></div>
-  <div class="bdet">${c.concluzie}</div></div></div>`)(SLIDE[5]),mount:mBars});
+  <div class="duo"><div class="bdet">${c.concluzie}</div>${TEHNIC(c.tehnic,3)}</div></div></div>`)(SLIDE[5]),mount:mBars});
 
 /* ===================== PARTEA 2 · Cum se construiește un oraș ===================== */
 
 /* SLIDE 6 */
 add({...meta(6),hue:196,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <p class="lead rise" style="--i:1">${c.subtitlu}</p>
- <div class="g2 w">
-  <div ${rs(2)} style="min-width:0"><canvas class="sim" id="kit" width="900" height="440" style="cursor:pointer" aria-label="Cartier construit din câteva piese repetate"></canvas>
+ <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div>
+ <div class="g2">
+  <div ${rs(5)} style="min-width:0"><canvas class="sim" id="kit" width="900" height="440" style="cursor:pointer" aria-label="Cartier construit din câteva piese repetate"></canvas>
    <div class="row" style="margin-top:8px"><button class="btn" id="kitB">${c.butonGenereaza}</button><span class="note">${c.indiciu}</span></div>
    <p class="note" id="kitSel" style="margin-top:6px;color:var(--eagle)"></p></div>
-  ${STACK(c.carduri,3)}
+  ${TEHNIC(c.tehnic,6)}
  </div></div>`)(SLIDE[6]),mount:mKit});
 
 /* SLIDE 7 */
@@ -69,13 +75,14 @@ add({...meta(7),hue:200,html:CARDS3(SLIDE[7])});
 /* SLIDE 8 */
 add({...meta(8),hue:188,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <p class="lead rise" style="--i:1">${c.subtitlu}</p>
+ <div class="g3">
+  <div ${rs(2)}><div class="card"><div class="row" style="gap:28px"><div class="stat"><span class="big" id="atn">0</span><span class="lab">${c.verificate}</span></div><div class="stat"><span class="big" id="ate" style="color:var(--creed)">0</span><span class="lab">${c.probleme}</span></div></div><p class="note" id="atr" style="margin-top:6px">${c.textInitial}</p></div></div>
+  ${c.carduri.map((k,i)=>`<div ${rs(i+3)}>${CARD(k)}</div>`).join('')}
+ </div>
  <div class="g2">
-  <div ${rs(2)} style="min-width:0"><div class="card"><div class="row" style="justify-content:space-between;margin-bottom:6px"><div><div class="tag">${c.etichetaTest}</div></div><button class="btn pri" id="aRun">${c.butonPornire}</button></div>
-   <canvas class="sim" id="atl" width="760" height="400" aria-label="Simulare: o hartă parcursă de un test automat"></canvas></div></div>
-  <div style="display:grid;gap:12px;min-width:0">
-   <div ${rs(3)}><div class="card"><div class="row" style="gap:28px"><div class="stat"><span class="big" id="atn">0</span><span class="lab">${c.verificate}</span></div><div class="stat"><span class="big" id="ate" style="color:var(--creed)">0</span><span class="lab">${c.probleme}</span></div></div><p class="note" id="atr" style="margin-top:6px">${c.textInitial}</p></div></div>
-   ${STACK(c.carduri,4)}
-  </div>
+  <div ${rs(5)} style="min-width:0"><div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="tag">${c.etichetaTest}</div><button class="btn pri" id="aRun">${c.butonPornire}</button></div>
+   <canvas class="sim" id="atl" width="760" height="400" aria-label="Simulare: o hartă parcursă de un test automat"></canvas></div>
+  ${TEHNIC(c.tehnic,6)}
  </div></div>`)(SLIDE[8]),mount:mAtlas});
 
 /* SLIDE 9 */
@@ -84,8 +91,9 @@ add({...meta(9),hue:190,html:CARDS3(SLIDE[9])});
 /* SLIDE 10 */
 add({...meta(10),hue:196,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <p class="lead rise" style="--i:1">${c.subtitlu}</p>
+ <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div>
  <div class="g2">
-  <div ${rs(2)} style="min-width:0"><svg class="facade" viewBox="0 0 640 380" role="img" aria-label="Fațadă renascentistă cu un traseu de cățărare marcat">
+  <div ${rs(5)} style="min-width:0"><svg class="facade" viewBox="0 0 640 380" role="img" aria-label="Fațadă renascentistă cu un traseu de cățărare marcat">
    <rect width="640" height="380" fill="#04080e"/>
    <rect x="60" y="58" width="440" height="286" fill="#182432" stroke="#39526b" stroke-width="1.5"/>
    <rect x="60" y="242" width="440" height="102" fill="#1f3042" stroke="#4d6d8c"/>
@@ -100,7 +108,7 @@ add({...meta(10),hue:196,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
    <circle cx="137" cy="295" r="5" fill="var(--eagle)"/><circle cx="137" cy="250" r="5" fill="var(--eagle)"/><circle cx="277" cy="192" r="5" fill="var(--eagle)"/><circle cx="277" cy="46" r="5" fill="var(--eagle)"/><circle cx="602" cy="128" r="6" fill="var(--eagle)"/>
   </svg>
   <p class="note" style="margin-top:8px">${c.nota}</p></div>
-  ${STACK(c.carduri,3)}
+  ${TEHNIC(c.tehnic,6)}
  </div></div>`)(SLIDE[10])});
 
 /* ===================== PARTEA 3 · Cum devine orașul viu ===================== */
@@ -114,6 +122,7 @@ add({...meta(11),hue:200,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
   <div style="display:grid;gap:10px;min-width:0;align-content:start">
    <div ${rs(3,'seg')}>${c.moduri.map((m,i)=>`<button class="btn${i?'':' on'}" data-m="${i}">${m.buton}</button>`).join('')}</div>
    <div ${rs(4)}><div class="card"><div class="tag" id="giTag">${c.moduri[0].eticheta}</div><div class="big" id="giBig" style="margin:2px 0">${c.moduri[0].cifra}</div><p class="small" id="giTxt"></p></div></div>
+   ${TEHNIC(c.tehnic,5)}
   </div></div></div>`)(SLIDE[11]),mount:mGI});
 
 /* SLIDE 12 */
@@ -121,14 +130,17 @@ add({...meta(12),hue:212,html:CARDS3(SLIDE[12])});
 
 /* SLIDE 13 */
 add({...meta(13),hue:195,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
- <div class="g2 w">
-  <div ${rs(2)} style="min-width:0"><canvas class="sim" id="crw" width="960" height="440" style="cursor:crosshair" aria-label="Simulare: mulțime într-o piață din Paris"></canvas>
-   <div class="row" style="margin-top:8px"><label class="lab" style="flex:1 1 220px;display:flex;gap:10px;align-items:center">${c.etichetaCursor} <input type="range" id="crwN" min="2000" max="12000" step="500" value="12000"><span class="mono" id="crwNv">12.000</span></label><span class="note">${c.indiciu}</span></div></div>
-  <div style="display:grid;gap:10px;min-width:0">
-   <div ${rs(3)}><div class="card"><div class="tag">${c.etichetaVii}</div><div class="big" id="cA">40</div><div class="lab">${c.vii}</div></div></div>
-   <div ${rs(4)}><div class="card"><div class="tag">${c.etichetaDetaliate}</div><div class="big" id="cM">120</div><div class="lab">${c.detaliate}</div></div></div>
-   <div ${rs(5)}><div class="card"><div class="row" style="justify-content:space-between"><div><div class="big" id="cL" style="font-size:28px;color:var(--mute)">11.880</div><div class="lab">${c.figuranti}</div></div><div><div class="big" id="cR" style="font-size:28px;color:var(--creed)">0</div><div class="lab">${c.schimburi}</div></div></div><p class="small" id="cP" style="margin-top:4px"></p></div></div>
-  </div></div></div>`)(SLIDE[13]),mount:mCrowd});
+ <div class="g3">
+  <div ${rs(2)}><div class="card"><div class="tag">${c.etichetaVii}</div><div class="big" id="cA">40</div><div class="lab">${c.vii}</div></div></div>
+  <div ${rs(3)}><div class="card"><div class="tag">${c.etichetaDetaliate}</div><div class="big" id="cM">120</div><div class="lab">${c.detaliate}</div></div></div>
+  <div ${rs(4)}><div class="card"><div class="row" style="justify-content:space-between"><div><div class="big" id="cL" style="color:var(--mute)">11.880</div><div class="lab">${c.figuranti}</div></div><div><div class="big" id="cR" style="color:var(--creed)">0</div><div class="lab">${c.schimburi}</div></div></div></div></div>
+ </div>
+ <div class="g2">
+  <div ${rs(5)} style="min-width:0"><canvas class="sim" id="crw" width="960" height="440" style="cursor:crosshair" aria-label="Simulare: mulțime într-o piață din Paris"></canvas>
+   <div class="row" style="margin-top:8px"><label class="lab" style="flex:1 1 220px;display:flex;gap:10px;align-items:center">${c.etichetaCursor} <input type="range" id="crwN" min="2000" max="12000" step="500" value="12000"><span class="mono" id="crwNv">12.000</span></label><span class="note">${c.indiciu}</span></div>
+   <p class="small" id="cP" style="margin-top:6px"></p></div>
+  ${TEHNIC(c.tehnic,6)}
+ </div></div>`)(SLIDE[13]),mount:mCrowd});
 
 /* SLIDE 14 */
 add({...meta(14),hue:202,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
@@ -139,7 +151,8 @@ add({...meta(14),hue:202,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
 /* SLIDE 15 */
 add({...meta(15),hue:202,html:(c=>`<div class="in tight2">${HEAD(c.supratitlu,c.titlu)}
  <div class="g3 rise" style="--i:1">${c.carduri.map(CARD).join('')}</div>
- <div ${rs(2)}><div class="lab" style="margin-bottom:12px">${c.indiciuBibliografie}</div><div class="acc" id="acc"></div></div>
+ ${TEHNIC(c.tehnic,2)}
+ <div ${rs(3)}><div class="lab" style="margin-bottom:12px">${c.indiciuBibliografie}</div><div class="acc" id="acc"></div></div>
 </div>`)(SLIDE[15]),mount:mEnd});
 
 /* SLIDE 16 */

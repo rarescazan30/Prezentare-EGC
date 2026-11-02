@@ -13,6 +13,7 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(3,{
  bara:'03 · Mare și orașe mari',
@@ -30,5 +31,7 @@ slide(3,{
   {poza:{descriere:'Londra și cârligul cu frânghie (Syndicate)', fisier:'img/03-londra-syndicate.jpg'},
    eticheta:'Syndicate · 2015', cifra:'Londra',
    text:'Străzile largi și Tamisa sunt prea mult de sărit, așa că apare cârligul cu frânghie. Lumea schimbă felul în care te miști.'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · noua generație de console',
+  text:'PS4 și Xbox One (2013) au 8 GB de memorie, de 16 ori mai mult. Unity (motorul AnvilNext 2.0) folosește asta pentru mulțimi mari și pentru materiale fizic corecte (PBR): aceeași suprafață reacționează corect la orice lumină, fără să fie „pictată” de mână pentru fiecare situație.'}
 });

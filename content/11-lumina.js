@@ -11,6 +11,7 @@
    │ │ avertisment (doar modul 2) │   │ CIFRA                    │  ← modul ales
    │ └────────────────────────────┘   │ text                     │
    │ soare ──●────── 11:30 orarFix    └──────────────────────────┘
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(11,{
  bara:'11 · Lumina',
@@ -32,5 +33,8 @@ slide(11,{
    cifra:'2 TB și 2 ani',
    text:'Cu patru anotimpuri, calculul dinainte ar fi cerut aproximativ 2 TB de date și doi ani. Așa că lumina reflectată se calculează în timp real, cu ray tracing.'}
  ],
+ tehnic:{eticheta:'Detaliu tehnic · ce lipsește din Phong',
+  cod:'vec3 I = ka                        // ambientală (constantă)\n       + kd * max(dot(N,L), 0.0)   // difuză\n       + ks * pow(max(dot(R,V), 0.0), n); // speculară',
+  text:'Termenul ambiental ka e o constantă care „mimează” lumina reflectată. Iluminarea globală îl înlocuiește cu lumina reală venită de pe pereți și de pe sol: întâi salvată în texturi (lightmaps), apoi în puncte din spațiu (light probes), iar în Shadows calculată pe loc, cu ray tracing.'},
  avertisment:'⚠ Lumină care „se scurge” în colțul tavanului'
 });

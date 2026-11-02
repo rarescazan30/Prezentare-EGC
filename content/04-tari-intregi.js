@@ -13,6 +13,7 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(4,{
  bara:'04 · Țări întregi',
@@ -30,5 +31,8 @@ slide(4,{
   {poza:{descriere:'Peisaj din Japonia (Shadows)', fisier:'img/04-japonia-shadows.jpg'},
    eticheta:'Shadows · 2025', cifra:'Japonia',
    text:'Aceeași hartă se schimbă de la un anotimp la altul (detalii în partea a 3-a).'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · streaming pe grilă (cum se face de obicei)',
+  cod:'// harta e împărțită într-o grilă de celule\nfor (celula : celuleInJur(jucator, raza))\n    incarca(celula, distanta(celula) < 300 ? DETALIAT : SIMPLU);\nfor (celula : celuleIncarcate)\n    if (prea_departe(celula)) elibereaza(celula);',
+  text:'O țară de 80–130 km² nu încape toată în memorie. Harta e împărțită în celule: lângă jucător se încarcă varianta detaliată, mai departe doar variante simplificate (LOD), iar celulele rămase în urmă se eliberează. Așa funcționează, în general, lumile deschise mari.'}
 });

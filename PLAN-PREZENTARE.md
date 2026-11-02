@@ -2,7 +2,7 @@
 
 **Tema:** Evoluția environment-ului în franciza Assassin’s Creed
 **Unghiul nostru:** cum își construiesc jocurile orașele, văzut ca dezvoltatori de jocuri, cu legături ușoare la ce am făcut la **Elemente de Grafică pe Calculator (EGC)**.
-**Durată:** aproximativ 15–18 minute, adică 5–6 minute de vorbitor.
+**Durată:** aproximativ 15–18 minute, adică 5–6 minute de vorbitor. Detaliile tehnice (🔧) se spun în 2–3 fraze; codul de pe slide nu se citește rând cu rând, ci se arată ideea.
 **Slide-uri:** 16, împărțite în 3 părți.
 
 Firul roșu, într-o frază: *lumile din Assassin’s Creed au crescut de la câteva orașe mici la țări întregi, iar ca să poată face asta, dezvoltatorii au trebuit să schimbe felul în care construiesc, verifică și desenează orașele.*
@@ -15,7 +15,7 @@ Fiecare parte răspunde la o singură întrebare:
 | 2 | Vorbitor 2 | **Cum se construiește un oraș?** Piese, reguli, teste, orientare, cățărare. | 6–10 |
 | 3 | Vorbitor 3 | **Cum devine orașul viu?** Lumină, anotimpuri, oameni și „minciunile” necesare. | 11–16 |
 
-Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitorul. Textul complet e în fișierele din `content/`, iar locurile pentru poze sunt marcate pe slide cu „Poză de adăugat”.
+Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitorul. Pe majoritatea slide-urilor există și un **detaliu tehnic** (chenarul auriu: o formulă sau un fragment scurt de cod în stilul laboratoarelor EGC, plus o explicație). Codul e o *tehnică standard*, nu codul Ubisoft: spuneți asta explicit. Textul complet e în fișierele din `content/`, iar locurile pentru poze sunt marcate pe slide cu „Poză de adăugat”.
 
 ---
 
@@ -30,23 +30,27 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **AC1 (2007):** Damasc, Acra, Ierusalim. Orașe mici, cu acoperișurile lipite ca să poți sări.
 - **AC2 (2009):** Florența și Veneția, refăcute după clădiri reale, cu monumente pe care te urci.
 - **AC3 (2012):** pe lângă oraș apare natura: frontiera, unde te cațeri pe copaci și stânci.
+- 🔧 **Detaliu tehnic:** consolele din 2007 aveau doar 512 MB de memorie pentru tot jocul, de aceea orașele erau mici și separate prin ecrane de încărcare. Motorul: Scimitar (2007), redenumit Anvil la AC II.
 - 🖼 Poze: Damasc (AC1), Florența cu Domul (AC2), frontiera (AC3).
 
 ### Slide 3 · Apoi: marea deschisă și orașe la scară reală (2013–2015)
 - **Black Flag (2013):** o lume făcută mai ales din apă, străbătută cu corabia.
 - **Unity (2014):** Paris cu monumente la dimensiunea reală, mulțimi mari, multe interioare.
 - **Syndicate (2015):** străzile Londrei sunt prea largi pentru sărituri, așa că apare cârligul cu frânghie. *Lumea schimbă felul în care te miști.*
+- 🔧 **Detaliu tehnic:** PS4/Xbox One (2013) au 8 GB de memorie, de 16× mai mult. Unity (AnvilNext 2.0) o folosește pentru mulțimi și pentru materiale fizic corecte (PBR).
 - 🖼 Poze: Caraibe, Paris, Londra.
 
 ### Slide 4 · Acum: țări întregi și o întoarcere la oraș (2017–2025)
 - **Origins / Odyssey / Valhalla:** regiuni întregi, cu deșerturi, munți, mări și animale sălbatice.
 - **Mirage (2023):** înapoi la un singur oraș dens. Lumea nu doar crește, își și schimbă direcția.
 - **Shadows (2025):** aceeași hartă în patru anotimpuri (îl prezintă Vorbitorul 3).
+- 🔧 **Detaliu tehnic:** streaming pe grilă (pseudocod pe slide): harta e împărțită în celule, se încarcă detaliat doar ce e lângă jucător, restul în variante simplificate (LOD). E prezentat ca tehnică generală, nu ca cod Ubisoft.
 - 🖼 Poze: Egipt, Bagdad, Japonia.
 
 ### Slide 5 · Cât de mult au crescut hărțile
 - Graficul, la **scară liniară**: barele primelor jocuri abia se văd, iar asta e chiar ideea.
 - Butonul „Redă în ordine” desenează barele an cu an. Îl apăsăm și povestim pe scurt.
+- 🔧 **Detaliu tehnic:** un km² de oraș dens are mult mai multe obiecte și triunghiuri decât unul de deșert, deci suprafața nu e totul.
 - *Trecerea spre Partea 2:* „O hartă de 100 de ori mai mare nu se poate construi la fel. Cum se face, de fapt?”
 
 ---
@@ -57,17 +61,20 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **Kit de piese:** ziduri, ferestre, acoperișuri, balcoane, modelate o singură dată.
 - **Instanțiere:** aceeași piesă e desenată de sute de ori, doar cu altă **matrice de transformare** (translație, rotație, scalare). *Legătura EGC:* exact matricea de modelare `M = T · R · S` din laboratoare.
 - **Variație:** alte culori și texturi, ca să nu se vadă că se repetă.
+- 🔧 **Detaliu tehnic:** codul OpenGL de pe slide: `M = translate · rotate · scale` (glm) și `glDrawElementsInstanced` pentru 1.000 de clădiri într-un singur apel. Mesajul: mesh-ul stă o dată în memoria plăcii video, iar pentru fiecare copie se trimit doar 16 numere (matricea 4×4).
 - 🎮 Animația: un cartier văzut de sus, construit din 3 piese. „Construiește alt cartier” îl regenerează. La click pe o clădire se văd translația, rotația și scalarea ei.
 
 ### Slide 7 · Orașele se fac de mână, țările se generează după reguli
 - **De mână:** Notre-Dame din Unity, aproape 2 ani de muncă pentru o singură catedrală.
 - **Teren generat:** terenul pornește de la o **hartă de înălțimi** (o imagine în care fiecare pixel e o înălțime), din care se face o rețea de triunghiuri. *Legătura EGC:* o grilă de vârfuri cu înălțimi = un mesh.
 - **Reguli pentru vegetație:** copacii și pietrele se pun automat după pantă, apă și altitudine, apoi artiștii corectează de mână.
+- 🔧 **Detaliu tehnic:** cod pentru hartă de înălțimi → grilă de vârfuri și normala prin `cross` (exact ca la laborator). Relieful natural vine din straturi de zgomot Perlin (fBm).
 - 🖼 Poze: Notre-Dame (Unity), un peisaj din Egipt (Origins).
 
 ### Slide 8 · Cine verifică o hartă atât de mare? Programe care rulează noaptea
 - Pe o hartă de zeci de km² nimeni nu poate testa totul de mână.
 - Noaptea, programe automate încearcă fiecare scară, margine și tiroliană, iar dimineața echipa vede pe o hartă unde sunt problemele.
+- 🔧 **Detaliu tehnic:** pseudocodul unui test pentru scări (teleportează botul, încearcă urcarea, raportează poziția dacă nu ajunge sus). Spuneți „cum ar arăta”: sistemul real a fost prezentat la GDC 2018, dar codul de pe slide e un exemplu.
 - 🎮 Animația e o **simulare** (scrie pe ea): apăsăm „Pornește testul” și arătăm cum e parcursă harta.
 
 ### Slide 9 · Cum te orientezi într-un oraș fără să te uiți pe hartă
@@ -75,6 +82,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **Repere:** clădiri înalte, vizibile de oriunde. Când urci pe ele, se „sincronizează” harta.
 - **Cartiere:** fiecare zonă arată diferit (culori, clădiri, oameni).
 - **Margini:** ziduri, râuri și faleze care despart zonele.
+- 🔧 **Detaliu tehnic:** panorama de pe un punct de sincronizare e o cameră pe un cerc: `lookAt(ochi pe cerc, centru, sus)`, adică matricea de vizualizare de la curs. Reperele au versiuni simplificate (LOD) desenate până la orizont.
 - 🖼 Poze: Florența de pe un punct de sincronizare, două cartiere diferite din Paris, Tamisa în Londra.
 
 ### Slide 10 · Pe ce te poți cățăra și de ce
@@ -82,6 +90,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **Prize de prindere:** pervazurile, cornișele și grinzile sunt marcate ca locuri de care personajul se poate prinde.
 - **Distanțe calculate:** ferestrele, balcoanele și acoperișurile sunt puse la distanțe pe care personajul le poate sări.
 - **Arhitectură ajustată:** clădirile seamănă cu cele reale, dar au mai multe prize, ca urcarea să curgă.
+- 🔧 **Detaliu tehnic:** două raze (raycast): una în față găsește peretele, una în jos verifică dacă deasupra e o suprafață orizontală (`normala.y > 0.7`). Formula intersecției rază–plan: `t = (d − N·O) / (N·D)`.
 - 🖼 Desenul: o fațadă cu un traseu de cățărare marcat (fără butoane, doar de arătat).
 - *Trecerea spre Partea 3:* „Acum avem orașul construit. Ce îl face să pară viu?”
 
@@ -94,12 +103,14 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **Unity (2014):** lumina reflectată e calculată dinainte („coaptă”) pentru câteva momente ale zilei.
 - **Origins (2017):** harta e prea mare, așa că lumina e salvată doar în puncte din spațiu, cu mici erori.
 - **Shadows (2025):** calculul dinainte ar fi cerut aproximativ **2 TB și 2 ani**, așa că lumina se calculează pe loc (ray tracing).
+- 🔧 **Detaliu tehnic:** formula Phong (GLSL) pe slide. Mesajul: termenul ambiental `ka` e o constantă care „mimează” lumina reflectată, iar iluminarea globală îl înlocuiește (lightmaps → light probes → ray tracing).
 - 🎮 Animația: camera gotică. Mutăm „Soarele” și schimbăm cele trei moduri.
 
 ### Slide 12 · Lumea nu mai stă pe loc: zi, noapte, vreme, anotimpuri
 - **Primele jocuri:** ora și vremea erau în mare parte fixe.
 - **AC III (2012):** iarna din frontieră, cu zăpadă adâncă care te încetinește.
 - **Shadows (2025):** aceeași hartă în patru anotimpuri: frunze, zăpadă, lacuri înghețate, altă lumină.
+- 🔧 **Detaliu tehnic:** shader de zăpadă cu `dot(N, sus)`: acoperișurile se albesc, pereții nu. Legătura cu slide-ul 11: cu anotimpuri, lumina nu mai poate fi calculată o singură dată dinainte.
 - 🖼 Poze: frontiera iarna (AC3), același loc vara și iarna (Shadows).
 
 ### Slide 13 · Mii de oameni pe stradă, dar doar câteva zeci „gândesc”
@@ -108,6 +119,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 - **Mai departe:** desenate în detaliu, dar fără „creier” complet. **Restul:** figuranți simpli.
 - Când te miști, un om de departe devine unul de aproape („reciclare”).
 - *Legătura EGC:* e aceeași idee ca **nivelul de detaliu (LOD)** pentru obiectele 3D.
+- 🔧 **Detaliu tehnic:** alegerea nivelului de detaliu după distanță (cod, praguri doar ca exemplu) + frustum culling (ce e în afara piramidei de vizualizare nu se desenează).
 - 🎮 Animația: mișcăm mouse-ul prin piață și arătăm cercurile aurii care te urmăresc.
 
 ### Slide 14 · Orașul din joc nu e o copie a orașului real
@@ -118,6 +130,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 
 ### Slide 15 · Ce am învățat
 - O idee din fiecare parte (sunt scrise pe cele 3 carduri), apoi bibliografia, dacă întreabă cineva.
+- 🔧 **Detaliu tehnic:** un rezumat cu toate conceptele EGC din prezentare (transformări și instanțiere, mesh și normale, rază–plan, lookAt, Phong și iluminare globală, shadere, LOD și culling).
 
 ### Slide 16 · Mulțumim
 - Întrebări.
@@ -180,6 +193,7 @@ Puneți fiecare poză în folderul `img/` exact cu numele de mai jos și apare s
 - **„2 TB și 2 ani”** (slide 11): citat din GDC 2025 / SIGGRAPH 2025. Verificați formularea exactă.
 - **Notre-Dame, „aproape 2 ani”** (slide 7): din interviul cu Caroline Miousse.
 - **Bibliografia** (slide 15): deschideți fiecare link și verificați că spune ce scrie la noi.
+- **Detaliile tehnice noi:** memoria consolelor (512 MB / 8 GB), redenumirea Scimitar → Anvil la AC II, AnvilNext 2.0 și PBR în Unity. Toate sunt fapte cunoscute, dar merită o sursă în bibliografie (de exemplu pagina Wikipedia despre Ubisoft Anvil).
 - **Primele jocuri fără ciclu zi–noapte** (slide 12): verificați ce joc a introdus prima dată ora și vremea dinamice.
 
 ---

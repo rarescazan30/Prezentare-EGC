@@ -47,7 +47,7 @@ slide(NN,{
 - **Field names are Romanian** (`titlu`, `subtitlu`, `carduri`, `eticheta`, `cifra`, `buton`, `nota`, `textDesen` = text drawn on a canvas, …). Keep that convention for new fields.
 - **Fields are ordered as they appear on screen** (top to bottom, left to right), and the sketch at the top of the file must match. If you add, move or rename a field, update the sketch too.
 - Text may contain `<b>…</b>` and `<em>…</em>`. It is inserted as HTML.
-- Each slide shows **1–3 main ideas** (the cards), matching what the speaker says in `PLAN-PREZENTARE.md`. `supratitlu` says which part of the talk the slide belongs to ("Partea 2 · …").
+- Each slide shows **1–3 main ideas** (the cards), matching what the speaker says in `PLAN-PREZENTARE.md`. Most slides also have `tehnic:{eticheta, cod?, text}`: a technical panel (template `TEHNIC` in `js/slides.js`) with a short EGC-style formula or code fragment (plain text, `\n` for new lines, `//` comments dimmed) and an explanation. Keep code to ~4–7 lines and under ~60 characters per line so it fits half a slide. Present code as a standard technique, not as Ubisoft's code, unless a source says otherwise. `supratitlu` says which part of the talk the slide belongs to ("Partea 2 · …").
 - `an` (the faded year) is the year of the game the slide is about.
 - **Photos:** a card's optional `poza:{descriere, fisier}` renders a dashed „Poză de adăugat” box until `img/<fisier>` exists. Then the image covers it, with no code change (`POZA` in `js/slides.js`, styles `.poza` in `styles.css`). When adding a photo slot, also add it to the image list in `PLAN-PREZENTARE.md`.
 - `SLIDE[5].harti` (map sizes) feeds the chart via `BARS` in `js/slides.js`.
@@ -109,7 +109,7 @@ After any change:
   for f in content/*.js js/*.js js/widgets/*.js; do node -e "new Function(require('fs').readFileSync('$f','utf8'))" || echo "BROKEN: $f"; done
   ```
 - For refactors, compare against `main`: render each slide (`index.html#1` … `#16`) in both versions and diff the `section.slide.on` markup. The live counter on slide 13 and the random district on slide 6 differ between runs. That's normal.
-- Check that every slide fits without scrolling at 1280×720, 1366×768 and 1920×1080 (`section.slide.on` `scrollHeight <= clientHeight`). Short screens get the compact rules in the `@media(max-height:800px)` block of `styles.css`.
+- Check that every slide fits without scrolling at 1280×720, 1366×768, 1440×900, 1920×1080 and 2560×1440 (`section.slide.on` `scrollHeight <= clientHeight`), and that no `pre.cod` scrolls sideways. Content scales with the screen (the „scalare” block in `styles.css`); laptops get the compact rules in `@media(max-height:960px)`, very short screens the `@media(max-height:740px)` block.
 - In a hidden or background browser tab, `requestAnimationFrame` and CSS animations pause, so slide transitions look stuck and fade-ins look blank. That isn't a bug. Check in a visible tab before concluding something is broken.
 
 ## Git

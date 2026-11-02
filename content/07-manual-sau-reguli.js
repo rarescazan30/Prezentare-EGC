@@ -13,6 +13,7 @@
    │ │ text         │ │ text         │ │ text         │
    │ └──────────────┘ └──────────────┘ └──────────────┘
    │ (poza și cifra sunt opționale; rosu:true = card evidențiat cu roșu)
+   │ ┌ tehnic: [cod] │ eticheta + text ┐   ← detaliu tehnic
    └ */
 slide(7,{
  bara:'07 · De mână sau după reguli',
@@ -29,5 +30,8 @@ slide(7,{
    text:'Terenul pornește de la o imagine în care fiecare pixel e o înălțime. Din ea se construiește o rețea de triunghiuri, ca un mesh de la EGC.'},
   {eticheta:'Reguli pentru vegetație', cifra:'Reguli + corecturi',
    text:'Copacii, iarba și pietrele sunt puse automat după pantă, apă și altitudine. Apoi artiștii corectează de mână ce nu arată bine.'}
- ]
+ ],
+ tehnic:{eticheta:'Detaliu tehnic · teren din hartă de înălțimi',
+  cod:'// hartă de înălțimi → rețea de triunghiuri\nfor (z = 0; z < N; z++)\n  for (x = 0; x < N; x++)\n    v[z][x] = vec3(x * pas, h[z][x] * Hmax, z * pas);\n\n// normala unui vârf, din vecinii lui\nn = normalize(cross(v[z+1][x] - v[z][x], v[z][x+1] - v[z][x]));',
+  text:'Fiecare pixel al hărții de înălțimi devine un vârf, iar câte 4 vârfuri vecine formează 2 triunghiuri. Normalele, necesare pentru lumină, se calculează cu produs vectorial. Un relief care arată natural se obține adunând mai multe straturi de zgomot (Perlin), fiecare de două ori mai fin și mai slab.'}
 });
