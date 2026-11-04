@@ -18,7 +18,7 @@ slide(1,{
  subtitlu:'Ce s-a schimbat în lumea jocului în aproape 20 de ani și ce tehnici de grafică stau în spate.',
  contor:'0,13 → 130',
  contorUnitate:'km²',
- contorText:'Damasc (2007) → uscatul Greciei Antice (2018)',
+ contorText:'Damasc (2007) → Grecia Antică (2018)',
  textDesen:'ANIMUS · 0,13 KM² (2007) → 130 KM² (2018)',
  buton:'Începe prezentarea →'
 });
