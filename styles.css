@@ -373,3 +373,6 @@ canvas.sim,.facade{box-shadow:0 24px 60px -36px #000,0 0 0 1px hsl(var(--hue) 60
 .in.intro{max-width:min(92vw,1700px)}
 .in.intro h1.k{font-size:clamp(32px,3.3vw,66px);max-width:20ch}
 .in.intro canvas.sim{max-height:min(58vh,720px);width:100%}
+
+/* slide 6: titlul trece pe două rânduri după animație, așa că desenul e puțin mai scund pe ecranele mari */
+@media(min-height:961px){.in.kit canvas.sim{max-height:min(36vh,560px)}}

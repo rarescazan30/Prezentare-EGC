@@ -58,7 +58,7 @@ add({...meta(5),hue:204,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.ti
 /* ===================== PARTEA 2 · Cum se construiește un oraș ===================== */
 
 /* SLIDE 6 */
-add({...meta(6),hue:196,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
+add({...meta(6),hue:196,html:(c=>`<div class="in kit">${HEAD(c.supratitlu,c.titlu)}
  <p class="lead rise" style="--i:1">${c.subtitlu}</p>
  <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div>
  <div class="g2">
