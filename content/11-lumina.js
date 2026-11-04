@@ -14,7 +14,7 @@
 slide(11,{
  bara:'11 · Lighting',
  an:2025,
- supratitlu:'Partea 3 · Cum devine orașul viu',
+ supratitlu:'Cum devine orașul viu',
  titlu:'Cum se luminează o lume atât de mare',
  subtitlu:'Lumina care vine direct de la soare e ușor de calculat (direct lighting, modelul Phong). Greu e lumina reflectată de pereți și de sol (indirect lighting). Împreună formează global illumination (GI).',
  soare:'Soarele',

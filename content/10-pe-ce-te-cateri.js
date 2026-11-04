@@ -16,7 +16,7 @@
 slide(10,{
  bara:'10 · Cățărarea',
  an:2009,
- supratitlu:'Partea 2 · Level design',
+ supratitlu:'Level design',
  titlu:'Pe ce te poți cățăra și de ce',
  subtitlu:'Pentru noi, o fațadă e decor. Pentru joc, e un traseu.',
  nota:'Linia aurie: un traseu posibil de pe stradă până pe acoperiș. Fiecare punct e un handhold.',

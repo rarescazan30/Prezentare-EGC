@@ -15,9 +15,9 @@
 slide(13,{
  bara:'13 · Anotimpurile',
  an:2025,
- supratitlu:'Partea 3 · Assassin’s Creed Shadows · 2025',
+ supratitlu:'Assassin’s Creed Shadows · 2025',
  titlu:'Patru anotimpuri și lumină realistă',
- subtitlu:'Frunzișul, zăpada și lumina se schimbă odată cu anotimpul. Poți opri iluminarea realistă ca să vezi diferența.',
+ subtitlu:'Frunzișul, zăpada și lumina se schimbă odată cu anotimpul.',
  anotimpuri:[
   {iconita:'🌸', nume:'Primăvară'},
   {iconita:'☀️', nume:'Vară'},

@@ -22,7 +22,7 @@ slide(17,{
   {eticheta:'2 · Instancing și generare procedurală', text:'Lumea se construiește din piese refolosite și din reguli, nu obiect cu obiect. Așa ajungi de la un oraș de 0,13 km² la o țară de 130 km².'},
   {eticheta:'3 · Baked vs. real-time', text:'Ce nu se schimbă se poate calcula dinainte (baked lighting): rapid în joc, dar scump în memorie. Ce se schimbă (ora din zi, anotimpurile) cere calcul în timp real, ca ray tracing-ul.'}
  ],
- indiciuBibliografie:'Bibliografie · apasă pe un grup pentru a-l deschide',
+ indiciuBibliografie:'Bibliografie',
  bibliografie:[
   {titlu:'Harta francizei', unitate:'jocuri', randuri:[
    ['Assassin’s Creed (2007)','Damasc (Țara Sfântă) · 0,13 km² · Scimitar'],

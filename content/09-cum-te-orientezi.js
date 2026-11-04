@@ -18,7 +18,7 @@
 slide(9,{
  bara:'09 · Orientarea',
  an:2009,
- supratitlu:'Partea 2 · Level design',
+ supratitlu:'Level design',
  titlu:'Cum te orientezi într-un oraș fără să te uiți pe hartă',
  subtitlu:'Urbanistul Kevin Lynch a observat că oamenii țin minte un oraș după câteva lucruri simple. Jocurile folosesc aceeași idee.',
  carduri:[

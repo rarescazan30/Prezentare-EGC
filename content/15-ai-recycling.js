@@ -15,7 +15,7 @@
 slide(15,{
  bara:'15 · AI recycling',
  an:2014,
- supratitlu:'Partea 3 · Cum devine orașul viu',
+ supratitlu:'Cum devine orașul viu',
  titlu:'Cum a ținut Unity 10.000 de NPC-uri pe ecran: AI recycling',
  subtitlu:'La GDC 2015, Ubisoft a prezentat un „AI level of detail”: doar 40 de AI-uri reale și 120 de modele high-res, din care se construiește un crowd de până la 10.000 de NPC-uri persistente și interactive.',
  carduri:[

@@ -18,7 +18,7 @@
 slide(4,{
  bara:'04 · Țări întregi',
  an:2017,
- supratitlu:'Partea 1 · 2017–2025',
+ supratitlu:'2017–2025',
  titlu:'Acum: hărți de 2,3–130 km², țări întregi și o întoarcere la oraș',
  subtitlu:'Hărțile au devenit regiuni întregi, cu natură, animale și vreme. Apoi seria s-a întors și la un oraș mic și dens.',
  carduri:[
@@ -30,7 +30,7 @@ slide(4,{
    text:'Un singur oraș dens, ca la început: parkour și ascunderea printre oameni.'},
   {poza:{descriere:'Peisaj din Japonia (Shadows)', fisier:'img/04-japonia-shadows.jpg'},
    eticheta:'Shadows · 2025', cifra:'Japonia',
-   text:'Aceeași hartă se schimbă de la un anotimp la altul (detalii în partea a 3-a).'}
+   text:'Aceeași hartă se schimbă de la un anotimp la altul.'}
  ],
  tehnic:{eticheta:'Pe scurt · world streaming',
   text:'O țară de 80–130 km² nu încape toată în memorie. Harta e împărțită într-un grid de celule (chunks): lângă jucător se face streaming la varianta detaliată, mai departe doar LOD-uri simplificate, iar celulele rămase în urmă se descarcă din memorie. Așa funcționează, în general, jocurile open world mari.'}

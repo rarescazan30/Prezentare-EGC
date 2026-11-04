@@ -11,19 +11,18 @@
    │ │ textDesen (sus)            │   │ cod                         │
    │ │ legenda (jos)              │   │ eticheta                    │
    │ └────────────────────────────┘   │ text                        │
-   │ [butonGenereaza]  indiciu        └─────────────────────────────┘
+   │ [butonGenereaza]                └─────────────────────────────┘
    │ textSelectie (translația, rotația și scalarea clădirii alese)
    └ */
 slide(6,{
  bara:'06 · Modular kit și instancing',
  an:2014,
- supratitlu:'Partea 2 · Cum se construiește',
+ supratitlu:'Cum se construiește',
  titlu:'Un oraș se construiește din piese, nu clădire cu clădire',
  subtitlu:'Artiștii fac un modular kit de piese de bază, iar orașul se asamblează din ele, ca din LEGO.',
  textDesen:'CARTIER VĂZUT DE SUS · SIMULARE',
  legenda:'{piese} piese · {instante} clădiri',   // {piese} și {instante} se completează singure
  butonGenereaza:'↻ Construiește alt cartier',
- indiciu:'Apasă pe o clădire ca să vezi transformarea ei.',
  textSelectie:'Clădirea aleasă: piesa {piesa} · translație ({x}, {y}) · rotație {r}° · scalare {s}',
  carduri:[
   {eticheta:'1 · Modular kit', text:'Ziduri, ferestre, uși, acoperișuri, balcoane. Fiecare piesă e modelată o singură dată.'},

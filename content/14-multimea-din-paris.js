@@ -20,7 +20,7 @@
 slide(14,{
  bara:'14 · Crowd',
  an:2014,
- supratitlu:'Partea 3 · Cum devine orașul viu',
+ supratitlu:'Cum devine orașul viu',
  titlu:'Sute de NPC-uri în piață, dar doar 40 au AI complet',
  subtitlu:'Simulare cu 500–2.000 de NPC-uri (în Unity erau până la 10.000 pe ecran). Detaliul depinde de distanța față de tine: LOD pentru AI și pentru modele.',
  etichetaCursor:'NPC-uri în piață',

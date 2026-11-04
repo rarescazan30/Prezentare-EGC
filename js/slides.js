@@ -63,7 +63,7 @@ add({...meta(6),hue:196,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <div class="g3">${c.carduri.map((k,i)=>`<div ${rs(i+2)}>${CARD(k)}</div>`).join('')}</div>
  <div class="g2">
   <div ${rs(5)} style="min-width:0"><canvas class="sim" id="kit" width="900" height="440" style="cursor:pointer" aria-label="Cartier construit din câteva piese repetate"></canvas>
-   <div class="row" style="margin-top:8px"><button class="btn" id="kitB">${c.butonGenereaza}</button><span class="note">${c.indiciu}</span></div>
+   <div class="row" style="margin-top:8px"><button class="btn" id="kitB">${c.butonGenereaza}</button></div>
    <p class="note" id="kitSel" style="margin-top:6px;color:var(--eagle)"></p></div>
   ${TEHNIC(c.tehnic,6)}
  </div></div>`)(SLIDE[6]),mount:mKit});
@@ -77,7 +77,7 @@ add({...meta(8),hue:188,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}
  <div class="g2">
   <div ${rs(2)} style="min-width:0"><div class="row" style="justify-content:space-between;margin-bottom:8px"><div class="tag">${c.etichetaTest}</div><button class="btn pri" id="aRun">${c.butonPornire}</button></div>
    <canvas class="sim" id="atl" width="760" height="400" aria-label="Simulare: o hartă parcursă de un test automat"></canvas>
-   <div class="card" style="margin-top:10px"><div class="row" style="gap:28px"><div class="stat"><span class="big" id="atn">0</span><span class="lab">${c.verificate}</span></div><div class="stat"><span class="big" id="ate" style="color:var(--creed)">0</span><span class="lab">${c.probleme}</span></div></div><p class="note" id="atr" style="margin-top:6px">${c.textInitial}</p></div></div>
+   <div class="card" style="margin-top:10px"><div class="row" style="gap:28px"><div class="stat"><span class="big" id="atn">0</span><span class="lab">${c.verificate}</span></div><div class="stat"><span class="big" id="ate" style="color:var(--creed)">0</span><span class="lab">${c.probleme}</span></div></div><p class="note" id="atr" style="margin-top:6px"></p></div></div>
   <div style="display:grid;gap:12px;min-width:0;align-content:start">${c.carduri.map((k,i)=>`<div ${rs(i+3)}>${CARD(k)}</div>`).join('')}
    ${TEHNIC(c.tehnic,5)}</div>
  </div></div>`)(SLIDE[8]),mount:mAtlas});
@@ -161,7 +161,7 @@ add({...meta(15),hue:198,html:CARDS3(SLIDE[15])});
 
 /* SLIDE 16 */
 add({...meta(16),hue:202,html:(c=>`<div class="in">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
- <div class="g3" id="lies">${c.carduri.map((k,i)=>`<div ${rs(i+2)}><button class="flip" aria-label="${k.titlu}"><div class="fi"><div class="fa"><div class="tag">${k.eticheta}</div><h3>${k.titlu}</h3><p>${k.fata}</p><span class="note" style="margin-top:auto;color:var(--accent)">${c.indiciu}</span></div><div class="fb"><div class="tag">${c.etichetaSpate}</div><p>${k.spate}</p></div></div></button></div>`).join('')}</div></div>`)(SLIDE[16]),mount:mLies});
+ <div class="g3" id="lies">${c.carduri.map((k,i)=>`<div ${rs(i+2)}><button class="flip" aria-label="${k.titlu}"><div class="fi"><div class="fa"><div class="tag">${k.eticheta}</div><h3>${k.titlu}</h3><p>${k.fata}</p></div><div class="fb"><div class="tag">${c.etichetaSpate}</div><p>${k.spate}</p></div></div></button></div>`).join('')}</div></div>`)(SLIDE[16]),mount:mLies});
 
 /* ===================== Final ===================== */
 

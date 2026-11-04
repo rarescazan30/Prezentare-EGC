@@ -15,7 +15,7 @@
 slide(5,{
  bara:'05 · Cât au crescut hărțile',
  an:2018,
- supratitlu:'Partea 1 · Comparație',
+ supratitlu:'Comparație',
  titlu:'Cât de mult au crescut hărțile',
  butonReda:'▶ Redă în ordine',
  nota:'Suprafețe aproximative ale hărții, în km². Toate barele sunt la aceeași scară.',

@@ -7,7 +7,7 @@
    │ TITLU
    │ subtitlu
    │ ┌ 0 verificate  0 probleme ┐ ┌ carduri[0] ┐ ┌ carduri[1] ┐
-   │ │ textInitial → rezultat   │
+   │ │ rezultat (după test)     │
    │ etichetaTest   [butonPornire]    ┌ tehnic ─────────────────────┐
    │ ┌ hartă animată ─────────────┐   │ cod                         │
    │ │ textDesen (sus)            │   │ eticheta                    │
@@ -17,7 +17,7 @@
 slide(8,{
  bara:'08 · Nightly tests',
  an:2017,
- supratitlu:'Partea 2 · Cum se construiește',
+ supratitlu:'Cum se construiește',
  titlu:'Cine verifică o hartă atât de mare? Automated testing, noaptea',
  subtitlu:'Pe o hartă de zeci de km², nimeni nu poate încerca de mână fiecare scară și fiecare acoperiș.',
  etichetaTest:'Nightly test',
@@ -25,7 +25,6 @@ slide(8,{
  textDesen:'SIMULARE',
  verificate:'obiecte verificate',
  probleme:'probleme găsite',
- textInitial:'Apasă „Pornește testul” ca să vezi cum e parcursă harta.',
  rezultat:'Rezultat: ',
  tipuriProbleme:['scări blocate','margini lipsă','zipline-uri întrerupte','obiecte în aer','trasee blocate'],
  carduri:[

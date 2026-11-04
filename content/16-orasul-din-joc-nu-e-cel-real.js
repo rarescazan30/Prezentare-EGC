@@ -11,15 +11,14 @@
    │ │ eticheta           │  click │ etichetaSpate      │
    │ │ TITLU              │  ───▶  │ spate              │
    │ │ fata               │        └────────────────────┘
-   │ │ indiciu            │
    │ └────────────────────┘
    └ */
 slide(16,{
  bara:'16 · Orașul din joc vs. cel real',
  an:2014,
- supratitlu:'Partea 3 · Istorie și joc',
+ supratitlu:'Istorie și joc',
  titlu:'Orașul din joc nu e o copie a orașului real',
- subtitlu:'Ca să fie ușor de recunoscut și plăcut de jucat, orașul e schimbat intenționat. Apasă pe un card.',
+ subtitlu:'Ca să fie ușor de recunoscut și plăcut de jucat, orașul e schimbat intenționat.',
  carduri:[
   {titlu:'Turla catedralei Notre-Dame', eticheta:'Unity · Paris, 1789',
    fata:'Jocul arată turla catedralei, deși în 1789 ea nu exista.',
@@ -31,6 +30,5 @@ slide(16,{
    fata:'Trenurile circulă continuu, în buclă, prin oraș.',
    spate:'Liniile sunt legate într-o buclă, ca să poți sări oricând pe un tren în mers. E o simplificare făcută pentru joc.'}
  ],
- indiciu:'↻ Apasă pentru explicație',
  etichetaSpate:'De ce?'
 });

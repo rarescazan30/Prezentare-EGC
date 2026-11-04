@@ -18,7 +18,7 @@
 slide(7,{
  bara:'07 · De mână sau procedural',
  an:2017,
- supratitlu:'Partea 2 · Cum se construiește',
+ supratitlu:'Cum se construiește',
  titlu:'Orașele se fac de mână, țările se generează procedural',
  subtitlu:'Pe o hartă de 80 km² nu mai poți așeza de mână fiecare piatră și fiecare copac.',
  carduri:[

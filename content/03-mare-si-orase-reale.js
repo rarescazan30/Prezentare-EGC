@@ -18,7 +18,7 @@
 slide(3,{
  bara:'03 · Mare și orașe mari',
  an:2014,
- supratitlu:'Partea 1 · 2013–2015',
+ supratitlu:'2013–2015',
  titlu:'Apoi: hărți de 2,4–120 km², cu mare deschisă și orașe la scară reală',
  subtitlu:'Seria a mers în două direcții: o lume de insule și ape, și orașe mai mari, mai detaliate.',
  carduri:[
