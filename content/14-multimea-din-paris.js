@@ -10,7 +10,7 @@
    │ ┌ piața animată ─────────────┐   ┌ carduri[0] ┐
    │ │ (tu = emblema roșie)       │   ├ carduri[1] ┤   (eticheta + text)
    │ └────────────────────────────┘   └ carduri[2] ┘
-   │ etichetaCursor ──●── indiciu
+   │ etichetaCursor ──●──
    │ procent
    │ ┌ tehnic: eticheta + text ┐   ← explicație pe scurt
    └
@@ -24,7 +24,6 @@ slide(14,{
  titlu:'Sute de NPC-uri în piață, dar doar 40 au AI complet',
  subtitlu:'Simulare cu 500–2.000 de NPC-uri (în Unity erau până la 10.000 pe ecran). Detaliul depinde de distanța față de tine: LOD pentru AI și pentru modele.',
  etichetaCursor:'NPC-uri în piață',
- indiciu:'Mișcă mouse-ul: tu ești emblema roșie.',
  etichetaVii:'Lângă tine',
  vii:'au AI complet (cercuri aurii)',
  etichetaDetaliate:'Puțin mai departe',

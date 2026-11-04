@@ -26,18 +26,17 @@ const STACK=(cards,i0)=>`<div style="display:grid;gap:12px;min-width:0">${cards.
 /* ===================== PARTEA 1 · Ce s-a schimbat ===================== */
 
 /* SLIDE 1 */
-add({...meta(1),hue:202,html:(c=>`<div class="in">
+add({...meta(1),hue:202,html:(c=>`<div class="in intro">
  <div class="g2" style="align-items:center">
-  <div style="display:grid;gap:22px">
+  <div style="display:grid;gap:clamp(18px,2.6vh,34px)">
    <div class="kicker rise" style="--i:0">${c.supratitlu}</div>
    <h1 class="k">${c.titlu}</h1>
    <p class="lead rise" style="--i:2">${c.subtitlu}</p>
    <div class="rise" style="--i:3"><div class="count"><b id="num">${c.contor}</b><span>${c.contorUnitate}</span></div><div class="clabel" id="clb">${c.contorText}</div></div>
+   <div class="row rise" style="--i:4"><button class="btn pri" data-act="next">${c.buton}</button></div>
   </div>
   <div ${rs(2)}><canvas class="sim" id="dnaC" width="520" height="250" aria-label="Hologramă Animus"></canvas></div>
  </div>
- <div class="g3 rise" style="--i:3">${c.carduri.map(CARD).join('')}</div>
- <div class="row rise" style="--i:4"><button class="btn pri" data-act="next">${c.buton}</button></div>
 </div>`)(SLIDE[1]),mount:mTitle});
 
 /* SLIDE 2 */
@@ -145,7 +144,7 @@ add({...meta(13),hue:212,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.t
 add({...meta(14),hue:195,html:(c=>`<div class="in tight">${HEAD(c.supratitlu,c.titlu)}<p class="lead rise" style="--i:1">${c.subtitlu}</p>
  <div class="g2">
   <div ${rs(2)} style="min-width:0"><canvas class="sim" id="crw" width="960" height="440" style="cursor:crosshair" aria-label="Simulare: mulțime într-o piață din Paris"></canvas>
-   <div class="row" style="margin-top:8px"><label class="lab" style="flex:1 1 220px;display:flex;gap:10px;align-items:center">${c.etichetaCursor} <input type="range" id="crwN" min="500" max="2000" step="100" value="2000"><span class="mono" id="crwNv">2.000</span></label><span class="note">${c.indiciu}</span></div>
+   <div class="row" style="margin-top:8px"><label class="lab" style="flex:1 1 220px;display:flex;gap:10px;align-items:center">${c.etichetaCursor} <input type="range" id="crwN" min="500" max="2000" step="100" value="2000"><span class="mono" id="crwNv">2.000</span></label></div>
    <div class="stats4">
     <div class="stat"><span class="tag">${c.etichetaVii}</span><span class="big" id="cA">40</span><span class="lab">${c.vii}</span></div>
     <div class="stat"><span class="tag">${c.etichetaDetaliate}</span><span class="big" id="cM">120</span><span class="lab">${c.detaliate}</span></div>

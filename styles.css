@@ -348,3 +348,28 @@ canvas.sim,.facade{box-shadow:0 24px 60px -36px #000,0 0 0 1px hsl(var(--hue) 60
 .stats4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
 .stats4 .big{font-size:clamp(24px,1.9vw,40px)}
 @media(max-width:960px){.stats4{grid-template-columns:1fr 1fr}}
+
+/* ===== poze mai mari pe slide-urile cu poze (2, 3, 4, 7, 9); textul de pe ele e puțin mai mic ca să încapă ===== */
+.in:has(.poza){gap:clamp(10px,1.6vh,24px)}
+.in:has(.poza) h2.k{font-size:clamp(26px,2.5vw,52px)}
+.in:has(.poza) .lead{font-size:clamp(17px,1.15vw,24px)}
+.in:has(.poza) .card{gap:6px}
+.in:has(.poza) .card .poza{height:clamp(250px,41vh,470px)}
+.in:has(.poza) .card .big{font-size:clamp(22px,1.8vw,38px)}
+.in:has(.poza) .card .small,.in:has(.poza) .tehnic .small{font-size:clamp(15px,.95vw,20px);line-height:1.4}
+@media(max-height:960px){
+ .in:has(.poza) .card .poza{height:clamp(180px,32vh,360px)}
+ .in:has(.poza) h2.k{font-size:clamp(24px,2.2vw,34px)}
+ .in:has(.poza) .lead{font-size:16.5px}
+ .in:has(.poza) .card .big{font-size:24px}
+ .in:has(.poza) .card .small,.in:has(.poza) .tehnic .small{font-size:15px}
+}
+@media(max-height:740px){
+ .in:has(.poza) .card .poza{height:clamp(120px,22vh,190px)}
+ .in:has(.poza) .card .small,.in:has(.poza) .tehnic .small{font-size:14px}
+}
+
+/* slide 1 fără carduri: titlu și animație mai mari, centrate pe verticală */
+.in.intro{max-width:min(92vw,1700px)}
+.in.intro h1.k{font-size:clamp(32px,3.3vw,66px);max-width:20ch}
+.in.intro canvas.sim{max-height:min(58vh,720px);width:100%}

@@ -23,7 +23,7 @@ Pe fiecare slide sunt scrise **1–3 idei principale**: exact ce spune vorbitoru
 ## Partea 1 · Ce s-a schimbat (Vorbitor 1)
 
 ### Slide 1 · Cum își construiește Assassin’s Creed orașele
-- Prezentăm tema și cele trei părți (cardurile de jos spun cine vorbește despre ce).
+- Prezentăm tema și cele trei părți (le spunem cu voce tare; pe slide nu mai sunt carduri pentru ele).
 - Cifra mare: de la **0,13 km²** (Damasc, 2007) la **130 km² de uscat** (Grecia, 2018).
 - *Fraza de început:* „În 2007 traversai un oraș în câteva minute. În 2018 îți trebuia o oră doar ca să traversezi o insulă.”
 

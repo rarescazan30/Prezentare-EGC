@@ -8,7 +8,6 @@
    │ subtitlu                       │ textDesen (sus)  │
    │ CONTOR contorUnitate           └──────────────────┘
    │ contorText
-   │ ┌ carduri[0] ┐ ┌ carduri[1] ┐ ┌ carduri[2] ┐   ← cele 3 părți (eticheta + text)
    │ [buton]
    └ */
 slide(1,{
@@ -21,10 +20,5 @@ slide(1,{
  contorUnitate:'km²',
  contorText:'Damasc (2007) → uscatul Greciei Antice (2018)',
  textDesen:'ANIMUS · 0,13 KM² (2007) → 130 KM² (2018)',
- carduri:[
-  {eticheta:'Partea 1 · Vorbitor 1', text:'Ce s-a schimbat: de la câteva orașe mici la țări întregi, și ce înseamnă asta pentru memorie, world streaming și terrain.'},
-  {eticheta:'Partea 2 · Vorbitor 2', text:'Cum se construiește un oraș: modular kits și instancing, procedural terrain, automated testing, raycasts pentru cățărare.'},
-  {eticheta:'Partea 3 · Vorbitor 3', text:'Cum devine orașul viu: de la modelul Phong la global illumination, shadere pentru anotimpuri, LOD și AI recycling pentru crowd-uri.'}
- ],
  buton:'Începe prezentarea →'
 });
